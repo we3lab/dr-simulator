@@ -1,8 +1,8 @@
 # Demand Response Simulator
 
-[![Build Status](https://github.com/ThyanRevolter/dr_simulator/workflows/Build%20Main/badge.svg)](https://github.com/ThyanRevolter/dr_simulator/actions)
-[![Documentation](https://github.com/ThyanRevolter/dr_simulator/workflows/Documentation/badge.svg)](https://ThyanRevolter.github.io/dr_simulator/)
-[![Code Coverage](https://codecov.io/gh/ThyanRevolter/dr_simulator/branch/main/graph/badge.svg)](https://codecov.io/gh/ThyanRevolter/dr_simulator)
+[![Build Status](https://github.com/we3lab/dr_simulator/workflows/Build%20Main/badge.svg)](https://github.com/we3lab/dr_simulator/actions)
+[![Documentation](https://github.com/we3lab/dr_simulator/workflows/Documentation/badge.svg)](https://we3lab.github.io/dr_simulator/)
+[![Code Coverage](https://codecov.io/gh/we3lab/dr_simulator/branch/main/graph/badge.svg)](https://codecov.io/gh/we3lab/dr_simulator)
 
 Demand Response Simulaator enables you to sample DR events based on a distribution and optimize your energy flexible process
 
@@ -25,11 +25,11 @@ a.get_value()  # 10
 ## Installation
 
 **Stable Release:** `pip install dr_simulator`<br>
-**Development Head:** `pip install git+https://github.com/ThyanRevolter/dr_simulator.git`
+**Development Head:** `pip install git+https://github.com/we3lab/dr_simulator.git`
 
 ## Documentation
 
-For full package documentation please visit [ThyanRevolter.github.io/dr_simulator](https://ThyanRevolter.github.io/dr_simulator).
+For full package documentation please visit [we3lab.github.io/dr_simulator](https://we3lab.github.io/dr_simulator).
 
 ## Development
 
@@ -74,11 +74,11 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for information related to developing the
         everything else will be handled for you.
 -   Ensure that you have set GitHub pages to build the `gh-pages` branch by selecting the
     `gh-pages` branch in the dropdown in the "GitHub Pages" section of the repository settings.
-    ([Repo Settings](https://github.com/ThyanRevolter/dr_simulator/settings))
+    ([Repo Settings](https://github.com/we3lab/dr_simulator/settings))
 -   Register your project with PyPI:
     -   Make an account on [pypi.org](https://pypi.org)
     -   Go to your GitHub repository's settings and under the
-        [Secrets tab](https://github.com/ThyanRevolter/dr_simulator/settings/secrets/actions),
+        [Secrets tab](https://github.com/we3lab/dr_simulator/settings/secrets/actions),
         add a secret called `PYPI_TOKEN` with your password for your PyPI account.
         Don't worry, no one will see this password because it will be encrypted.
     -   Next time you push to the branch `main` after using `bump2version`, GitHub
