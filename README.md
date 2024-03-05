@@ -1,7 +1,7 @@
 # Demand Response Simulator
 
 [![Build Status](https://github.com/we3lab/dr_simulator/workflows/Build%20Main/badge.svg)](https://github.com/we3lab/dr_simulator/actions)
-[![Documentation](https://github.com/we3lab/dr_simulator/workflows/Documentation/badge.svg)](https://we3lab.github.io/dr_simulator/)
+[![Documentation](https://github.com/we3lab/dr_simulator/workflows/Documentation/badge.svg)](https://we3lab.github.io/dr-simulator/)
 [![Code Coverage](https://codecov.io/gh/we3lab/dr_simulator/branch/main/graph/badge.svg)](https://codecov.io/gh/we3lab/dr_simulator)
 
 Demand Response Simulaator enables you to sample DR events based on a distribution and optimize your energy flexible process
