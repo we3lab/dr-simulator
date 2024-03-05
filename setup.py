@@ -80,7 +80,7 @@ setup(
     test_suite="dr_simulator/tests",
     tests_require=test_requirements,
     extras_require=extra_requirements,
-    url="https://github.com/ThyanRevolter/dr_simulator",
+    url="https://github.com/we3lab/dr_simulator",
     # Do not edit this string manually, always use bumpversion
     # Details in CONTRIBUTING.rst
     version="0.0.0",
