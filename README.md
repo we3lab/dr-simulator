@@ -4,23 +4,16 @@
 [![Documentation](https://github.com/we3lab/dr_simulator/workflows/Documentation/badge.svg)](https://we3lab.github.io/dr-simulator/)
 [![Code Coverage](https://codecov.io/gh/we3lab/dr_simulator/branch/main/graph/badge.svg)](https://codecov.io/gh/we3lab/dr_simulator)
 
-Demand Response Simulaator enables you to sample DR events based on a distribution and optimize your energy flexible process
+Demand Response Simulator enables you to sample DR events based on historic or custom distribution and optimize your energy flexible process
 
 ---
 
 ## Features
 
--   Store values and retain the prior value in memory
--   ... some other functionality
+-   Use custom or historic distribution
 
 ## Quick Start
 
-```python
-from dr_simulator import Example
-
-a = Example()
-a.get_value()  # 10
-```
 
 ## Installation
 
