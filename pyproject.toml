@@ -20,8 +20,6 @@ bayesian-optimization = ">=1.4.3"
 pytest = "^7.4.4"
 pylint = "^3.0.3"
 pytest-cov = "^4.1.0"
-
-[tool.poetry.dev-dependencies]
 pytest-html = ">=3.0.0"
 Sphinx = ">=4.2.0"
 black = ">=21.12b0"
@@ -29,6 +27,7 @@ flake8 = ">=4.0.0"
 tox = ">=3.24.5"
 ipykernel = "*"
 pylance = ">=0.9.15"
+
 
 
 [build-system]
