@@ -3,6 +3,7 @@
 import json
 import pickle
 
+
 def pickle_load(path):
     """Loads a pickled object (fitted model, dictionary with data, etc)
 
@@ -20,6 +21,7 @@ def pickle_load(path):
         object_ = pickle.load(f)
     return object_
 
+
 def pickle_dump(object_, path):
     """Pickles an object (fitted model, dictionary with data, etc)
 
@@ -33,6 +35,7 @@ def pickle_dump(object_, path):
     """
     with open(path, "wb") as f:
         pickle.dump(object_, f)
+
 
 def json_load(path):
     """Loads a json string to python
@@ -50,6 +53,7 @@ def json_load(path):
     with open(path, "r", encoding="utf-8") as f:
         object_ = json.load(f)
     return object_
+
 
 def json_dump(object_, path):
     """Dumps a python object to a json string

@@ -46,7 +46,7 @@ extra_requirements = {
     "all": [
         *requirements,
         *dev_requirements,
-    ]
+    ],
 }
 
 setup(
@@ -63,9 +63,7 @@ setup(
     ],
     description="Demand Response Simulaator enables you to sample DR events based on a distribution and optimize your energy flexible process",
     entry_points={
-        "console_scripts": [
-            "my_example=dr_simulator.bin.my_example:main"
-        ],
+        "console_scripts": ["my_example=dr_simulator.bin.my_example:main"],
     },
     install_requires=requirements,
     license="MIT license",

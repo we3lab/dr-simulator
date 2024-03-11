@@ -2,7 +2,6 @@ import datetime as dt
 import numpy as np
 
 
-
 class DemandResponseEvents:
     """
     This class is intended to be used to generate demand response events for a given time period based on user's inputs.
@@ -53,7 +52,6 @@ class DemandResponseEvents:
         self.notification_time = None
         self.event_dict = None
         self.dr_events_mtcs = None
-        
 
     def set_program_parameters(
         self,
