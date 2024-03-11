@@ -1,0 +1,28 @@
+{
+    "n_days" : {
+        "seed" : 12345,
+        "distribution" : "poisson",
+        "distribution_parameters" : {
+            "lam" : 3
+        }
+    },
+    "event_duration" : {
+        "seed" : 12345,
+        "distribution" : "poisson",
+        "distribution_parameters" : {
+            "lam" : 2
+        }
+    },
+    "start_time" : {
+        "seed" : 12345,
+        "distribution" : "uniform",
+        "distribution_parameters" : {
+            "low" : 16,
+            "high" : 20
+        }
+    },
+    "event_days" : {
+        "seed" : 12345,
+        "p_dates" : null
+    }
+}
