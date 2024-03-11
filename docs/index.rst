@@ -1,5 +1,5 @@
 Welcome to Demand Response Simulator's documentation!
-======================================
+=====================================================
 
 .. toctree::
    :hidden:

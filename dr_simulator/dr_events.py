@@ -1,5 +1,7 @@
-""" This module contains the DemandResponseEvents class which is used to 
-generate demand response events for a given time period based on user's inputs. """
+""" 
+    This module contains the DemandResponseEvents class which is used to 
+    generate demand response events for a given time period based on user's inputs. 
+"""
 
 import datetime as dt
 import numpy as np
@@ -10,7 +12,7 @@ NOTIFICATION_TIME_ERROR = """
 """
 
 
-class DemandResponseEvents:
+class DemandResponseEvents: # pylint: disable=too-many-instance-attributes
     """
     This class is intended to be used to generate demand response events
     for a given time period based on user's inputs.
@@ -62,7 +64,7 @@ class DemandResponseEvents:
         self.event_dict = None
         self.dr_events_mtcs = None
 
-    def set_program_parameters(
+    def set_program_parameters( # pylint: disable=too-many-arguments
         self,
         min_days,
         max_days,
