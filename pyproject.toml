@@ -19,7 +19,7 @@ holidays = ">=0.41"
 bayesian-optimization = ">=1.4.3"
 pytest = "^7.4.4"
 pylint = "^3.0.3"
-pytest-cov = "^3.0.0"
+pytest-cov = "^4.1.0"
 
 [tool.poetry.dev-dependencies]
 pytest-html = ">=3.0.0"
