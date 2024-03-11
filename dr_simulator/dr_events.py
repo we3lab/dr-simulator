@@ -12,7 +12,7 @@ NOTIFICATION_TIME_ERROR = """
 """
 
 
-class DemandResponseEvents: # pylint: disable=too-many-instance-attributes
+class DemandResponseEvents:  # pylint: disable=too-many-instance-attributes
     """
     This class is intended to be used to generate demand response events
     for a given time period based on user's inputs.
@@ -64,7 +64,7 @@ class DemandResponseEvents: # pylint: disable=too-many-instance-attributes
         self.event_dict = None
         self.dr_events_mtcs = None
 
-    def set_program_parameters( # pylint: disable=too-many-arguments
+    def set_program_parameters(  # pylint: disable=too-many-arguments
         self,
         min_days,
         max_days,
@@ -80,7 +80,7 @@ class DemandResponseEvents: # pylint: disable=too-many-instance-attributes
     ):
         """
         This function sets the program parameters for the demand response program
-        
+
         Parameters
         ----------
         min_days : int
@@ -396,7 +396,7 @@ class DemandResponseEvents: # pylint: disable=too-many-instance-attributes
         ----------
         n_simulations : int
             Number of simulations
-        
+
         """
         self.dr_events_mtcs = []
         for _ in range(n_simulations):

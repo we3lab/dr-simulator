@@ -26,7 +26,6 @@ import dr_simulator
 sys.path.insert(0, os.path.abspath(".."))
 
 
-
 # -- General configuration ---------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -211,10 +210,11 @@ epub_exclude_files = ["search.html"]
 # from https://gist.github.com/bskinn/0e164963428d4b51017cebdb6cda5209
 intersphinx_mapping = {
     "python": ("https://docs.python.org/", None),
-    "scipy": ('https://docs.scipy.org/doc/scipy/', None),
-    "pandas": ('https://pandas.pydata.org/docs/', None),
-    "numpy": ('https://numpy.org/doc/stable/', None)
+    "scipy": ("https://docs.scipy.org/doc/scipy/", None),
+    "pandas": ("https://pandas.pydata.org/docs/", None),
+    "numpy": ("https://numpy.org/doc/stable/", None),
 }
+
 
 # fix page width, from https://stackoverflow.com/questions/23211695/modifying-content-width-of-the-sphinx-theme-read-the-docs
 def setup(app):
