@@ -1,10 +1,17 @@
+""" This module contains the DemandResponseEvents class which is used to 
+generate demand response events for a given time period based on user's inputs. """
 import datetime as dt
 import numpy as np
 
+NOTIFICATION_TIME_ERROR = """
+    For day before notification please set self.notification time
+    class attribute
+"""
 
 class DemandResponseEvents:
     """
-    This class is intended to be used to generate demand response events for a given time period based on user's inputs.
+    This class is intended to be used to generate demand response events 
+    for a given time period based on user's inputs.
 
     Follow the steps below to generate demand response events:
     1) Create an instance of the class
@@ -13,8 +20,8 @@ class DemandResponseEvents:
     4) Sample the start times of the events using the set_start_times function
     5) Sample the event duration of the events using the set_event_duration function
     6) Sample the probability of each day being selected using the get_pdates function -
-       this is uniform now, but you can provide a distribution with the same length as the
-       number of days between the start and end dates
+       this is uniform now, but you can provide a distribution with
+       the same length as the number of days between the start and end dates
     7) Sample the event dates of the events using the set_event_dates function
     8) Set the notification time of the events using the set_notification_time function
     9) Generate the event dictionary using the generate_event_dict function
@@ -86,7 +93,8 @@ class DemandResponseEvents:
         notification_time : int
             Notification time of a demand response event in hours
         notification_type : str
-            Type of notification time. Default is "day_before". Other options are "day_of" and "hour_before"
+            Type of notification time. Default is "day_before". 
+            Other options are "day_of" and "hour_before"
         """
         self.min_days = min_days
         self.max_days = max_days
@@ -103,7 +111,8 @@ class DemandResponseEvents:
 
     def set_ndays(self, distribution, distribution_parameters, seed=None):
         """
-        This function sets the number of days of the events based on a given distribution
+        This function sets the number of days of the events based on a 
+        given distribution
         Parameters
         ----------
         ndays : int
@@ -138,7 +147,8 @@ class DemandResponseEvents:
 
     def set_event_duration(self, distribution, distribution_parameters, seed=None):
         """
-        This function sets the event duration of the events based on a given distribution
+        This function sets the event duration of the events based on a 
+        given distribution
         Parameters
         ----------
         event_hours : int
@@ -183,7 +193,9 @@ class DemandResponseEvents:
 
     def get_pdates(self):
         """
-        This function sets the probability of each day being selected based on a uniform distribution
+        This function sets the probability of each day being selected based on a
+        uniform distribution
+
         Parameters
         ----------
         None
@@ -254,9 +266,7 @@ class DemandResponseEvents:
             self.notification_type == "day_before" or self.notification_type == "day_of"
         ):
             raise ValueError(
-                """
-                    For day before notification please set self.notification time class attribute
-                """
+                NOTIFICATION_TIME_ERROR
             )
         notifiction_time = []
 
