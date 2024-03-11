@@ -20,7 +20,7 @@ Welcome to Demand Response Simulator's documentation!
 
    dr_simulator
 
-.. include:: ../README.md
+.. include:: ../README.rst
 
 Indices and tables
 ==================

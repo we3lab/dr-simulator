@@ -18,17 +18,18 @@ class DemandResponseEvents:  # pylint: disable=too-many-instance-attributes
     for a given time period based on user's inputs.
 
     Follow the steps below to generate demand response events:
-    1) Create an instance of the class
-    2) Set the program parameters using the set_program_parameters function
-    3) Sample the ndays of the events using the set_ndays function
-    4) Sample the start times of the events using the set_start_times function
-    5) Sample the event duration of the events using the set_event_duration function
-    6) Sample the probability of each day being selected using the get_pdates function -
-    this is uniform now, but you can provide a distribution with
-    the same length as the number of days between the start and end dates
-    7) Sample the event dates of the events using the set_event_dates function
-    8) Set the notification time of the events using the set_notification_time function
-    9) Generate the event dictionary using the generate_event_dict function
+
+        1) Create an instance of the class
+        2) Set the program parameters using the set_program_parameters function
+        3) Sample the ndays of the events using the set_ndays function
+        4) Sample the start times of the events using the set_start_times function
+        5) Sample the event duration of the events using the set_event_duration function
+        6) Sample the probability of each day being selected using the get_pdates function
+           this is uniform now, but you can provide a distribution with the same length 
+           as the number of days between the start and end dates
+        7) Sample the event dates of the events using the set_event_dates function
+        8) Set the notification time of the events using the set_notification_time function
+        9) Generate the event dictionary using the generate_event_dict function
 
     Parameters
     ----------

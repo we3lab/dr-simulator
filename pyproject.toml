@@ -3,7 +3,7 @@ name = "dr-simulator"
 version = "0.1.0"
 description = ""
 authors = ["ThyanRevolter <admkr.2010@gmail.com>"]
-readme = "README.md"
+readme = "README.rst"
 
 [tool.poetry.dependencies]
 python = ">=3.9,<3.11"
