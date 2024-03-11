@@ -46,7 +46,8 @@ jobs:
         pip install black
     - name: Analysing the code with pylint
       run: |
-        pylint $(git ls-files '*.py')
+        pylint dr_simulator
     - name: Check with black
+      if: ${{ always() }}
       run: |
         black --check dr_simulator

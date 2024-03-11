@@ -246,8 +246,7 @@ class DemandResponseEvents:
                         consecutive_events += 1
                     else:
                         consecutive_events = 1
-                if consecutive_events > max_consecutive_events:
-                    max_consecutive_events = consecutive_events
+                max_consecutive_events = max(max_consecutive_events, consecutive_events)
             if max_consecutive_events <= self.max_consecutive_events:
                 break
 
@@ -263,7 +262,7 @@ class DemandResponseEvents:
             self.notification_time = notification_time
 
         if self.notification_time is None and (
-            self.notification_type == "day_before" or self.notification_type == "day_of"
+            self.notification_type in ["day_before", "day_of"]
         ):
             raise ValueError(
                 NOTIFICATION_TIME_ERROR

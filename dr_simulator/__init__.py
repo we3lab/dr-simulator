@@ -10,4 +10,5 @@ __version__ = "0.0.0"
 
 
 def get_module_version():
+    """Return the version of the module."""
     return __version__
