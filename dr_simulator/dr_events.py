@@ -1,5 +1,6 @@
 """ This module contains the DemandResponseEvents class which is used to 
 generate demand response events for a given time period based on user's inputs. """
+
 import datetime as dt
 import numpy as np
 
@@ -8,9 +9,10 @@ NOTIFICATION_TIME_ERROR = """
     class attribute
 """
 
+
 class DemandResponseEvents:
     """
-    This class is intended to be used to generate demand response events 
+    This class is intended to be used to generate demand response events
     for a given time period based on user's inputs.
 
     Follow the steps below to generate demand response events:
@@ -93,7 +95,7 @@ class DemandResponseEvents:
         notification_time : int
             Notification time of a demand response event in hours
         notification_type : str
-            Type of notification time. Default is "day_before". 
+            Type of notification time. Default is "day_before".
             Other options are "day_of" and "hour_before"
         """
         self.min_days = min_days
@@ -111,7 +113,7 @@ class DemandResponseEvents:
 
     def set_ndays(self, distribution, distribution_parameters, seed=None):
         """
-        This function sets the number of days of the events based on a 
+        This function sets the number of days of the events based on a
         given distribution
         Parameters
         ----------
@@ -147,7 +149,7 @@ class DemandResponseEvents:
 
     def set_event_duration(self, distribution, distribution_parameters, seed=None):
         """
-        This function sets the event duration of the events based on a 
+        This function sets the event duration of the events based on a
         given distribution
         Parameters
         ----------
@@ -264,9 +266,7 @@ class DemandResponseEvents:
         if self.notification_time is None and (
             self.notification_type in ["day_before", "day_of"]
         ):
-            raise ValueError(
-                NOTIFICATION_TIME_ERROR
-            )
+            raise ValueError(NOTIFICATION_TIME_ERROR)
         notifiction_time = []
 
         for i, event_day in enumerate(self.event_days):
