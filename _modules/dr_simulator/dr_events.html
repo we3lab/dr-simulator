@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dr_simulator.dr_events &#8212; Demand Response Simulator 0.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=547657ed" />
+    <script src="../../_static/documentation_options.js?v=7026087e"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for dr_simulator.dr_events</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">    This module contains the DemandResponseEvents class which is used to </span>
+<span class="sd">    generate demand response events for a given time period based on user&#39;s inputs. </span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">NOTIFICATION_TIME_ERROR</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    For day before notification please set self.notification time</span>
+<span class="s2">    class attribute</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="DemandResponseEvents">
+<a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents">[docs]</a>
+<span class="k">class</span> <span class="nc">DemandResponseEvents</span><span class="p">:</span>  <span class="c1"># pylint: disable=too-many-instance-attributes</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This class is intended to be used to generate demand response events</span>
+<span class="sd">    for a given time period based on user&#39;s inputs.</span>
+
+<span class="sd">    Follow the steps below to generate demand response events:</span>
+<span class="sd">    1) Create an instance of the class</span>
+<span class="sd">    2) Set the program parameters using the set_program_parameters function</span>
+<span class="sd">    3) Sample the ndays of the events using the set_ndays function</span>
+<span class="sd">    4) Sample the start times of the events using the set_start_times function</span>
+<span class="sd">    5) Sample the event duration of the events using the set_event_duration function</span>
+<span class="sd">    6) Sample the probability of each day being selected using the get_pdates function -</span>
+<span class="sd">    this is uniform now, but you can provide a distribution with</span>
+<span class="sd">    the same length as the number of days between the start and end dates</span>
+<span class="sd">    7) Sample the event dates of the events using the set_event_dates function</span>
+<span class="sd">    8) Set the notification time of the events using the set_notification_time function</span>
+<span class="sd">    9) Generate the event dictionary using the generate_event_dict function</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    start_dt : datetime.datetime</span>
+<span class="sd">        Start date of the demand response events period</span>
+<span class="sd">    end_dt : datetime.datetime</span>
+<span class="sd">        End date of the demand response events period</span>
+<span class="sd">    time_step : int</span>
+<span class="sd">        Time step of the demand response events period in minutes</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_dt</span><span class="p">,</span> <span class="n">end_dt</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;DR Program&quot;</span><span class="p">,</span> <span class="n">time_step</span><span class="o">=</span><span class="mi">60</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_dt</span> <span class="o">=</span> <span class="n">start_dt</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end_dt</span> <span class="o">=</span> <span class="n">end_dt</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">time_step</span> <span class="o">=</span> <span class="n">time_step</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_days</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_days</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_duration</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_duration</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_start_time</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_start_time</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_consecutive_events</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">notification_time</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">notification_type</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_similar_weekdays</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ndays</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_times</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">event_duration</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">event_days</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">notification_time</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">event_dict</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dr_events_mtcs</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="DemandResponseEvents.set_program_parameters">
+<a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.set_program_parameters">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_program_parameters</span><span class="p">(</span>  <span class="c1"># pylint: disable=too-many-arguments</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">min_days</span><span class="p">,</span>
+        <span class="n">max_days</span><span class="p">,</span>
+        <span class="n">min_duration</span><span class="p">,</span>
+        <span class="n">max_duration</span><span class="p">,</span>
+        <span class="n">min_start_time</span><span class="p">,</span>
+        <span class="n">max_start_time</span><span class="p">,</span>
+        <span class="n">max_consecutive_events</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">notification_time</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">notification_type</span><span class="o">=</span><span class="s2">&quot;day_before&quot;</span><span class="p">,</span>
+        <span class="n">n_similar_weekdays</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function sets the program parameters for the demand response program</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        min_days : int</span>
+<span class="sd">            Minimum number of days between two demand response events</span>
+<span class="sd">        max_days : int</span>
+<span class="sd">            Maximum number of days between two demand response events</span>
+<span class="sd">        min_duration : int</span>
+<span class="sd">            Minimum duration of a demand response event in hours</span>
+<span class="sd">        max_duration : int</span>
+<span class="sd">            Maximum duration of a demand response event in hours</span>
+<span class="sd">        min_start_time : int</span>
+<span class="sd">            Minimum start time of a demand response event in hours</span>
+<span class="sd">        max_start_time : int</span>
+<span class="sd">            Maximum start time of a demand response event in hours</span>
+<span class="sd">        notification_time : int</span>
+<span class="sd">            Notification time of a demand response event in hours</span>
+<span class="sd">        notification_type : str</span>
+<span class="sd">            Type of notification time. Default is &quot;day_before&quot;.</span>
+<span class="sd">            Other options are &quot;day_of&quot; and &quot;hour_before&quot;</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_days</span> <span class="o">=</span> <span class="n">min_days</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_days</span> <span class="o">=</span> <span class="n">max_days</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_duration</span> <span class="o">=</span> <span class="n">min_duration</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_duration</span> <span class="o">=</span> <span class="n">max_duration</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_start_time</span> <span class="o">=</span> <span class="n">min_start_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_start_time</span> <span class="o">=</span> <span class="n">max_start_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_consecutive_events</span> <span class="o">=</span> <span class="n">max_consecutive_events</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">notification_time</span> <span class="o">=</span> <span class="n">notification_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">notification_type</span> <span class="o">=</span> <span class="n">notification_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_similar_weekdays</span> <span class="o">=</span> <span class="n">n_similar_weekdays</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DemandResponseEvents.set_ndays">
+<a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.set_ndays">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_ndays</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">distribution</span><span class="p">,</span> <span class="n">distribution_parameters</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function sets the number of days of the events based on a</span>
+<span class="sd">        given distribution</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        ndays : int</span>
+<span class="sd">            Number of days between two demand response events</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ndays</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fmin</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">fmax</span><span class="p">(</span>
+                <span class="nb">getattr</span><span class="p">(</span><span class="n">rng</span><span class="p">,</span> <span class="n">distribution</span><span class="p">)(</span><span class="o">**</span><span class="n">distribution_parameters</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_days</span>
+            <span class="p">),</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">max_days</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DemandResponseEvents.set_start_times">
+<a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.set_start_times">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_start_times</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">distribution</span><span class="p">,</span> <span class="n">distribution_parameters</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function sets the start times of the events based on a given distribution</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        start_times : int</span>
+<span class="sd">            Start time of the demand response events</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># if &quot;size&quot; not in distribution_parameters.keys():</span>
+        <span class="n">distribution_parameters</span><span class="p">[</span><span class="s2">&quot;size&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ndays</span>
+        <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fmin</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">fmax</span><span class="p">(</span>
+                <span class="nb">getattr</span><span class="p">(</span><span class="n">rng</span><span class="p">,</span> <span class="n">distribution</span><span class="p">)(</span><span class="o">**</span><span class="n">distribution_parameters</span><span class="p">),</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ndays</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_start_time</span><span class="p">),</span>
+            <span class="p">),</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ndays</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_start_time</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DemandResponseEvents.set_event_duration">
+<a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.set_event_duration">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_event_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">distribution</span><span class="p">,</span> <span class="n">distribution_parameters</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function sets the event duration of the events based on a</span>
+<span class="sd">        given distribution</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        event_hours : int</span>
+<span class="sd">            Number of hours of the demand response events</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">distribution_parameters</span><span class="p">[</span><span class="s2">&quot;size&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ndays</span>
+        <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+        <span class="n">event_duration</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">rng</span><span class="p">,</span> <span class="n">distribution</span><span class="p">)(</span><span class="o">**</span><span class="n">distribution_parameters</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">event_duration</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fmin</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">fmax</span><span class="p">(</span><span class="n">event_duration</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ndays</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_duration</span><span class="p">)),</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ndays</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_duration</span><span class="p">),</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">event_duration</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fmin</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">event_duration</span><span class="p">,</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ndays</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_start_time</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_times</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DemandResponseEvents.create_calender">
+<a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.create_calender">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">create_calender</span><span class="p">(</span><span class="n">dates</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function creates a calendar for the given dates</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        dates : list</span>
+<span class="sd">            List of dates</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        woy : numpy.ndarray</span>
+<span class="sd">            Week of the year of the dates</span>
+<span class="sd">        dow : numpy.ndarray</span>
+<span class="sd">            Day of the week of the dates</span>
+<span class="sd">        calendar : numpy.ndarray</span>
+<span class="sd">            Calendar of the dates</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">woy</span><span class="p">,</span> <span class="n">dow</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">isocalendar</span><span class="p">()[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dates</span><span class="p">])</span>
+        <span class="n">woy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">woy</span><span class="p">)</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">woy</span><span class="p">)</span>  <span class="c1"># make lowest week 0</span>
+        <span class="n">dow</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dow</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># make Monday 0</span>
+        <span class="n">ni</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">woy</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># number of weeks in dates</span>
+        <span class="n">calendar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ni</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>  <span class="c1"># create arrays of Zeros for the calendar</span>
+        <span class="k">return</span> <span class="n">woy</span><span class="p">,</span> <span class="n">dow</span><span class="p">,</span> <span class="n">calendar</span></div>
+
+
+<div class="viewcode-block" id="DemandResponseEvents.get_pdates">
+<a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.get_pdates">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_pdates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function sets the probability of each day being selected based on a</span>
+<span class="sd">        uniform distribution</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        None</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        p_calendar : numpy.ndarray</span>
+<span class="sd">            Probability of each day being selected</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dates</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">start_dt</span> <span class="o">+</span> <span class="n">dt</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">end_dt</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_dt</span><span class="p">)</span><span class="o">.</span><span class="n">days</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">]</span>
+        <span class="n">woy</span><span class="p">,</span> <span class="n">dow</span><span class="p">,</span> <span class="n">p_calendar</span> <span class="o">=</span> <span class="n">DemandResponseEvents</span><span class="o">.</span><span class="n">create_calender</span><span class="p">(</span><span class="n">dates</span><span class="p">)</span>
+        <span class="n">weekdays_idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">woy</span><span class="p">[</span><span class="n">dow</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">],</span> <span class="n">dow</span><span class="p">[</span><span class="n">dow</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">])</span>
+        <span class="n">n_weekdays</span> <span class="o">=</span> <span class="n">dow</span><span class="p">[</span><span class="n">dow</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">p_calendar</span><span class="p">[</span><span class="n">weekdays_idx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">n_weekdays</span>
+        <span class="k">return</span> <span class="n">p_calendar</span><span class="p">[</span><span class="n">woy</span><span class="p">,</span> <span class="n">dow</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="DemandResponseEvents.set_event_dates">
+<a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.set_event_dates">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_event_dates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">p_dates</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function sets the event dates of the events based on a given distribution</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        p_dates : float</span>
+<span class="sd">            Probability of each day being selected</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">p_dates</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">p_dates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_pdates</span><span class="p">()</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">dates</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">start_dt</span> <span class="o">+</span> <span class="n">dt</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">end_dt</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_dt</span><span class="p">)</span><span class="o">.</span><span class="n">days</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">event_days</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
+                <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ndays</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p_dates</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_consecutive_events</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ndays</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="c1"># find the maximum number of consecutive events</span>
+            <span class="n">max_consecutive_events</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">event_day</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">event_days</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">consecutive_events</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">event_day</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_days</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">days</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">consecutive_events</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">consecutive_events</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">max_consecutive_events</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">max_consecutive_events</span><span class="p">,</span> <span class="n">consecutive_events</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">max_consecutive_events</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_consecutive_events</span><span class="p">:</span>
+                <span class="k">break</span></div>
+
+
+<div class="viewcode-block" id="DemandResponseEvents.set_notification_time">
+<a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.set_notification_time">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_notification_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">notification_time</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function sets the notification time of the events</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        notification_time : int</span>
+<span class="sd">            Notification time of the demand response events</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">notification_time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">notification_time</span> <span class="o">=</span> <span class="n">notification_time</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">notification_time</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">notification_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;day_before&quot;</span><span class="p">,</span> <span class="s2">&quot;day_of&quot;</span><span class="p">]</span>
+        <span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">NOTIFICATION_TIME_ERROR</span><span class="p">)</span>
+        <span class="n">notifiction_time</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">event_day</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">event_days</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">notification_type</span> <span class="o">==</span> <span class="s2">&quot;day_before&quot;</span><span class="p">:</span>
+                <span class="n">event_detail</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span>
+                    <span class="n">event_day</span><span class="o">.</span><span class="n">year</span><span class="p">,</span>
+                    <span class="n">event_day</span><span class="o">.</span><span class="n">month</span><span class="p">,</span>
+                    <span class="n">event_day</span><span class="o">.</span><span class="n">day</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">notification_time</span><span class="p">,</span>
+                    <span class="mi">0</span><span class="p">,</span>
+                    <span class="mi">0</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">notifiction_time</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">event_detail</span> <span class="o">-</span> <span class="n">dt</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">notification_type</span> <span class="o">==</span> <span class="s2">&quot;hour_before&quot;</span><span class="p">:</span>
+                <span class="n">event_detail</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span>
+                    <span class="n">event_day</span><span class="o">.</span><span class="n">year</span><span class="p">,</span>
+                    <span class="n">event_day</span><span class="o">.</span><span class="n">month</span><span class="p">,</span>
+                    <span class="n">event_day</span><span class="o">.</span><span class="n">day</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">start_times</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                    <span class="mi">0</span><span class="p">,</span>
+                    <span class="mi">0</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">notifiction_time</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">event_detail</span> <span class="o">-</span> <span class="n">dt</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">notification_type</span> <span class="o">==</span> <span class="s2">&quot;day_of&quot;</span><span class="p">:</span>
+                <span class="n">notifiction_time</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span>
+                        <span class="n">event_day</span><span class="o">.</span><span class="n">year</span><span class="p">,</span>
+                        <span class="n">event_day</span><span class="o">.</span><span class="n">month</span><span class="p">,</span>
+                        <span class="n">event_day</span><span class="o">.</span><span class="n">day</span><span class="p">,</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">notification_time</span><span class="p">,</span>
+                        <span class="mi">0</span><span class="p">,</span>
+                        <span class="mi">0</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">notification_time</span> <span class="o">=</span> <span class="n">notifiction_time</span></div>
+
+
+<div class="viewcode-block" id="DemandResponseEvents.get_n_similar_weekdays">
+<a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.get_n_similar_weekdays">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_n_similar_weekdays</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">prev_event_days</span><span class="p">,</span> <span class="n">n_weekdays</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function gets the 10 similar weekdays excluding the event days</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        date : datetime.datetime</span>
+<span class="sd">            Date of the event</span>
+<span class="sd">        prev_event_days : list</span>
+<span class="sd">            List of previous event days</span>
+<span class="sd">        n_weekdays : int</span>
+<span class="sd">            Number of similar weekdays to return</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        similar_weekdays : list</span>
+<span class="sd">            List of length of previous n_weekdays excluding the event days</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">similar_weekdays</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">similar_weekdays</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">n_weekdays</span><span class="p">:</span>
+            <span class="n">date</span> <span class="o">=</span> <span class="n">date</span> <span class="o">-</span> <span class="n">dt</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">date</span><span class="o">.</span><span class="n">weekday</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">5</span> <span class="ow">and</span> <span class="n">date</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">prev_event_days</span><span class="p">:</span>
+                <span class="n">similar_weekdays</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">similar_weekdays</span></div>
+
+
+<div class="viewcode-block" id="DemandResponseEvents.generate_event_dict">
+<a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.generate_event_dict">[docs]</a>
+    <span class="k">def</span> <span class="nf">generate_event_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program_parameters</span><span class="p">,</span> <span class="n">simulation_parameters</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function generates the event dictionary</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        None</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_program_parameters</span><span class="p">(</span><span class="o">**</span><span class="n">program_parameters</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_ndays</span><span class="p">(</span><span class="o">**</span><span class="n">simulation_parameters</span><span class="p">[</span><span class="s2">&quot;n_days&quot;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_start_times</span><span class="p">(</span><span class="o">**</span><span class="n">simulation_parameters</span><span class="p">[</span><span class="s2">&quot;start_time&quot;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_event_duration</span><span class="p">(</span><span class="o">**</span><span class="n">simulation_parameters</span><span class="p">[</span><span class="s2">&quot;event_duration&quot;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_event_dates</span><span class="p">(</span><span class="o">**</span><span class="n">simulation_parameters</span><span class="p">[</span><span class="s2">&quot;event_days&quot;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_notification_time</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">event_dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">event_dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">event_dict</span><span class="p">[</span><span class="s2">&quot;event_days&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_days</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">event_dict</span><span class="p">[</span><span class="s2">&quot;event_details&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">event_day</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">event_days</span><span class="p">):</span>
+            <span class="n">end_time</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_times</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_duration</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">23</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">event_dict</span><span class="p">[</span><span class="s2">&quot;event_details&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;day&quot;</span><span class="p">:</span> <span class="n">event_day</span><span class="o">.</span><span class="n">day</span><span class="p">,</span>
+                    <span class="s2">&quot;month&quot;</span><span class="p">:</span> <span class="n">event_day</span><span class="o">.</span><span class="n">month</span><span class="p">,</span>
+                    <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="n">event_day</span><span class="o">.</span><span class="n">year</span><span class="p">,</span>
+                    <span class="s2">&quot;duration&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_duration</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                    <span class="s2">&quot;start_time&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_times</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                    <span class="s2">&quot;end_time&quot;</span><span class="p">:</span> <span class="n">end_time</span><span class="p">,</span>
+                    <span class="s2">&quot;event_hours&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_times</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">end_time</span><span class="p">)),</span>
+                    <span class="s2">&quot;notification_time&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">notification_time</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                    <span class="s2">&quot;similar_weekdays&quot;</span><span class="p">:</span> <span class="n">DemandResponseEvents</span><span class="o">.</span><span class="n">get_n_similar_weekdays</span><span class="p">(</span>
+                        <span class="n">event_day</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_days</span><span class="p">[:</span><span class="n">i</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_similar_weekdays</span>
+                    <span class="p">),</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_dict</span></div>
+
+
+<div class="viewcode-block" id="DemandResponseEvents.create_dr_events_mtcs">
+<a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.create_dr_events_mtcs">[docs]</a>
+    <span class="k">def</span> <span class="nf">create_dr_events_mtcs</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">program_parameters</span><span class="p">,</span> <span class="n">simulation_parameters</span><span class="p">,</span> <span class="n">n_simulations</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function creates the demand response events for the given number of simulations</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        n_simulations : int</span>
+<span class="sd">            Number of simulations</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dr_events_mtcs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_simulations</span><span class="p">):</span>
+            <span class="n">dr_instance</span> <span class="o">=</span> <span class="n">DemandResponseEvents</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">start_dt</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_dt</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">time_step</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">time_step</span>
+            <span class="p">)</span>
+            <span class="n">event_dict</span> <span class="o">=</span> <span class="n">dr_instance</span><span class="o">.</span><span class="n">generate_event_dict</span><span class="p">(</span>
+                <span class="n">program_parameters</span><span class="o">=</span><span class="n">program_parameters</span><span class="p">,</span>
+                <span class="n">simulation_parameters</span><span class="o">=</span><span class="n">simulation_parameters</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dr_events_mtcs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">event_dict</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dr_events_mtcs</span></div>
+</div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Demand Response Simulator</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Overview:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">dr_simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING.html">Welcome to Contrubuting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../LICENSE.html">LICENSE</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DR Simulator:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dr_simulator.html">dr_simulator package</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  <li><a href="../dr_simulator.html">dr_simulator</a><ul>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Adhithyan Sakthivelu.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
