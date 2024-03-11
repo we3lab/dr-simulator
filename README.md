@@ -22,7 +22,7 @@ Demand Response Simulator enables you to sample DR events based on historic or c
 
 ## Documentation
 
-For full package documentation please visit [we3lab.github.io/dr_simulator](https://we3lab.github.io/dr_simulator).
+For full package documentation please visit [we3lab.github.io/dr_simulator](https://we3lab.github.io/dr-simulator).
 
 ## Development
 
