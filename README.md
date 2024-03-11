@@ -2,7 +2,7 @@
 
 [![Build Status](https://github.com/we3lab/dr_simulator/workflows/Build%20Main/badge.svg)](https://github.com/we3lab/dr-simulator/actions)
 [![Documentation](https://github.com/we3lab/dr_simulator/workflows/Documentation/badge.svg)](https://we3lab.github.io/dr-simulator/)
-[![Code Coverage](https://codecov.io/gh/we3lab/dr_simulator/branch/main/graph/badge.svg)](https://codecov.io/gh/we3lab/dr-simulator)
+[![Code Coverage](https://codecov.io/gh/we3lab/dr-simulator/graph/badge.svg?token=HXGOYK8JCD)](https://codecov.io/gh/we3lab/dr-simulator)
 
 Demand Response Simulator enables you to sample DR events based on historic or custom distribution and optimize your energy flexible process
 
@@ -18,11 +18,11 @@ Demand Response Simulator enables you to sample DR events based on historic or c
 ## Installation
 
 **Stable Release:** `pip install dr_simulator`<br>
-**Development Head:** `pip install git+https://github.com/we3lab/dr_simulator.git`
+**Development Head:** `pip install git+https://github.com/we3lab/dr-simulator.git`
 
 ## Documentation
 
-For full package documentation please visit [we3lab.github.io/dr_simulator](https://we3lab.github.io/dr-simulator).
+For full package documentation please visit [we3lab.github.io/dr-simulator](https://we3lab.github.io/dr-simulator).
 
 ## Development
 
@@ -52,3 +52,22 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for information related to developing the
 
 **MIT license**
 
+Copyright (c) 2024, Adhithyan Sakthivelu
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
