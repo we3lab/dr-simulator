@@ -1,18 +1,26 @@
+.. contents::
+
 Welcome to Demand Response Simulator's documentation!
 =====================================================
 
 .. toctree::
    :hidden:
    :maxdepth: 1
-   :caption: Contents:
+   :caption: Overview:
 
-   Overview <self>
+   README <self>
    installation
-   Package modules <modules>
-   contributing
-   math
+   modules
+   CONTRIBUTING
+   LICENSE
 
-.. mdinclude:: ../README.md
+.. toctree::
+   :maxdepth: 1
+   :caption: DR Simulator:
+
+   dr_simulator
+
+.. include:: ../README.md
 
 Indices and tables
 ==================

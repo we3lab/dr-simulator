@@ -24,8 +24,8 @@ class DemandResponseEvents: # pylint: disable=too-many-instance-attributes
     4) Sample the start times of the events using the set_start_times function
     5) Sample the event duration of the events using the set_event_duration function
     6) Sample the probability of each day being selected using the get_pdates function -
-       this is uniform now, but you can provide a distribution with
-       the same length as the number of days between the start and end dates
+    this is uniform now, but you can provide a distribution with
+    the same length as the number of days between the start and end dates
     7) Sample the event dates of the events using the set_event_dates function
     8) Set the notification time of the events using the set_notification_time function
     9) Generate the event dictionary using the generate_event_dict function
@@ -80,6 +80,7 @@ class DemandResponseEvents: # pylint: disable=too-many-instance-attributes
     ):
         """
         This function sets the program parameters for the demand response program
+        
         Parameters
         ----------
         min_days : int
@@ -99,6 +100,7 @@ class DemandResponseEvents: # pylint: disable=too-many-instance-attributes
         notification_type : str
             Type of notification time. Default is "day_before".
             Other options are "day_of" and "hour_before"
+
         """
         self.min_days = min_days
         self.max_days = max_days
@@ -117,10 +119,12 @@ class DemandResponseEvents: # pylint: disable=too-many-instance-attributes
         """
         This function sets the number of days of the events based on a
         given distribution
+
         Parameters
         ----------
         ndays : int
             Number of days between two demand response events
+
         """
         rng = np.random.default_rng(seed)
         self.ndays = np.fmin(
@@ -133,10 +137,12 @@ class DemandResponseEvents: # pylint: disable=too-many-instance-attributes
     def set_start_times(self, distribution, distribution_parameters, seed=None):
         """
         This function sets the start times of the events based on a given distribution
+
         Parameters
         ----------
         start_times : int
             Start time of the demand response events
+
         """
         # if "size" not in distribution_parameters.keys():
         distribution_parameters["size"] = self.ndays
@@ -153,10 +159,12 @@ class DemandResponseEvents: # pylint: disable=too-many-instance-attributes
         """
         This function sets the event duration of the events based on a
         given distribution
+
         Parameters
         ----------
         event_hours : int
             Number of hours of the demand response events
+
         """
         distribution_parameters["size"] = self.ndays
         rng = np.random.default_rng(seed)
@@ -174,6 +182,7 @@ class DemandResponseEvents: # pylint: disable=too-many-instance-attributes
     def create_calender(dates):
         """
         This function creates a calendar for the given dates
+
         Parameters
         ----------
         dates : list
@@ -187,6 +196,7 @@ class DemandResponseEvents: # pylint: disable=too-many-instance-attributes
             Day of the week of the dates
         calendar : numpy.ndarray
             Calendar of the dates
+
         """
         woy, dow = zip(*[d.isocalendar()[1:] for d in dates])
         woy = np.array(woy) - min(woy)  # make lowest week 0
@@ -208,6 +218,7 @@ class DemandResponseEvents: # pylint: disable=too-many-instance-attributes
         -------
         p_calendar : numpy.ndarray
             Probability of each day being selected
+
         """
         dates = [
             self.start_dt + dt.timedelta(days=i)
@@ -222,10 +233,12 @@ class DemandResponseEvents: # pylint: disable=too-many-instance-attributes
     def set_event_dates(self, seed=None, p_dates=None):
         """
         This function sets the event dates of the events based on a given distribution
+
         Parameters
         ----------
         p_dates : float
             Probability of each day being selected
+
         """
         rng = np.random.default_rng(seed)
         if p_dates is None:
@@ -257,10 +270,12 @@ class DemandResponseEvents: # pylint: disable=too-many-instance-attributes
     def set_notification_time(self, notification_time=None):
         """
         This function sets the notification time of the events
+
         Parameters
         ----------
         notification_time : int
             Notification time of the demand response events
+
         """
         if notification_time is not None:
             self.notification_time = notification_time
@@ -310,6 +325,7 @@ class DemandResponseEvents: # pylint: disable=too-many-instance-attributes
     def get_n_similar_weekdays(date, prev_event_days, n_weekdays=10):
         """
         This function gets the 10 similar weekdays excluding the event days
+
         Parameters
         ----------
         date : datetime.datetime
@@ -323,6 +339,7 @@ class DemandResponseEvents: # pylint: disable=too-many-instance-attributes
         -------
         similar_weekdays : list
             List of length of previous n_weekdays excluding the event days
+
         """
         similar_weekdays = []
         while len(similar_weekdays) < n_weekdays:
@@ -334,9 +351,11 @@ class DemandResponseEvents: # pylint: disable=too-many-instance-attributes
     def generate_event_dict(self, program_parameters, simulation_parameters):
         """
         This function generates the event dictionary
+
         Parameters
         ----------
         None
+
         """
         self.set_program_parameters(**program_parameters)
         self.set_ndays(**simulation_parameters["n_days"])
@@ -372,10 +391,12 @@ class DemandResponseEvents: # pylint: disable=too-many-instance-attributes
     ):
         """
         This function creates the demand response events for the given number of simulations
+
         Parameters
         ----------
         n_simulations : int
             Number of simulations
+        
         """
         self.dr_events_mtcs = []
         for _ in range(n_simulations):
