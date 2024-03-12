@@ -1,7 +1,7 @@
 Demand Response Simulator
 =========================
 
-|Build Status||Documentation||Coverage|
+|Build Status| |Documentation| |Coverage|
 
 Demand Response Simulator enables you to sample DR events based on
 historic or custom distribution and optimize your energy flexible
