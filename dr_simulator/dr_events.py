@@ -5,6 +5,7 @@
 
 import datetime as dt
 import numpy as np
+from dr_simulator import utils
 
 NOTIFICATION_TIME_ERROR = """
     For day before notification please set self.notification time
@@ -25,7 +26,7 @@ class DemandResponseEvents:  # pylint: disable=too-many-instance-attributes
         4) Sample the start times of the events using the set_start_times function
         5) Sample the event duration of the events using the set_event_duration function
         6) Sample the probability of each day being selected using the get_pdates function
-           this is uniform now, but you can provide a distribution with the same length 
+           this is uniform now, but you can provide a distribution with the same length
            as the number of days between the start and end dates
         7) Sample the event dates of the events using the set_event_dates function
         8) Set the notification time of the events using the set_notification_time function
@@ -179,33 +180,6 @@ class DemandResponseEvents:  # pylint: disable=too-many-instance-attributes
             np.full(self.ndays, self.max_start_time) - self.start_times,
         )
 
-    @staticmethod
-    def create_calender(dates):
-        """
-        This function creates a calendar for the given dates
-
-        Parameters
-        ----------
-        dates : list
-            List of dates
-
-        Returns
-        -------
-        woy : numpy.ndarray
-            Week of the year of the dates
-        dow : numpy.ndarray
-            Day of the week of the dates
-        calendar : numpy.ndarray
-            Calendar of the dates
-
-        """
-        woy, dow = zip(*[d.isocalendar()[1:] for d in dates])
-        woy = np.array(woy) - min(woy)  # make lowest week 0
-        dow = np.array(dow) - 1  # make Monday 0
-        ni = max(woy) + 1  # number of weeks in dates
-        calendar = np.zeros((ni, 7))  # create arrays of Zeros for the calendar
-        return woy, dow, calendar
-
     def get_pdates(self):
         """
         This function sets the probability of each day being selected based on a
@@ -225,7 +199,7 @@ class DemandResponseEvents:  # pylint: disable=too-many-instance-attributes
             self.start_dt + dt.timedelta(days=i)
             for i in range((self.end_dt - self.start_dt).days + 1)
         ]
-        woy, dow, p_calendar = DemandResponseEvents.create_calender(dates)
+        woy, dow, p_calendar = utils.create_calender(dates)
         weekdays_idx = (woy[dow < 5], dow[dow < 5])
         n_weekdays = dow[dow < 5].shape[0]
         p_calendar[weekdays_idx] = 1 / n_weekdays
@@ -322,33 +296,6 @@ class DemandResponseEvents:  # pylint: disable=too-many-instance-attributes
 
         self.notification_time = notifiction_time
 
-    @staticmethod
-    def get_n_similar_weekdays(date, prev_event_days, n_weekdays=10):
-        """
-        This function gets the 10 similar weekdays excluding the event days
-
-        Parameters
-        ----------
-        date : datetime.datetime
-            Date of the event
-        prev_event_days : list
-            List of previous event days
-        n_weekdays : int
-            Number of similar weekdays to return
-
-        Returns
-        -------
-        similar_weekdays : list
-            List of length of previous n_weekdays excluding the event days
-
-        """
-        similar_weekdays = []
-        while len(similar_weekdays) < n_weekdays:
-            date = date - dt.timedelta(days=1)
-            if date.weekday() < 5 and date not in prev_event_days:
-                similar_weekdays.append(date)
-        return similar_weekdays
-
     def generate_event_dict(self, program_parameters, simulation_parameters):
         """
         This function generates the event dictionary
@@ -380,7 +327,7 @@ class DemandResponseEvents:  # pylint: disable=too-many-instance-attributes
                     "end_time": end_time,
                     "event_hours": list(range(self.start_times[i], end_time)),
                     "notification_time": self.notification_time[i],
-                    "similar_weekdays": DemandResponseEvents.get_n_similar_weekdays(
+                    "similar_weekdays": utils.get_n_similar_weekdays(
                         event_day, self.event_days[:i], self.n_similar_weekdays
                     ),
                 }
