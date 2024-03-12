@@ -8,7 +8,7 @@ app = marimo.App()
 def __():
     import marimo as mo
 
-    return mo,
+    return (mo,)
 
 
 if __name__ == "__main__":
