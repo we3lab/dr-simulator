@@ -43,10 +43,11 @@
 <li><p><a class="reference internal" href="#installation" id="id5">Installation</a></p></li>
 <li><p><a class="reference internal" href="#documentation" id="id6">Documentation</a></p></li>
 <li><p><a class="reference internal" href="#development" id="id7">Development</a></p></li>
-<li><p><a class="reference internal" href="#the-four-commands-you-need-to-know" id="id8">The Four Commands You Need To Know</a></p></li>
+<li><p><a class="reference internal" href="#the-commands-you-need-to-know" id="id8">The Commands You Need To Know</a></p></li>
+<li><p><a class="reference internal" href="#visualizing-the-dr-simulator-using-marimo-notebook" id="id9">Visualizing the DR Simulator using marimo notebook</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#indices-and-tables" id="id9">Indices and tables</a></p></li>
+<li><p><a class="reference internal" href="#indices-and-tables" id="id10">Indices and tables</a></p></li>
 </ul>
 </nav>
 <section id="welcome-to-demand-response-simulator-s-documentation">
@@ -91,48 +92,27 @@ process</p>
 <p>See <a class="reference external" href="CONTRIBUTING.md">CONTRIBUTING.md</a> for information related to
 developing the code.</p>
 </section>
-<section id="the-four-commands-you-need-to-know">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">The Four Commands You Need To Know</a><a class="headerlink" href="#the-four-commands-you-need-to-know" title="Link to this heading">¶</a></h2>
+<section id="the-commands-you-need-to-know">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">The Commands You Need To Know</a><a class="headerlink" href="#the-commands-you-need-to-know" title="Link to this heading">¶</a></h2>
 <ol class="arabic">
 <li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">.[dev]</span></code></p>
 <p>This will install your package in editable mode with all the required
 development dependencies (i.e. <code class="docutils literal notranslate"><span class="pre">tox</span></code>).</p>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">build</span></code></p>
-<p>This will run <code class="docutils literal notranslate"><span class="pre">tox</span></code> which will run all your tests in both Python
-3.7 and Python 3.8 as well as linting your code.</p>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">clean</span></code></p>
-<p>This will clean up various Python and build generated files so that
-you can ensure that you are working in a clean environment.</p>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">docs</span></code></p>
-<p>This will generate and launch a web browser to view the most
-up-to-date documentation for your Python package.</p>
-</li>
 </ol>
-<p><strong>MIT license</strong></p>
-<p>Copyright (c) 2024, Adhithyan Sakthivelu</p>
-<p>Permission is hereby granted, free of charge, to any person obtaining a
-copy of this software and associated documentation files (the
-“Software”), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:</p>
-<p>The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.</p>
-<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS
-OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+</section>
+<section id="visualizing-the-dr-simulator-using-marimo-notebook">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Visualizing the DR Simulator using marimo notebook</a><a class="headerlink" href="#visualizing-the-dr-simulator-using-marimo-notebook" title="Link to this heading">¶</a></h2>
+<p>You can visualize the DR Simulator using <a class="reference external" href="https://github.com/marimo-team/marimo">marimo</a> notebook.</p>
+<ol class="arabic simple">
+<li><p>Install marimo using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">marimo</span></code></p></li>
+<li><p>From the terminal, run <code class="docutils literal notranslate"><span class="pre">marimo</span> <span class="pre">run</span> <span class="pre">dr_events_simulator.py</span></code>. This will open a new tab in your browser with the marimo notebook.</p></li>
+<li><p>You can also run <code class="docutils literal notranslate"><span class="pre">marimo</span> <span class="pre">edit</span> <span class="pre">dr_events_simulator.py</span></code> to open the notebook in edit mode.</p></li>
+</ol>
 </section>
 </section>
 <section id="indices-and-tables">
-<h1><a class="toc-backref" href="#id9" role="doc-backlink">Indices and tables</a><a class="headerlink" href="#indices-and-tables" title="Link to this heading">¶</a></h1>
+<h1><a class="toc-backref" href="#id10" role="doc-backlink">Indices and tables</a><a class="headerlink" href="#indices-and-tables" title="Link to this heading">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
