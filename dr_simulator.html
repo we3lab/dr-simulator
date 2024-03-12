@@ -74,25 +74,6 @@ as the number of days between the start and end dates</p></li>
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="dr_simulator.dr_events.DemandResponseEvents.create_calender">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_calender</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.create_calender"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.create_calender" title="Link to this definition">¶</a></dt>
-<dd><p>This function creates a calendar for the given dates</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>dates</strong> (<em>list</em>) – List of dates</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><strong>woy</strong> (<em>numpy.ndarray</em>) – Week of the year of the dates</p></li>
-<li><p><strong>dow</strong> (<em>numpy.ndarray</em>) – Day of the week of the dates</p></li>
-<li><p><strong>calendar</strong> (<em>numpy.ndarray</em>) – Calendar of the dates</p></li>
-</ul>
-</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="dr_simulator.dr_events.DemandResponseEvents.create_dr_events_mtcs">
 <span class="sig-name descname"><span class="pre">create_dr_events_mtcs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">program_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulation_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_simulations</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.create_dr_events_mtcs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.create_dr_events_mtcs" title="Link to this definition">¶</a></dt>
 <dd><p>This function creates the demand response events for the given number of simulations</p>
@@ -110,27 +91,6 @@ as the number of days between the start and end dates</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>None</strong></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dr_simulator.dr_events.DemandResponseEvents.get_n_similar_weekdays">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_n_similar_weekdays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prev_event_days</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_weekdays</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.get_n_similar_weekdays"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.get_n_similar_weekdays" title="Link to this definition">¶</a></dt>
-<dd><p>This function gets the 10 similar weekdays excluding the event days</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>date</strong> (<em>datetime.datetime</em>) – Date of the event</p></li>
-<li><p><strong>prev_event_days</strong> (<em>list</em>) – List of previous event days</p></li>
-<li><p><strong>n_weekdays</strong> (<em>int</em>) – Number of similar weekdays to return</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>similar_weekdays</strong> – List of length of previous n_weekdays excluding the event days</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)">list</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -238,6 +198,46 @@ Other options are “day_of” and “hour_before”</p></li>
 <span id="dr-simulator-utils-module"></span><h2>dr_simulator.utils module<a class="headerlink" href="#module-dr_simulator.utils" title="Link to this heading">¶</a></h2>
 <p>This module contains utility functions for DR Simulator</p>
 <dl class="py function">
+<dt class="sig sig-object py" id="dr_simulator.utils.create_calender">
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">create_calender</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#create_calender"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.create_calender" title="Link to this definition">¶</a></dt>
+<dd><p>This function creates a calendar for the given dates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dates</strong> (<em>list</em>) – List of dates</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>woy</strong> (<em>numpy.ndarray</em>) – Week of the year of the dates</p></li>
+<li><p><strong>dow</strong> (<em>numpy.ndarray</em>) – Day of the week of the dates</p></li>
+<li><p><strong>calendar</strong> (<em>numpy.ndarray</em>) – Calendar of the dates</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dr_simulator.utils.get_n_similar_weekdays">
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">get_n_similar_weekdays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prev_event_days</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_weekdays</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#get_n_similar_weekdays"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.get_n_similar_weekdays" title="Link to this definition">¶</a></dt>
+<dd><p>This function gets the 10 similar weekdays excluding the event days</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>date</strong> (<em>datetime.datetime</em>) – Date of the event</p></li>
+<li><p><strong>prev_event_days</strong> (<em>list</em>) – List of previous event days</p></li>
+<li><p><strong>n_weekdays</strong> (<em>int (default=10)</em>) – Number of similar weekdays to return</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>similar_weekdays</strong> – List of length of previous n_weekdays excluding the event days</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="dr_simulator.utils.json_dump">
 <span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">json_dump</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#json_dump"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.json_dump" title="Link to this definition">¶</a></dt>
 <dd><p>Dumps a python object to a json string</p>
@@ -295,6 +295,32 @@ Other options are “day_of” and “hour_before”</p></li>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)">object</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-dr_simulator.visulization_helper">
+<span id="dr-simulator-visulization-helper-module"></span><h2>dr_simulator.visulization_helper module<a class="headerlink" href="#module-dr_simulator.visulization_helper" title="Link to this heading">¶</a></h2>
+<p>Helper functions for visualizing the DR event data</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="dr_simulator.visulization_helper.plot_dr_events">
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.visulization_helper.</span></span><span class="sig-name descname"><span class="pre">plot_dr_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dr_events</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampled_event_hours</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/visulization_helper.html#plot_dr_events"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.visulization_helper.plot_dr_events" title="Link to this definition">¶</a></dt>
+<dd><p>Plots the DR events in a monthly calendar</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_dt</strong> (<em>datetime.datetime</em>) – Start date of the calendar</p></li>
+<li><p><strong>end_dt</strong> (<em>datetime.datetime</em>) – End date of the calendar</p></li>
+<li><p><strong>dr_events</strong> (<em>list</em>) – List of datetime.datetime objects representing the start of each event</p></li>
+<li><p><strong>sampled_event_hours</strong> (<em>list</em>) – List of floats representing the number of hours of each event</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Figure and axes objects containing the calendar</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>matplotlib.pyplot.figure, matplotlib.pyplot.axes</p>
 </dd>
 </dl>
 </dd></dl>

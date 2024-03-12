@@ -20,6 +20,14 @@ dr\_simulator.utils module
    :undoc-members:
    :show-inheritance:
 
+dr\_simulator.visulization\_helper module
+-----------------------------------------
+
+.. automodule:: dr_simulator.visulization_helper
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

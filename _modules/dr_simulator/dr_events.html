@@ -38,6 +38,7 @@
 
 <span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">dr_simulator</span> <span class="kn">import</span> <span class="n">utils</span>
 
 <span class="n">NOTIFICATION_TIME_ERROR</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">    For day before notification please set self.notification time</span>
@@ -60,7 +61,7 @@
 <span class="sd">        4) Sample the start times of the events using the set_start_times function</span>
 <span class="sd">        5) Sample the event duration of the events using the set_event_duration function</span>
 <span class="sd">        6) Sample the probability of each day being selected using the get_pdates function</span>
-<span class="sd">           this is uniform now, but you can provide a distribution with the same length </span>
+<span class="sd">           this is uniform now, but you can provide a distribution with the same length</span>
 <span class="sd">           as the number of days between the start and end dates</span>
 <span class="sd">        7) Sample the event dates of the events using the set_event_dates function</span>
 <span class="sd">        8) Set the notification time of the events using the set_notification_time function</span>
@@ -226,36 +227,6 @@
         <span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="DemandResponseEvents.create_calender">
-<a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.create_calender">[docs]</a>
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">create_calender</span><span class="p">(</span><span class="n">dates</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        This function creates a calendar for the given dates</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        dates : list</span>
-<span class="sd">            List of dates</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        woy : numpy.ndarray</span>
-<span class="sd">            Week of the year of the dates</span>
-<span class="sd">        dow : numpy.ndarray</span>
-<span class="sd">            Day of the week of the dates</span>
-<span class="sd">        calendar : numpy.ndarray</span>
-<span class="sd">            Calendar of the dates</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">woy</span><span class="p">,</span> <span class="n">dow</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">isocalendar</span><span class="p">()[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dates</span><span class="p">])</span>
-        <span class="n">woy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">woy</span><span class="p">)</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">woy</span><span class="p">)</span>  <span class="c1"># make lowest week 0</span>
-        <span class="n">dow</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dow</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># make Monday 0</span>
-        <span class="n">ni</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">woy</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># number of weeks in dates</span>
-        <span class="n">calendar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ni</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>  <span class="c1"># create arrays of Zeros for the calendar</span>
-        <span class="k">return</span> <span class="n">woy</span><span class="p">,</span> <span class="n">dow</span><span class="p">,</span> <span class="n">calendar</span></div>
-
-
 <div class="viewcode-block" id="DemandResponseEvents.get_pdates">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.get_pdates">[docs]</a>
     <span class="k">def</span> <span class="nf">get_pdates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -277,7 +248,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">start_dt</span> <span class="o">+</span> <span class="n">dt</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">end_dt</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_dt</span><span class="p">)</span><span class="o">.</span><span class="n">days</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
         <span class="p">]</span>
-        <span class="n">woy</span><span class="p">,</span> <span class="n">dow</span><span class="p">,</span> <span class="n">p_calendar</span> <span class="o">=</span> <span class="n">DemandResponseEvents</span><span class="o">.</span><span class="n">create_calender</span><span class="p">(</span><span class="n">dates</span><span class="p">)</span>
+        <span class="n">woy</span><span class="p">,</span> <span class="n">dow</span><span class="p">,</span> <span class="n">p_calendar</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">create_calender</span><span class="p">(</span><span class="n">dates</span><span class="p">)</span>
         <span class="n">weekdays_idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">woy</span><span class="p">[</span><span class="n">dow</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">],</span> <span class="n">dow</span><span class="p">[</span><span class="n">dow</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">])</span>
         <span class="n">n_weekdays</span> <span class="o">=</span> <span class="n">dow</span><span class="p">[</span><span class="n">dow</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">p_calendar</span><span class="p">[</span><span class="n">weekdays_idx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">n_weekdays</span>
@@ -381,36 +352,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">notification_time</span> <span class="o">=</span> <span class="n">notifiction_time</span></div>
 
 
-<div class="viewcode-block" id="DemandResponseEvents.get_n_similar_weekdays">
-<a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.get_n_similar_weekdays">[docs]</a>
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">get_n_similar_weekdays</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">prev_event_days</span><span class="p">,</span> <span class="n">n_weekdays</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        This function gets the 10 similar weekdays excluding the event days</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        date : datetime.datetime</span>
-<span class="sd">            Date of the event</span>
-<span class="sd">        prev_event_days : list</span>
-<span class="sd">            List of previous event days</span>
-<span class="sd">        n_weekdays : int</span>
-<span class="sd">            Number of similar weekdays to return</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        similar_weekdays : list</span>
-<span class="sd">            List of length of previous n_weekdays excluding the event days</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">similar_weekdays</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">similar_weekdays</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">n_weekdays</span><span class="p">:</span>
-            <span class="n">date</span> <span class="o">=</span> <span class="n">date</span> <span class="o">-</span> <span class="n">dt</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">date</span><span class="o">.</span><span class="n">weekday</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">5</span> <span class="ow">and</span> <span class="n">date</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">prev_event_days</span><span class="p">:</span>
-                <span class="n">similar_weekdays</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">similar_weekdays</span></div>
-
-
 <div class="viewcode-block" id="DemandResponseEvents.generate_event_dict">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.generate_event_dict">[docs]</a>
     <span class="k">def</span> <span class="nf">generate_event_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program_parameters</span><span class="p">,</span> <span class="n">simulation_parameters</span><span class="p">):</span>
@@ -444,7 +385,7 @@
                     <span class="s2">&quot;end_time&quot;</span><span class="p">:</span> <span class="n">end_time</span><span class="p">,</span>
                     <span class="s2">&quot;event_hours&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_times</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">end_time</span><span class="p">)),</span>
                     <span class="s2">&quot;notification_time&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">notification_time</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-                    <span class="s2">&quot;similar_weekdays&quot;</span><span class="p">:</span> <span class="n">DemandResponseEvents</span><span class="o">.</span><span class="n">get_n_similar_weekdays</span><span class="p">(</span>
+                    <span class="s2">&quot;similar_weekdays&quot;</span><span class="p">:</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_n_similar_weekdays</span><span class="p">(</span>
                         <span class="n">event_day</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_days</span><span class="p">[:</span><span class="n">i</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_similar_weekdays</span>
                     <span class="p">),</span>
                 <span class="p">}</span>
