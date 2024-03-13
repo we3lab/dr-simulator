@@ -1,8 +1,8 @@
 .. contents::
 
-Welcome to Contrubuting
-=======================
+Contributing
+============
 
 .. _CONTRIBUTING:
 
-.. include:: ../CONTRIBUTING.md
+.. include:: ../CONTRIBUTING.rst
