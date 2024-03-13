@@ -18,6 +18,7 @@ These are the set of parameters that describes the DR program and its rules.
 
 .. csv-table:: Program Parameters
    :file: ../data/metadata/program_parameters.csv
+   :header-rows: 1
 
 1. Simulation Parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -26,6 +27,7 @@ These parameters describes the likelihood of the DR event's number, duration and
 
 .. csv-table:: Simulation Parameters
    :file: ../data/metadata/simulation_parameters.csv
+   :header-rows: 1
 
 Output
 ------
@@ -34,7 +36,7 @@ After you populate both the parameter's values, you can simulate DR events for a
 
 .. csv-table:: Sample Output
    :file: ../data/sample_output.csv
-
+   :header-rows: 1
 
 (the above sample output is simulated from INSERT LINK program and simulation parameters)
 
