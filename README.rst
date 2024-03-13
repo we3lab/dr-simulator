@@ -3,6 +3,9 @@ Welcome to Demand Response Events Simulator
 
 |Build Status| |Documentation| |Coverage|
 
+Incentive Based DR Program: Overview
+-------------------------------------
+
 Incentive based Demand Response programs are voluntary programs offered to residential, 
 commercial, and industrial customer. The participants are offered financial incentives 
 if they voluntarily reduce loads during stressful times for the grid, which are notified 
@@ -20,9 +23,9 @@ Features
 --------
 
 -  Use custom or historic distribution
+-  Simulate Monte-Carlo samples
+-  Customize and configure DR events using marimo app
 
-Quick Start
------------
 
 Installation
 ------------
@@ -41,7 +44,7 @@ For full package documentation please visit
 Development
 -----------
 
-See `contributing.md <contributing.md>`__ for information related to
+See `CONTRIBUTING.md <CONTRIBUTING.md>`__ for information related to
 developing the code.
 
 The Commands You Need To Know
@@ -60,7 +63,7 @@ You can visualize the DR Simulator using `marimo <https://github.com/marimo-team
 
 1. Install marimo using ``pip install marimo``
 
-2. From the terminal, run ``marimo run dr_events_simulator.py``. This will open a new tab in your browser with the marimo notebook.
+2. From the terminal, run ``marimo run dr_events_simulator.py``. This will open a new tab in your browser with the marimo notebook in app mode.
 
 3. You can also run ``marimo edit dr_events_simulator.py`` to open the notebook in edit mode.
 

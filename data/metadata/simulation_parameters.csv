@@ -1,0 +1,5 @@
+Parameter Name,Definition,Distribution Type (default),Distribution Parameters
+Number of days,The number of event days given the time period,Poisson,λ_days - mean number of days
+Event duration,The event duration for the DR events,Poisson,λ_dur - mean duration of events
+Start time,Start time of the event,Uniform,"Ts - Program start time, Te - Program end time"
+Event days,The probability of each day is selected,Uniform,"d ∈ D, where D = Weekdays"
