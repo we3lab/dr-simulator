@@ -1,7 +1,7 @@
 .. contents::
 
 Welcome to the Demand Response Simulator's documentation!
-=======================================================
+=========================================================
 
 .. toctree::
    :maxdepth: 1

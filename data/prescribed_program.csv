@@ -1,0 +1,12 @@
+Program Parameter,Value
+Program name, "PG&E CBP Prescribed"
+Minimum number of event days,1
+Maximum number of event days,6
+Minimum duration of event,1
+Maximum duration of event,8
+Program start time,16
+Program end time,20
+Notification type,day_before
+Notification time,17
+Maximum consecutive event days,3
+Number of similar weekdays,10
