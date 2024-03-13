@@ -1,11 +1,18 @@
-Demand Response Simulator
-=========================
+Welcome to Demand Response Events Simulator
+===========================================
 
 |Build Status| |Documentation| |Coverage|
 
-Demand Response Simulator enables you to sample DR events based on
-historic or custom distribution and optimize your energy flexible
-process
+Incentive based Demand Response programs are voluntary programs offered to residential, 
+commercial, and industrial customer. The participants are offered financial incentives 
+if they voluntarily reduce loads during stressful times for the grid, which are notified 
+as DR events. There are different flavors of these DR programs across the country, 
+with different rules that constitute when the events are called, how often they are 
+called, the duration of these calls and much more. The DR Simulator tool uses various 
+program and simulation parameters to model these incentive-based demand response 
+programs across the country. This enables the user to configure any DR programs from 
+any ISOs and simulate DR events once they provide the simulation parameters based on 
+historical distribution or based on a custom distribution.
 
 --------------
 
@@ -45,7 +52,7 @@ The Commands You Need To Know
 
 
 Visualizing the DR Simulator using marimo notebook
--------------------------------------------------
+--------------------------------------------------
 
 You can visualize the DR Simulator using `marimo <https://github.com/marimo-team/marimo>`_ notebook. 
 

@@ -10,9 +10,8 @@ Welcome to Demand Response Simulator's documentation!
 
    README <self>
    installation
-   modules
-   CONTRIBUTING
-   LICENSE
+   contributing
+   license
 
 .. toctree::
    :maxdepth: 1
