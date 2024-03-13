@@ -1,15 +1,34 @@
 .. contents::
 
+Welcome to the Demand Response Simulator's documentation!
+=======================================================
+
 .. toctree::
-   :hidden:
    :maxdepth: 1
-   :caption: Overview:
+   :caption: Overview
 
    README <self>
-   dr_simulator_module
    INSTALLATION
    CONTRIBUTING
    LICENSE
+
+.. toctree::
+   :maxdepth: 1
+   :caption: User Guide
+
+   USER_GUIDE
+
+.. toctree::
+   :maxdepth: 1
+   :caption: API Reference
+
+   API
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Examples
+
+   EXAMPLES
 
 .. include:: ../README.rst
 
