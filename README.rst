@@ -44,7 +44,7 @@ For full package documentation please visit
 Development
 -----------
 
-See `CONTRIBUTING.md <CONTRIBUTING.md>`__ for information related to
+See `CONTRIBUTING.rst <https://we3lab.github.io/dr-simulator/CONTRIBUTING.html#>`__ for information related to
 developing the code.
 
 The Commands You Need To Know
