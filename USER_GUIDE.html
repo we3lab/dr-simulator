@@ -35,161 +35,139 @@
             
   <section id="how-to-use-the-demand-response-simulator-tool">
 <h1>How to use the Demand Response Simulator Tool<a class="headerlink" href="#how-to-use-the-demand-response-simulator-tool" title="Link to this heading">¶</a></h1>
-<section id="module-dr_simulator.dr_events">
-<span id="dr-simulator-dr-events-module"></span><h2>dr_simulator.dr_events module<a class="headerlink" href="#module-dr_simulator.dr_events" title="Link to this heading">¶</a></h2>
-<p>This module contains the DemandResponseEvents class which is used to
-generate demand response events for a given time period based on user’s inputs.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="dr_simulator.dr_events.DemandResponseEvents">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dr_simulator.dr_events.</span></span><span class="sig-name descname"><span class="pre">DemandResponseEvents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DR</span> <span class="pre">Program'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">60</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>This class is intended to be used to generate demand response events
-for a given time period based on user’s inputs.</p>
-<p>Follow the steps below to generate demand response events:</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li><p>Create an instance of the class</p></li>
-<li><p>Set the program parameters using the set_program_parameters function</p></li>
-<li><p>Sample the ndays of the events using the set_ndays function</p></li>
-<li><p>Sample the start times of the events using the set_start_times function</p></li>
-<li><p>Sample the event duration of the events using the set_event_duration function</p></li>
-<li><p>Sample the probability of each day being selected using the get_pdates function
-this is uniform now, but you can provide a distribution with the same length
-as the number of days between the start and end dates</p></li>
-<li><p>Sample the event dates of the events using the set_event_dates function</p></li>
-<li><p>Set the notification time of the events using the set_notification_time function</p></li>
-<li><p>Generate the event dictionary using the generate_event_dict function</p></li>
+<section id="how-to-use-this-package">
+<h2>How to use this package<a class="headerlink" href="#how-to-use-this-package" title="Link to this heading">¶</a></h2>
+<p>Use this package to simulate any <em>incentive-based demand response</em> events for a custom distribution or distribution learned from historic demand response events.</p>
+<p>Essentially you need to set two types of parameters</p>
+<ol class="arabic simple">
+<li><p>Program Parameters</p></li>
+<li><p>Simulation Parameters</p></li>
 </ol>
-</div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>start_dt</strong> (<em>datetime.datetime</em>) – Start date of the demand response events period</p></li>
-<li><p><strong>end_dt</strong> (<em>datetime.datetime</em>) – End date of the demand response events period</p></li>
-<li><p><strong>time_step</strong> (<em>int</em>) – Time step of the demand response events period in minutes</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="dr_simulator.dr_events.DemandResponseEvents.create_dr_events_mtcs">
-<span class="sig-name descname"><span class="pre">create_dr_events_mtcs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">program_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulation_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_simulations</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.create_dr_events_mtcs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.create_dr_events_mtcs" title="Link to this definition">¶</a></dt>
-<dd><p>This function creates the demand response events for the given number of simulations</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>n_simulations</strong> (<em>int</em>) – Number of simulations</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dr_simulator.dr_events.DemandResponseEvents.generate_event_dict">
-<span class="sig-name descname"><span class="pre">generate_event_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">program_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulation_parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.generate_event_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.generate_event_dict" title="Link to this definition">¶</a></dt>
-<dd><p>This function generates the event dictionary</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>None</strong></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dr_simulator.dr_events.DemandResponseEvents.get_pdates">
-<span class="sig-name descname"><span class="pre">get_pdates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.get_pdates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.get_pdates" title="Link to this definition">¶</a></dt>
-<dd><p>This function sets the probability of each day being selected based on a
-uniform distribution</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>None</strong></p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>p_calendar</strong> – Probability of each day being selected</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.26)">numpy.ndarray</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dr_simulator.dr_events.DemandResponseEvents.set_event_dates">
-<span class="sig-name descname"><span class="pre">set_event_dates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_dates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.set_event_dates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.set_event_dates" title="Link to this definition">¶</a></dt>
-<dd><p>This function sets the event dates of the events based on a given distribution</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>p_dates</strong> (<em>float</em>) – Probability of each day being selected</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dr_simulator.dr_events.DemandResponseEvents.set_event_duration">
-<span class="sig-name descname"><span class="pre">set_event_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distribution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distribution_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.set_event_duration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.set_event_duration" title="Link to this definition">¶</a></dt>
-<dd><p>This function sets the event duration of the events based on a
-given distribution</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>event_hours</strong> (<em>int</em>) – Number of hours of the demand response events</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dr_simulator.dr_events.DemandResponseEvents.set_ndays">
-<span class="sig-name descname"><span class="pre">set_ndays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distribution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distribution_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.set_ndays"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.set_ndays" title="Link to this definition">¶</a></dt>
-<dd><p>This function sets the number of days of the events based on a
-given distribution</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ndays</strong> (<em>int</em>) – Number of days between two demand response events</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dr_simulator.dr_events.DemandResponseEvents.set_notification_time">
-<span class="sig-name descname"><span class="pre">set_notification_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">notification_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.set_notification_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.set_notification_time" title="Link to this definition">¶</a></dt>
-<dd><p>This function sets the notification time of the events</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>notification_time</strong> (<em>int</em>) – Notification time of the demand response events</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dr_simulator.dr_events.DemandResponseEvents.set_program_parameters">
-<span class="sig-name descname"><span class="pre">set_program_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_days</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_days</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_start_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_start_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_consecutive_events</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notification_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notification_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'day_before'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_similar_weekdays</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.set_program_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.set_program_parameters" title="Link to this definition">¶</a></dt>
-<dd><p>This function sets the program parameters for the demand response program</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>min_days</strong> (<em>int</em>) – Minimum number of days between two demand response events</p></li>
-<li><p><strong>max_days</strong> (<em>int</em>) – Maximum number of days between two demand response events</p></li>
-<li><p><strong>min_duration</strong> (<em>int</em>) – Minimum duration of a demand response event in hours</p></li>
-<li><p><strong>max_duration</strong> (<em>int</em>) – Maximum duration of a demand response event in hours</p></li>
-<li><p><strong>min_start_time</strong> (<em>int</em>) – Minimum start time of a demand response event in hours</p></li>
-<li><p><strong>max_start_time</strong> (<em>int</em>) – Maximum start time of a demand response event in hours</p></li>
-<li><p><strong>notification_time</strong> (<em>int</em>) – Notification time of a demand response event in hours</p></li>
-<li><p><strong>notification_type</strong> (<em>str</em>) – Type of notification time. Default is “day_before”.
-Other options are “day_of” and “hour_before”</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dr_simulator.dr_events.DemandResponseEvents.set_start_times">
-<span class="sig-name descname"><span class="pre">set_start_times</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distribution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distribution_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.set_start_times"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.set_start_times" title="Link to this definition">¶</a></dt>
-<dd><p>This function sets the start times of the events based on a given distribution</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>start_times</strong> (<em>int</em>) – Start time of the demand response events</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
+<section id="program-parameters">
+<h3>1. Program Parameters<a class="headerlink" href="#program-parameters" title="Link to this heading">¶</a></h3>
+<p>These are the set of parameters that describes the DR program and its rules.</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Program Parameters</span><a class="headerlink" href="#id1" title="Link to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>Parameter Name</p></td>
+<td><p>Definition</p></td>
+</tr>
+<tr class="row-even"><td><p>Minimum number of event days</p></td>
+<td><p>The minimum number of days the program event is called for a customer per month</p></td>
+</tr>
+<tr class="row-odd"><td><p>Maximum number of event days</p></td>
+<td><p>The maximum number of days the program event is called for a customer per month</p></td>
+</tr>
+<tr class="row-even"><td><p>Minimum duration of event</p></td>
+<td><p>The event should last for more than the minimum duration specified by the program</p></td>
+</tr>
+<tr class="row-odd"><td><p>Maximum duration of event</p></td>
+<td><p>The event should not last longer than the maximum duration specified by the program</p></td>
+</tr>
+<tr class="row-even"><td><p>Program start time</p></td>
+<td><p>The program can be either 24 hours or last for a specified period of time and the start time is generally provided if it is not a 24-hour period</p></td>
+</tr>
+<tr class="row-odd"><td><p>Program end time</p></td>
+<td><p>The program can be either 24 hours or last for a specified period of time and the end time is generally provided if it is not a 24-hour period</p></td>
+</tr>
+<tr class="row-even"><td><p>Events per day</p></td>
+<td><p>The maximum event that a customer can provide on a single day.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Maximum consecutive event days</p></td>
+<td><p>The maximum consecutive days the customer can be called in a particular month</p></td>
+</tr>
+<tr class="row-even"><td><p>Notification type</p></td>
+<td><p>The event is generally notified the day before or the day of and is captures by this parameter</p></td>
+</tr>
+<tr class="row-odd"><td><p>Notification time</p></td>
+<td><p>If the event is notified the day before or the day of the program generally specifies the time. Note: This can also be historic event related</p></td>
+</tr>
+<tr class="row-even"><td><p>Number of similar weekdays</p></td>
+<td><p>The number of previous weekdays used to calculate the baseline</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="simulation-parameters">
+<h3>1. Simulation Parameters<a class="headerlink" href="#simulation-parameters" title="Link to this heading">¶</a></h3>
+<p>These parameters describes the likelihood of the DR event’s number, duration and dates</p>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-text">Simulation Parameters</span><a class="headerlink" href="#id2" title="Link to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>Parameter Name</p></td>
+<td><p>Definition</p></td>
+<td><p>Distribution Type (default)</p></td>
+<td><p>Distribution Parameters</p></td>
+</tr>
+<tr class="row-even"><td><p>Number of days</p></td>
+<td><p>The number of event days given the time period</p></td>
+<td><p>Poisson</p></td>
+<td><p>λ_days - mean number of days</p></td>
+</tr>
+<tr class="row-odd"><td><p>Event duration</p></td>
+<td><p>The event duration for the DR events</p></td>
+<td><p>Poisson</p></td>
+<td><p>λ_dur - mean duration of events</p></td>
+</tr>
+<tr class="row-even"><td><p>Start time</p></td>
+<td><p>Start time of the event</p></td>
+<td><p>Uniform</p></td>
+<td><p>Ts - Program start time, Te - Program end time</p></td>
+</tr>
+<tr class="row-odd"><td><p>Event days</p></td>
+<td><p>The probability of each day is selected</p></td>
+<td><p>Uniform</p></td>
+<td><p>d ∈ D, where D = Weekdays</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="output">
+<h2>Output<a class="headerlink" href="#output" title="Link to this heading">¶</a></h2>
+<p>After you populate both the parameter’s values, you can simulate DR events for any given month &amp; year. The output from a sample of a DR event would look like</p>
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-text">Sample Output</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>Event Date</p></td>
+<td><p>Duration</p></td>
+<td><p>Start Time</p></td>
+<td><p>End Time</p></td>
+<td><p>Notification Time</p></td>
+<td><p>Similar Weekdays</p></td>
+</tr>
+<tr class="row-even"><td><p>2020-08-10</p></td>
+<td><p>1</p></td>
+<td><p>19:00</p></td>
+<td><p>20:00</p></td>
+<td><p>2020-08-09 17:00</p></td>
+<td><p>2020-08-07, 2020-08-06,…</p></td>
+</tr>
+<tr class="row-odd"><td><p>2020-08-12</p></td>
+<td><p>3</p></td>
+<td><p>17:00</p></td>
+<td><p>20:00</p></td>
+<td><p>2020-08-11 17:00</p></td>
+<td><p>2020-08-11, 2020-08-07,…</p></td>
+</tr>
+<tr class="row-even"><td><p>2020-08-28</p></td>
+<td><p>1</p></td>
+<td><p>19:00</p></td>
+<td><p>20:00</p></td>
+<td><p>2020-08-27 17:00</p></td>
+<td><p>2020-08-27, 2020-08-26,…</p></td>
+</tr>
+<tr class="row-odd"><td><p>2020-08-31</p></td>
+<td><p>3</p></td>
+<td><p>17:00</p></td>
+<td><p>20:00</p></td>
+<td><p>2020-08-30 17:00</p></td>
+<td><p>2020-08-27, 2020-08-26,…</p></td>
+</tr>
+</tbody>
+</table>
+<p>(the above sample output is simulated from INSERT LINK program and simulation parameters)</p>
+<p>You can also generate <em>Monte-Carlo</em> samples by calling  <cite>DemandResponseEvents.create_dr_events_mtcs</cite> function.</p>
 </section>
 </section>
 

@@ -38,8 +38,8 @@
 <li><p><a class="reference internal" href="#welcome-to-the-demand-response-simulator-s-documentation" id="id1">Welcome to the Demand Response Simulator’s documentation!</a></p></li>
 <li><p><a class="reference internal" href="#welcome-to-demand-response-events-simulator" id="id2">Welcome to Demand Response Events Simulator</a></p>
 <ul>
-<li><p><a class="reference internal" href="#features" id="id3">Features</a></p></li>
-<li><p><a class="reference internal" href="#quick-start" id="id4">Quick Start</a></p></li>
+<li><p><a class="reference internal" href="#incentive-based-dr-program-overview" id="id3">Incentive Based DR Program: Overview</a></p></li>
+<li><p><a class="reference internal" href="#features" id="id4">Features</a></p></li>
 <li><p><a class="reference internal" href="#installation" id="id5">Installation</a></p></li>
 <li><p><a class="reference internal" href="#documentation" id="id6">Documentation</a></p></li>
 <li><p><a class="reference internal" href="#development" id="id7">Development</a></p></li>
@@ -83,6 +83,8 @@
 <section id="welcome-to-demand-response-events-simulator">
 <h1><a class="toc-backref" href="#id2" role="doc-backlink">Welcome to Demand Response Events Simulator</a><a class="headerlink" href="#welcome-to-demand-response-events-simulator" title="Link to this heading">¶</a></h1>
 <p><a class="reference external" href="https://github.com/we3lab/dr-simulator/actions"><img alt="Build Status" src="https://github.com/we3lab/dr_simulator/workflows/Build%20Main/badge.svg" /></a> <a class="reference external" href="https://we3lab.github.io/dr-simulator/"><img alt="Documentation" src="https://github.com/we3lab/dr_simulator/workflows/Documentation/badge.svg" /></a> <a class="reference external" href="https://codecov.io/gh/we3lab/dr-simulator"><img alt="Coverage" src="https://codecov.io/gh/we3lab/dr-simulator/graph/badge.svg?token=HXGOYK8JCD" /></a></p>
+<section id="incentive-based-dr-program-overview">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Incentive Based DR Program: Overview</a><a class="headerlink" href="#incentive-based-dr-program-overview" title="Link to this heading">¶</a></h2>
 <p>Incentive based Demand Response programs are voluntary programs offered to residential,
 commercial, and industrial customer. The participants are offered financial incentives
 if they voluntarily reduce loads during stressful times for the grid, which are notified
@@ -93,15 +95,15 @@ program and simulation parameters to model these incentive-based demand response
 programs across the country. This enables the user to configure any DR programs from
 any ISOs and simulate DR events once they provide the simulation parameters based on
 historical distribution or based on a custom distribution.</p>
+</section>
 <hr class="docutils" />
 <section id="features">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">Features</a><a class="headerlink" href="#features" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Features</a><a class="headerlink" href="#features" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Use custom or historic distribution</p></li>
+<li><p>Simulate Monte-Carlo samples</p></li>
+<li><p>Customize and configure DR events using marimo app</p></li>
 </ul>
-</section>
-<section id="quick-start">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">Quick Start</a><a class="headerlink" href="#quick-start" title="Link to this heading">¶</a></h2>
 </section>
 <section id="installation">
 <h2><a class="toc-backref" href="#id5" role="doc-backlink">Installation</a><a class="headerlink" href="#installation" title="Link to this heading">¶</a></h2>
@@ -116,7 +118,7 @@ historical distribution or based on a custom distribution.</p>
 </section>
 <section id="development">
 <h2><a class="toc-backref" href="#id7" role="doc-backlink">Development</a><a class="headerlink" href="#development" title="Link to this heading">¶</a></h2>
-<p>See <a class="reference external" href="contributing.md">contributing.md</a> for information related to
+<p>See <a class="reference external" href="CONTRIBUTING.md">CONTRIBUTING.md</a> for information related to
 developing the code.</p>
 </section>
 <section id="the-commands-you-need-to-know">
@@ -133,7 +135,7 @@ development dependencies (i.e. <code class="docutils literal notranslate"><span
 <p>You can visualize the DR Simulator using <a class="reference external" href="https://github.com/marimo-team/marimo">marimo</a> notebook.</p>
 <ol class="arabic simple">
 <li><p>Install marimo using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">marimo</span></code></p></li>
-<li><p>From the terminal, run <code class="docutils literal notranslate"><span class="pre">marimo</span> <span class="pre">run</span> <span class="pre">dr_events_simulator.py</span></code>. This will open a new tab in your browser with the marimo notebook.</p></li>
+<li><p>From the terminal, run <code class="docutils literal notranslate"><span class="pre">marimo</span> <span class="pre">run</span> <span class="pre">dr_events_simulator.py</span></code>. This will open a new tab in your browser with the marimo notebook in app mode.</p></li>
 <li><p>You can also run <code class="docutils literal notranslate"><span class="pre">marimo</span> <span class="pre">edit</span> <span class="pre">dr_events_simulator.py</span></code> to open the notebook in edit mode.</p></li>
 </ol>
 </section>
