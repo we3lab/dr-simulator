@@ -27,7 +27,9 @@ Quick Start
 Installation
 ------------
 
-**Stable Release:** ``pip install dr_simulator``\  **Development Head:**
+**Stable Release:** ``pip install dr_simulator`` 
+
+**Development Head:**
 ``pip install git+https://github.com/we3lab/dr-simulator.git``
 
 Documentation
@@ -39,7 +41,7 @@ For full package documentation please visit
 Development
 -----------
 
-See `CONTRIBUTING.md <CONTRIBUTING.md>`__ for information related to
+See `contributing.md <contributing.md>`__ for information related to
 developing the code.
 
 The Commands You Need To Know

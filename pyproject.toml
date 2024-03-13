@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "dr-simulator"
 version = "0.1.0"
-description = "Demand Response Simulaator enables you to sample DR events based on a distribution and optimize your energy flexible process"
+description = "Demand Response Simulator enables you to sample DR events based on a distribution and optimize your energy flexible process"
 authors = ["ThyanRevolter <admkr.2010@gmail.com>"]
 readme = "README.rst"
 license = "MIT"
