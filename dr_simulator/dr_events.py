@@ -52,8 +52,8 @@ class DemandResponseEvents:  # pylint: disable=too-many-instance-attributes
         self.max_days = None
         self.min_duration = None
         self.max_duration = None
-        self.min_start_time = None
-        self.max_start_time = None
+        self.program_start_time = None
+        self.program_end_time = None
         self.max_consecutive_events = None
         self.notification_time = None
         self.notification_type = None
@@ -72,8 +72,8 @@ class DemandResponseEvents:  # pylint: disable=too-many-instance-attributes
         max_days,
         min_duration,
         max_duration,
-        min_start_time,
-        max_start_time,
+        program_start_time,
+        program_end_time,
         max_consecutive_events=3,
         notification_time=None,
         notification_type="day_before",
@@ -93,9 +93,9 @@ class DemandResponseEvents:  # pylint: disable=too-many-instance-attributes
             Minimum duration of a demand response event in hours
         max_duration : int
             Maximum duration of a demand response event in hours
-        min_start_time : int
+        program_start_time : int
             Minimum start time of a demand response event in hours
-        max_start_time : int
+        program_end_time : int
             Maximum start time of a demand response event in hours
         notification_time : int
             Notification time of a demand response event in hours
@@ -108,8 +108,8 @@ class DemandResponseEvents:  # pylint: disable=too-many-instance-attributes
         self.max_days = max_days
         self.min_duration = min_duration
         self.max_duration = max_duration
-        self.min_start_time = min_start_time
-        self.max_start_time = max_start_time
+        self.program_start_time = program_start_time
+        self.program_end_time = program_end_time
         self.max_consecutive_events = max_consecutive_events
         self.notification_time = notification_time
         self.notification_type = notification_type
@@ -152,9 +152,9 @@ class DemandResponseEvents:  # pylint: disable=too-many-instance-attributes
         self.start_times = np.fmin(
             np.fmax(
                 getattr(rng, distribution)(**distribution_parameters),
-                np.full(self.ndays, self.min_start_time),
+                np.full(self.ndays, self.program_start_time),
             ),
-            np.full(self.ndays, self.max_start_time - 1),
+            np.full(self.ndays, self.program_end_time - 1),
         ).astype(int)
 
     def set_event_duration(self, distribution, distribution_parameters, seed=None):
@@ -177,7 +177,7 @@ class DemandResponseEvents:  # pylint: disable=too-many-instance-attributes
         ).astype(int)
         self.event_duration = np.fmin(
             self.event_duration,
-            np.full(self.ndays, self.max_start_time) - self.start_times,
+            np.full(self.ndays, self.program_end_time) - self.start_times,
         )
 
     def get_pdates(self):

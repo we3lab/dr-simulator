@@ -35,7 +35,7 @@ Output
 After you populate both the parameter's values, you can simulate DR events for any given month & year. The output from a sample of a DR event would look like 
 
 .. csv-table:: Sample Output
-   :file: ../data/sample_output.csv
+   :file: ../data/example_data/sample_output.csv
    :header-rows: 1
 
 (the above sample output is simulated from INSERT LINK program and simulation parameters)

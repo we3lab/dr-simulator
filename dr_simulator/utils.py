@@ -3,7 +3,98 @@
 import json
 import pickle
 import datetime as dt
+from enum import Enum
 import numpy as np
+
+
+class DistributionTypes(Enum):
+    """Enum class for supported distributions"""
+
+    NORMAL = "normal"
+    UNIFORM = "uniform"
+    POISSON = "poisson"
+
+
+distr_param_mapping = {
+    DistributionTypes.NORMAL: ["loc", "scale"],
+    DistributionTypes.UNIFORM: ["low", "high"],
+    DistributionTypes.POISSON: ["lam"],
+}
+
+
+def validate_distribution_params(distr_type, distr_params):
+    """Validates the distribution parameters
+
+    Parameters
+    ----------
+    distr_type : DistributionTypes
+        Distribution type
+
+    distr_params : dict
+        Distribution parameters
+
+    Returns
+    -------
+    bool
+        True if the parameters are valid, False otherwise
+    """
+    if distr_type not in DistributionTypes:
+        return False
+    if not isinstance(distr_params, dict):
+        return False
+    if not all(k in distr_params for k in distr_param_mapping[distr_type]):
+        return False
+    return True
+
+
+def text_to_param_dict(distr_type, distr_params_text):
+    """Converts distribution parameters entered as text to param_dict
+
+    Parameters
+    ----------
+    distr_type : DistributionTypes
+        Distribution type
+
+    distr_params_text : str
+        Distribution parameters entered as text
+
+    Returns
+    -------
+    dict
+        Distribution parameters as dictionary
+
+    """
+    param_list = distr_params_text.split(",")
+    if not len(param_list) == len(distr_param_mapping[distr_type]):
+        raise ValueError(f"Invalid number of parameters for {distr_type} distribution")
+    param_dict = {
+        k: int(v) for k, v in zip(distr_param_mapping[distr_type], param_list)
+    }
+    return param_dict
+
+
+def days_in_year_month(year, month):
+    """
+    Parameters
+    ----------
+    year : int
+    month : int
+
+    Returns
+    -------
+    int
+        number of days in a `month` of `year`
+    """
+    if month == 2:
+        # Check if it's a leap year
+        if year % 4 == 0:
+            return 29
+        else:
+            return 28
+    elif month in [4, 6, 9, 11]:
+        return 30
+    else:
+        return 31
 
 
 def pickle_load(path):
