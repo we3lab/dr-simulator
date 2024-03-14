@@ -3,9 +3,6 @@ import marimo
 __generated_with = "0.3.2"
 app = marimo.App(width="medium")
 
-# ========================================================================================= #
-# Launch this notebook from terminal using marimo after installing the dr-simulator package #
-# ========================================================================================= #
 
 @app.cell
 def __(mo):
@@ -403,6 +400,12 @@ def __(
 
 
 @app.cell
+def __(simulation_parameters):
+    print(simulation_parameters)
+    return
+
+
+@app.cell
 def __(dt, sim_month, sim_year, ut):
     start_dt = dt.datetime(sim_year.value, sim_month.value, 1, 0, 0, 0)
     sim_start_dt = start_dt - dt.timedelta(days=13)
@@ -427,7 +430,6 @@ def __():
     from dr_simulator.visulization_helper import plot_dr_events
     from dr_simulator import utils as ut
     from dr_simulator.utils import DistributionTypes
-
     return DistributionTypes, dr_eve, dt, mo, plot_dr_events, plt, ut
 
 

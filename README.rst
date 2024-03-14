@@ -67,6 +67,14 @@ You can visualize the DR Simulator using `marimo <https://github.com/marimo-team
 
 3. You can also run ``marimo edit dr_events_simulator.py`` to open the notebook in edit mode.
 
+Upcoming release features
+-------------------------
+
+Watch out for the upcoming release features:
+
+-  Optimization framework for the simulated DR events using ``cvxpy`` library and finding the optimal capacity bid
+-  Include program parametes data for other ISO's DR programs
+-  Case study of using DR simulator for finding the optimal capacity bid of SVCW water resource recovery facility in participating in the PG&E's Capacity Bidding Program
 
 .. |Build Status| image:: https://github.com/we3lab/dr_simulator/workflows/Build%20Main/badge.svg
    :target: https://github.com/we3lab/dr-simulator/actions
