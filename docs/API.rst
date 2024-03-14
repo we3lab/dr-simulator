@@ -1,5 +1,5 @@
 API Reference
-=============================================
+=============
 
 dr\_simulator.dr\_events module
 -------------------------------
@@ -17,8 +17,8 @@ dr\_simulator.utils module
    :show-inheritance:
 
 dr\_simulator.visulization_helper module
--------------------------------
-.. automodule:: dr_simulator.visulization_helper.py
+----------------------------------------
+.. automodule:: dr_simulator.visulization_helper
    :members:
    :undoc-members:
    :show-inheritance:
