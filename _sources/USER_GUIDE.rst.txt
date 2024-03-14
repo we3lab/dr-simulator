@@ -1,5 +1,5 @@
-How to use the Demand Response Simulator Tool
-=============================================
+How to use the DR simulator Tool
+================================
 
 How to use this package
 ------------------------
@@ -11,7 +11,7 @@ Essentially you need to set two types of parameters
 1. Program Parameters
 2. Simulation Parameters
 
-1. Program Parameters
+3. Program Parameters
 ^^^^^^^^^^^^^^^^^^^^^
 
 These are the set of parameters that describes the DR program and its rules.
