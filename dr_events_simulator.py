@@ -3,6 +3,9 @@ import marimo
 __generated_with = "0.3.2"
 app = marimo.App(width="medium")
 
+# ========================================================================================= #
+# Launch this notebook from terminal using marimo after installing the dr-simulator package #
+# ========================================================================================= #
 
 @app.cell
 def __(mo):
