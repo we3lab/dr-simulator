@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dr-simulator"
-version = "0.1.0"
+version = "0.2.1"
 description = "Demand Response Simulator enables you to sample DR events based on a distribution and optimize your energy flexible process"
 authors = ["ThyanRevolter <admkr.2010@gmail.com>"]
 readme = "README.rst"
@@ -46,7 +46,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.bumpver]
-current_version = "0.2.0"
+current_version = "0.2.1"
 version_pattern = "MAJOR.MINOR.PATCH"
 commit_message = "bump version {old_version} -> {new_version}"
 commit = true
