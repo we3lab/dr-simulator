@@ -371,9 +371,7 @@ def __(
             "distribution": start_time_distr_type.value,
             "distribution_parameters": start_time_distr_param_val,
         },
-        "event_days" : {
-            "p_dates" : None
-        }
+        "event_days": {"p_dates": None},
     }
     program_parameters = program_parameter_form.value
     return program_parameters, simulation_parameters
@@ -394,7 +392,9 @@ def __(
         program_parameters=program_parameters,
         simulation_parameters=simulation_parameters,
     )
-    fig, ax, cbar = plot_dr_events(start_dt, end_dt, dr_events.event_days, dr_events.event_duration)
+    fig, ax, cbar = plot_dr_events(
+        start_dt, end_dt, dr_events.event_days, dr_events.event_duration
+    )
     plt.gca()
     return ax, cbar, dr_events, event_dict, fig
 
@@ -424,6 +424,7 @@ def __():
     from dr_simulator.visulization_helper import plot_dr_events
     from dr_simulator import utils as ut
     from dr_simulator.utils import DistributionTypes
+
     return DistributionTypes, dr_eve, dt, mo, plot_dr_events, plt, ut
 
 
