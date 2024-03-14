@@ -89,12 +89,10 @@ def days_in_year_month(year, month):
         # Check if it's a leap year
         if year % 4 == 0:
             return 29
-        else:
-            return 28
-    elif month in [4, 6, 9, 11]:
+        return 28
+    if month in [4, 6, 9, 11]:
         return 30
-    else:
-        return 31
+    return 31
 
 
 def pickle_load(path):
