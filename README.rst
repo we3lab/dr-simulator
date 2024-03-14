@@ -30,7 +30,7 @@ Features
 Installation
 ------------
 
-**Stable Release:** ``pip install dr_simulator`` 
+**Stable Release:** ``pip install dr-simulator`` 
 
 **Development Head:**
 ``pip install git+https://github.com/we3lab/dr-simulator.git``
