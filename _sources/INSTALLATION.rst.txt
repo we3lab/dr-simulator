@@ -12,7 +12,7 @@ To install Demand Response Simulator, run this command in your terminal:
 
 .. code-block:: console
 
-    $ pip install dr_simulator
+    $ pip install dr-simulator
 
 This is the preferred method to install Demand Response Simulator, as it will always install the most recent stable release.
 
@@ -32,13 +32,13 @@ You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/we3lab/dr_simulator
+    $ git clone git://github.com/we3lab/dr-simulator
 
 Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl  -OL https://github.com/we3lab/dr_simulator/tarball/main
+    $ curl  -OL https://github.com/we3lab/dr-simulator/tarball/main
 
 Once you have a copy of the source, you can install it with:
 
@@ -47,5 +47,5 @@ Once you have a copy of the source, you can install it with:
     $ python setup.py install
 
 
-.. _Github repo: https://github.com/we3lab/dr_simulator
-.. _tarball: https://github.com/we3lab/dr_simulator/tarball/main
+.. _Github repo: https://github.com/we3lab/dr-simulator
+.. _tarball: https://github.com/we3lab/dr-simulator/tarball/main
