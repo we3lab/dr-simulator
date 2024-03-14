@@ -378,8 +378,31 @@ Other options are “day_of” and “hour_before”</p></li>
 </dd></dl>
 
 </section>
-<section id="dr-simulator-visulization-helper-module">
-<h2>dr_simulator.visulization_helper module<a class="headerlink" href="#dr-simulator-visulization-helper-module" title="Link to this heading">¶</a></h2>
+<section id="module-dr_simulator.visulization_helper">
+<span id="dr-simulator-visulization-helper-module"></span><h2>dr_simulator.visulization_helper module<a class="headerlink" href="#module-dr_simulator.visulization_helper" title="Link to this heading">¶</a></h2>
+<p>Helper functions for visualizing the DR event data</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="dr_simulator.visulization_helper.plot_dr_events">
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.visulization_helper.</span></span><span class="sig-name descname"><span class="pre">plot_dr_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dr_events</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampled_event_hours</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/visulization_helper.html#plot_dr_events"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.visulization_helper.plot_dr_events" title="Link to this definition">¶</a></dt>
+<dd><p>Plots the DR events in a monthly calendar</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_dt</strong> (<em>datetime.datetime</em>) – Start date of the calendar</p></li>
+<li><p><strong>end_dt</strong> (<em>datetime.datetime</em>) – End date of the calendar</p></li>
+<li><p><strong>dr_events</strong> (<em>list</em>) – List of datetime.datetime objects representing the start of each event</p></li>
+<li><p><strong>sampled_event_hours</strong> (<em>list</em>) – List of floats representing the number of hours of each event</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Figure and axes objects containing the calendar</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>matplotlib.pyplot.figure, matplotlib.pyplot.axes</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 </section>
 
