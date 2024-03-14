@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>How to use the Demand Response Simulator Tool &#8212; Demand Response Simulator 0.2.1 documentation</title>
+    <title>API Reference &#8212; Demand Response Simulator 0.2.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=547657ed" />
@@ -33,8 +33,8 @@
 
           <div class="body" role="main">
             
-  <section id="how-to-use-the-demand-response-simulator-tool">
-<h1>How to use the Demand Response Simulator Tool<a class="headerlink" href="#how-to-use-the-demand-response-simulator-tool" title="Link to this heading">¶</a></h1>
+  <section id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading">¶</a></h1>
 <section id="module-dr_simulator.dr_events">
 <span id="dr-simulator-dr-events-module"></span><h2>dr_simulator.dr_events module<a class="headerlink" href="#module-dr_simulator.dr_events" title="Link to this heading">¶</a></h2>
 <p>This module contains the DemandResponseEvents class which is used to
@@ -191,6 +191,196 @@ Other options are “day_of” and “hour_before”</p></li>
 </dd></dl>
 
 </section>
+<section id="module-dr_simulator.utils">
+<span id="dr-simulator-utils-module"></span><h2>dr_simulator.utils module<a class="headerlink" href="#module-dr_simulator.utils" title="Link to this heading">¶</a></h2>
+<p>This module contains utility functions for DR Simulator</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="dr_simulator.utils.DistributionTypes">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">DistributionTypes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#DistributionTypes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.DistributionTypes" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></a></p>
+<p>Enum class for supported distributions</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dr_simulator.utils.DistributionTypes.NORMAL">
+<span class="sig-name descname"><span class="pre">NORMAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'normal'</span></em><a class="headerlink" href="#dr_simulator.utils.DistributionTypes.NORMAL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dr_simulator.utils.DistributionTypes.POISSON">
+<span class="sig-name descname"><span class="pre">POISSON</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'poisson'</span></em><a class="headerlink" href="#dr_simulator.utils.DistributionTypes.POISSON" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dr_simulator.utils.DistributionTypes.UNIFORM">
+<span class="sig-name descname"><span class="pre">UNIFORM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'uniform'</span></em><a class="headerlink" href="#dr_simulator.utils.DistributionTypes.UNIFORM" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dr_simulator.utils.create_calender">
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">create_calender</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#create_calender"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.create_calender" title="Link to this definition">¶</a></dt>
+<dd><p>This function creates a calendar for the given dates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dates</strong> (<em>list</em>) – List of dates</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>woy</strong> (<em>numpy.ndarray</em>) – Week of the year of the dates</p></li>
+<li><p><strong>dow</strong> (<em>numpy.ndarray</em>) – Day of the week of the dates</p></li>
+<li><p><strong>calendar</strong> (<em>numpy.ndarray</em>) – Calendar of the dates</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dr_simulator.utils.days_in_year_month">
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">days_in_year_month</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">month</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#days_in_year_month"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.days_in_year_month" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>year</strong> (<em>int</em>)</p></li>
+<li><p><strong>month</strong> (<em>int</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>number of days in a <cite>month</cite> of <cite>year</cite></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dr_simulator.utils.get_n_similar_weekdays">
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">get_n_similar_weekdays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prev_event_days</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_weekdays</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#get_n_similar_weekdays"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.get_n_similar_weekdays" title="Link to this definition">¶</a></dt>
+<dd><p>This function gets the 10 similar weekdays excluding the event days</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>date</strong> (<em>datetime.datetime</em>) – Date of the event</p></li>
+<li><p><strong>prev_event_days</strong> (<em>list</em>) – List of previous event days</p></li>
+<li><p><strong>n_weekdays</strong> (<em>int (default=10)</em>) – Number of similar weekdays to return</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>similar_weekdays</strong> – List of length of previous n_weekdays excluding the event days</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dr_simulator.utils.json_dump">
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">json_dump</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#json_dump"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.json_dump" title="Link to this definition">¶</a></dt>
+<dd><p>Dumps a python object to a json string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>object_</strong> (<em>object</em>) – python object to convert to str</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – path where the json string is saved</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dr_simulator.utils.json_load">
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">json_load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#json_load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.json_load" title="Link to this definition">¶</a></dt>
+<dd><p>Loads a json string to python</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – path to object to load</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>object_</strong> – python object converted from str</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)">object</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dr_simulator.utils.pickle_dump">
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">pickle_dump</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#pickle_dump"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.pickle_dump" title="Link to this definition">¶</a></dt>
+<dd><p>Pickles an object (fitted model, dictionary with data, etc)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>object_</strong> – object to compress</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – path where the pickled object is saved</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dr_simulator.utils.pickle_load">
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">pickle_load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#pickle_load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.pickle_load" title="Link to this definition">¶</a></dt>
+<dd><p>Loads a pickled object (fitted model, dictionary with data, etc)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – path to object to load</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>unpickled object found at the <cite>path</cite></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)">object</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dr_simulator.utils.text_to_param_dict">
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">text_to_param_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distr_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distr_params_text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#text_to_param_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.text_to_param_dict" title="Link to this definition">¶</a></dt>
+<dd><p>Converts distribution parameters entered as text to param_dict</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>distr_type</strong> (<em>DistributionTypes</em>) – Distribution type</p></li>
+<li><p><strong>distr_params_text</strong> (<em>str</em>) – Distribution parameters entered as text</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Distribution parameters as dictionary</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dr_simulator.utils.validate_distribution_params">
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">validate_distribution_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distr_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distr_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#validate_distribution_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.validate_distribution_params" title="Link to this definition">¶</a></dt>
+<dd><p>Validates the distribution parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>distr_type</strong> (<em>DistributionTypes</em>) – Distribution type</p></li>
+<li><p><strong>distr_params</strong> (<em>dict</em>) – Distribution parameters</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the parameters are valid, False otherwise</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="dr-simulator-visulization-helper-module">
+<h2>dr_simulator.visulization_helper module<a class="headerlink" href="#dr-simulator-visulization-helper-module" title="Link to this heading">¶</a></h2>
+</section>
 </section>
 
 
@@ -223,7 +413,7 @@ Other options are “day_of” and “hour_before”</p></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">How to use the Demand Response Simulator Tool</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
