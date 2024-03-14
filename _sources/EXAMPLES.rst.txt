@@ -12,4 +12,4 @@ Based on the tariff structure, the program parameters for the PG&E CBP's Prescri
    :file: ../data/program_data/prescribed_program.csv
    :header-rows: 1
 
-You can also change the program parameters according to the DR program that you are interested in.
+Please use the `marimo notebook app <https://github.com/we3lab/dr-simulator/blob/main/dr_events_simulator.py>`__ for a more in-depth example scenario.
