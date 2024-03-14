@@ -10,7 +10,7 @@ repository = "https://github.com/we3lab/dr-simulator"
 documentation = "https://we3lab.github.io/dr-simulator/index.html"
 keywords = ["demand-response", "simulator", "energy", "forecasting", "optimization"]
 classifiers = [
-    "Development Status :: 2 - Pre-Alpha",
+    "Development Status :: 3 - Alpha",
     "Intended Audience :: Education",
     "Intended Audience :: Science/Research",
     "License :: OSI Approved :: MIT License",
