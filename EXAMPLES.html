@@ -83,7 +83,80 @@ The prices are the same for these three options. The notification time that PG&a
 </tr>
 </tbody>
 </table>
+<p>For quick start to simulate dr events</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">dr_simulator</span> <span class="kn">import</span> <span class="n">dr_events</span>
+<span class="kn">from</span> <span class="nn">dr_simulator.visulization_helper</span> <span class="kn">import</span> <span class="n">plot_dr_events</span>
+
+<span class="c1"># Set the start and end date and time for the simulation</span>
+<span class="n">start_dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">end_dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Create a DR event simulator object</span>
+<span class="n">dr_event</span> <span class="o">=</span> <span class="n">dr_events</span><span class="o">.</span><span class="n">DemandResponseEvents</span><span class="p">(</span><span class="n">start_dt</span><span class="p">,</span> <span class="n">end_dt</span><span class="p">)</span>
+
+<span class="c1"># Set the program parameters</span>
+<span class="n">program_parameters</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s1">&#39;min_days&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+   <span class="s1">&#39;max_days&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+   <span class="s1">&#39;min_duration&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+   <span class="s1">&#39;max_duration&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+   <span class="s1">&#39;program_start_time&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+   <span class="s1">&#39;program_end_time&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+   <span class="s1">&#39;notification_type&#39;</span><span class="p">:</span> <span class="s1">&#39;day_before&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;notification_time&#39;</span><span class="p">:</span> <span class="mi">17</span><span class="p">,</span>
+   <span class="s1">&#39;max_consecutive_event_days&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+   <span class="s1">&#39;number_similar_weekdays&#39;</span><span class="p">:</span> <span class="mi">10</span>
+<span class="p">}</span>
+
+<span class="c1"># set the simulation parameters</span>
+<span class="n">simulation_parameters</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s1">&#39;n_days&#39;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s1">&#39;distribution&#39;</span><span class="p">:</span> <span class="s1">&#39;poisson&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;distribution_parameters&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;lam&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+   <span class="p">},</span>
+   <span class="s1">&#39;event_duration&#39;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s1">&#39;distribution&#39;</span><span class="p">:</span> <span class="s1">&#39;poisson&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;distribution_parameters&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;lam&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+   <span class="p">},</span>
+   <span class="s1">&#39;start_time&#39;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s1">&#39;distribution&#39;</span><span class="p">:</span> <span class="s1">&#39;uniform&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;distribution_parameters&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;low&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+   <span class="p">},</span>
+   <span class="s1">&#39;event_days&#39;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s1">&#39;p_dates&#39;</span><span class="p">:</span> <span class="kc">None</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Simulate the events</span>
+<span class="n">event_dict</span> <span class="o">=</span> <span class="n">dr_events</span><span class="o">.</span><span class="n">generate_event_dict</span><span class="p">(</span>
+   <span class="n">program_parameters</span><span class="o">=</span><span class="n">program_parameters</span><span class="p">,</span>
+   <span class="n">simulation_parameters</span><span class="o">=</span><span class="n">simulation_parameters</span>
+   <span class="p">)</span>
+
+<span class="c1"># visualize the events on the calender</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">cbar</span> <span class="o">=</span> <span class="n">plot_dr_events</span><span class="p">(</span>
+   <span class="n">start_dt</span><span class="p">,</span>
+   <span class="n">end_dt</span><span class="p">,</span>
+   <span class="n">dr_event</span><span class="o">.</span><span class="n">event_days</span><span class="p">,</span>
+   <span class="n">dr_event</span><span class="o">.</span><span class="n">event_duration</span>
+   <span class="p">)</span>
+
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Event Duration (hours)&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
 <p>Please use the <a class="reference external" href="https://github.com/we3lab/dr-simulator/blob/main/dr_events_simulator.py">marimo notebook app</a> for a more in-depth example scenario.</p>
+<ol class="arabic simple">
+<li><p>Install dr-simulator package</p></li>
+<li><p>From the command line, run the following command to start the marimo notebook app</p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>marimo<span class="w"> </span>run<span class="w"> </span>dr_events_simulator.py
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Follow the steps in the notebook to simulate the events for the PG&amp;E CBP’s Prescribed option.</p></li>
+</ol>
 </section>
 
 
