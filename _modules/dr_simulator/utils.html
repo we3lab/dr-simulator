@@ -36,7 +36,110 @@
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">pickle</span>
 <span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<div class="viewcode-block" id="DistributionTypes">
+<a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.DistributionTypes">[docs]</a>
+<span class="k">class</span> <span class="nc">DistributionTypes</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Enum class for supported distributions&quot;&quot;&quot;</span>
+
+    <span class="n">NORMAL</span> <span class="o">=</span> <span class="s2">&quot;normal&quot;</span>
+    <span class="n">UNIFORM</span> <span class="o">=</span> <span class="s2">&quot;uniform&quot;</span>
+    <span class="n">POISSON</span> <span class="o">=</span> <span class="s2">&quot;poisson&quot;</span></div>
+
+
+
+<span class="n">distr_param_mapping</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">DistributionTypes</span><span class="o">.</span><span class="n">NORMAL</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;loc&quot;</span><span class="p">,</span> <span class="s2">&quot;scale&quot;</span><span class="p">],</span>
+    <span class="n">DistributionTypes</span><span class="o">.</span><span class="n">UNIFORM</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;low&quot;</span><span class="p">,</span> <span class="s2">&quot;high&quot;</span><span class="p">],</span>
+    <span class="n">DistributionTypes</span><span class="o">.</span><span class="n">POISSON</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;lam&quot;</span><span class="p">],</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="validate_distribution_params">
+<a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.validate_distribution_params">[docs]</a>
+<span class="k">def</span> <span class="nf">validate_distribution_params</span><span class="p">(</span><span class="n">distr_type</span><span class="p">,</span> <span class="n">distr_params</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Validates the distribution parameters</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    distr_type : DistributionTypes</span>
+<span class="sd">        Distribution type</span>
+
+<span class="sd">    distr_params : dict</span>
+<span class="sd">        Distribution parameters</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool</span>
+<span class="sd">        True if the parameters are valid, False otherwise</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">distr_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">DistributionTypes</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">distr_params</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">k</span> <span class="ow">in</span> <span class="n">distr_params</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">distr_param_mapping</span><span class="p">[</span><span class="n">distr_type</span><span class="p">]):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span></div>
+
+
+
+<div class="viewcode-block" id="text_to_param_dict">
+<a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.text_to_param_dict">[docs]</a>
+<span class="k">def</span> <span class="nf">text_to_param_dict</span><span class="p">(</span><span class="n">distr_type</span><span class="p">,</span> <span class="n">distr_params_text</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Converts distribution parameters entered as text to param_dict</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    distr_type : DistributionTypes</span>
+<span class="sd">        Distribution type</span>
+
+<span class="sd">    distr_params_text : str</span>
+<span class="sd">        Distribution parameters entered as text</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict</span>
+<span class="sd">        Distribution parameters as dictionary</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">param_list</span> <span class="o">=</span> <span class="n">distr_params_text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">param_list</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">distr_param_mapping</span><span class="p">[</span><span class="n">distr_type</span><span class="p">]):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid number of parameters for </span><span class="si">{</span><span class="n">distr_type</span><span class="si">}</span><span class="s2"> distribution&quot;</span><span class="p">)</span>
+    <span class="n">param_dict</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">distr_param_mapping</span><span class="p">[</span><span class="n">distr_type</span><span class="p">],</span> <span class="n">param_list</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">param_dict</span></div>
+
+
+
+<div class="viewcode-block" id="days_in_year_month">
+<a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.days_in_year_month">[docs]</a>
+<span class="k">def</span> <span class="nf">days_in_year_month</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    year : int</span>
+<span class="sd">    month : int</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    int</span>
+<span class="sd">        number of days in a `month` of `year`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">month</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="c1"># Check if it&#39;s a leap year</span>
+        <span class="k">if</span> <span class="n">year</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">29</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">28</span>
+    <span class="k">elif</span> <span class="n">month</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="mi">30</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">31</span></div>
+
 
 
 <div class="viewcode-block" id="pickle_load">

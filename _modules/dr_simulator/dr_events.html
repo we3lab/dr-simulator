@@ -87,8 +87,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">max_days</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">min_duration</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">max_duration</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">min_start_time</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">max_start_time</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program_start_time</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program_end_time</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">max_consecutive_events</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">notification_time</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">notification_type</span> <span class="o">=</span> <span class="kc">None</span>
@@ -109,8 +109,8 @@
         <span class="n">max_days</span><span class="p">,</span>
         <span class="n">min_duration</span><span class="p">,</span>
         <span class="n">max_duration</span><span class="p">,</span>
-        <span class="n">min_start_time</span><span class="p">,</span>
-        <span class="n">max_start_time</span><span class="p">,</span>
+        <span class="n">program_start_time</span><span class="p">,</span>
+        <span class="n">program_end_time</span><span class="p">,</span>
         <span class="n">max_consecutive_events</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
         <span class="n">notification_time</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">notification_type</span><span class="o">=</span><span class="s2">&quot;day_before&quot;</span><span class="p">,</span>
@@ -130,9 +130,9 @@
 <span class="sd">            Minimum duration of a demand response event in hours</span>
 <span class="sd">        max_duration : int</span>
 <span class="sd">            Maximum duration of a demand response event in hours</span>
-<span class="sd">        min_start_time : int</span>
+<span class="sd">        program_start_time : int</span>
 <span class="sd">            Minimum start time of a demand response event in hours</span>
-<span class="sd">        max_start_time : int</span>
+<span class="sd">        program_end_time : int</span>
 <span class="sd">            Maximum start time of a demand response event in hours</span>
 <span class="sd">        notification_time : int</span>
 <span class="sd">            Notification time of a demand response event in hours</span>
@@ -145,8 +145,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">max_days</span> <span class="o">=</span> <span class="n">max_days</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">min_duration</span> <span class="o">=</span> <span class="n">min_duration</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">max_duration</span> <span class="o">=</span> <span class="n">max_duration</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">min_start_time</span> <span class="o">=</span> <span class="n">min_start_time</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">max_start_time</span> <span class="o">=</span> <span class="n">max_start_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program_start_time</span> <span class="o">=</span> <span class="n">program_start_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program_end_time</span> <span class="o">=</span> <span class="n">program_end_time</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">max_consecutive_events</span> <span class="o">=</span> <span class="n">max_consecutive_events</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">notification_time</span> <span class="o">=</span> <span class="n">notification_time</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">notification_type</span> <span class="o">=</span> <span class="n">notification_type</span>
@@ -195,9 +195,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">start_times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fmin</span><span class="p">(</span>
             <span class="n">np</span><span class="o">.</span><span class="n">fmax</span><span class="p">(</span>
                 <span class="nb">getattr</span><span class="p">(</span><span class="n">rng</span><span class="p">,</span> <span class="n">distribution</span><span class="p">)(</span><span class="o">**</span><span class="n">distribution_parameters</span><span class="p">),</span>
-                <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ndays</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_start_time</span><span class="p">),</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ndays</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">program_start_time</span><span class="p">),</span>
             <span class="p">),</span>
-            <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ndays</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_start_time</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ndays</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">program_end_time</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
         <span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span></div>
 
 
@@ -223,7 +223,7 @@
         <span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">event_duration</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fmin</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">event_duration</span><span class="p">,</span>
-            <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ndays</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_start_time</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_times</span><span class="p">,</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ndays</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">program_end_time</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_times</span><span class="p">,</span>
         <span class="p">)</span></div>
 
 

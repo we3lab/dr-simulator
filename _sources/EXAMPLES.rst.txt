@@ -9,7 +9,7 @@ The prices are the same for these three options. The notification time that PG&E
 Based on the tariff structure, the program parameters for the PG&E CBP's Prescribed option are
 
 .. csv-table:: PG&E Capacity Bidding Program's Prescribed Option
-   :file: ../data/prescribed_program.csv
+   :file: ../data/program_data/prescribed_program.csv
    :header-rows: 1
 
 You can also change the program parameters according to the DR program that you are interested in.
