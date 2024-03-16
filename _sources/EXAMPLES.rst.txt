@@ -76,7 +76,12 @@ For quick start to simulate dr events
       
       cbar.set_label('Event Duration (hours)')
       fig.show()
-      
+
+
+You should see a calendar with the simulated events. 
+
+.. image:: ../data/images/plot_dr_events.png
+   :align: center
 
 
 Please use the `marimo notebook app <https://github.com/we3lab/dr-simulator/blob/main/dr_events_simulator.py>`__ for a more in-depth example scenario.

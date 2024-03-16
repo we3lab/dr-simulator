@@ -1,47 +1,145 @@
 <!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<html lang="en" data-content_root="./">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Reference &mdash; Demand Response Simulator 0.3.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=547657ed" />
 
-    <title>API Reference &#8212; Demand Response Simulator 0.3.1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
-    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
-    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=547657ed" />
-    <script src="_static/documentation_options.js?v=4621528c"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=4621528c"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Example" href="EXAMPLES.html" />
-    <link rel="prev" title="How to use the DR simulator Tool" href="USER_GUIDE.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
+    <link rel="prev" title="How to use the DR simulator Tool" href="USER_GUIDE.html" /> 
+</head>
 
-  
-  
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
 
-  </head><body>
-  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
           
+          
+          <a href="index.html" class="icon icon-home">
+            Demand Response Simulator
+          </a>
+              <div class="version">
+                0.3.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="INSTALLATION.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LICENSE.html">LICENSE</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="USER_GUIDE.html">How to use the DR simulator Tool</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-dr_simulator.dr_events">dr_simulator.dr_events module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dr_simulator.dr_events.DemandResponseEvents"><code class="docutils literal notranslate"><span class="pre">DemandResponseEvents</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dr_simulator.dr_events.DemandResponseEvents.create_dr_events_mtcs"><code class="docutils literal notranslate"><span class="pre">DemandResponseEvents.create_dr_events_mtcs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dr_simulator.dr_events.DemandResponseEvents.generate_event_dict"><code class="docutils literal notranslate"><span class="pre">DemandResponseEvents.generate_event_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dr_simulator.dr_events.DemandResponseEvents.get_pdates"><code class="docutils literal notranslate"><span class="pre">DemandResponseEvents.get_pdates()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dr_simulator.dr_events.DemandResponseEvents.set_event_dates"><code class="docutils literal notranslate"><span class="pre">DemandResponseEvents.set_event_dates()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dr_simulator.dr_events.DemandResponseEvents.set_event_duration"><code class="docutils literal notranslate"><span class="pre">DemandResponseEvents.set_event_duration()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dr_simulator.dr_events.DemandResponseEvents.set_ndays"><code class="docutils literal notranslate"><span class="pre">DemandResponseEvents.set_ndays()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dr_simulator.dr_events.DemandResponseEvents.set_notification_time"><code class="docutils literal notranslate"><span class="pre">DemandResponseEvents.set_notification_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dr_simulator.dr_events.DemandResponseEvents.set_program_parameters"><code class="docutils literal notranslate"><span class="pre">DemandResponseEvents.set_program_parameters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dr_simulator.dr_events.DemandResponseEvents.set_start_times"><code class="docutils literal notranslate"><span class="pre">DemandResponseEvents.set_start_times()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-dr_simulator.utils">dr_simulator.utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dr_simulator.utils.DistributionTypes"><code class="docutils literal notranslate"><span class="pre">DistributionTypes</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dr_simulator.utils.DistributionTypes.NORMAL"><code class="docutils literal notranslate"><span class="pre">DistributionTypes.NORMAL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dr_simulator.utils.DistributionTypes.POISSON"><code class="docutils literal notranslate"><span class="pre">DistributionTypes.POISSON</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dr_simulator.utils.DistributionTypes.UNIFORM"><code class="docutils literal notranslate"><span class="pre">DistributionTypes.UNIFORM</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dr_simulator.utils.create_calender"><code class="docutils literal notranslate"><span class="pre">create_calender()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dr_simulator.utils.days_in_year_month"><code class="docutils literal notranslate"><span class="pre">days_in_year_month()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dr_simulator.utils.get_n_similar_weekdays"><code class="docutils literal notranslate"><span class="pre">get_n_similar_weekdays()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dr_simulator.utils.json_dump"><code class="docutils literal notranslate"><span class="pre">json_dump()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dr_simulator.utils.json_load"><code class="docutils literal notranslate"><span class="pre">json_load()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dr_simulator.utils.pickle_dump"><code class="docutils literal notranslate"><span class="pre">pickle_dump()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dr_simulator.utils.pickle_load"><code class="docutils literal notranslate"><span class="pre">pickle_load()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dr_simulator.utils.text_to_param_dict"><code class="docutils literal notranslate"><span class="pre">text_to_param_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dr_simulator.utils.validate_distribution_params"><code class="docutils literal notranslate"><span class="pre">validate_distribution_params()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-dr_simulator.visulization_helper">dr_simulator.visulization_helper module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dr_simulator.visulization_helper.plot_dr_events"><code class="docutils literal notranslate"><span class="pre">plot_dr_events()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="EXAMPLES.html">Example</a></li>
+</ul>
 
-          <div class="body" role="main">
-            
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Demand Response Simulator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">API Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/API.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
   <section id="api-reference">
-<h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading">¶</a></h1>
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading"></a></h1>
 <section id="module-dr_simulator.dr_events">
-<span id="dr-simulator-dr-events-module"></span><h2>dr_simulator.dr_events module<a class="headerlink" href="#module-dr_simulator.dr_events" title="Link to this heading">¶</a></h2>
+<span id="dr-simulator-dr-events-module"></span><h2>dr_simulator.dr_events module<a class="headerlink" href="#module-dr_simulator.dr_events" title="Link to this heading"></a></h2>
 <p>This module contains the DemandResponseEvents class which is used to
 generate demand response events for a given time period based on user’s inputs.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="dr_simulator.dr_events.DemandResponseEvents">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dr_simulator.dr_events.</span></span><span class="sig-name descname"><span class="pre">DemandResponseEvents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DR</span> <span class="pre">Program'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">60</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dr_simulator.dr_events.</span></span><span class="sig-name descname"><span class="pre">DemandResponseEvents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DR</span> <span class="pre">Program'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">60</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>This class is intended to be used to generate demand response events
 for a given time period based on user’s inputs.</p>
@@ -72,7 +170,7 @@ as the number of days between the start and end dates</p></li>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="dr_simulator.dr_events.DemandResponseEvents.create_dr_events_mtcs">
-<span class="sig-name descname"><span class="pre">create_dr_events_mtcs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">program_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulation_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_simulations</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.create_dr_events_mtcs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.create_dr_events_mtcs" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">create_dr_events_mtcs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">program_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulation_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_simulations</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.create_dr_events_mtcs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.create_dr_events_mtcs" title="Link to this definition"></a></dt>
 <dd><p>This function creates the demand response events for the given number of simulations</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -83,7 +181,7 @@ as the number of days between the start and end dates</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dr_simulator.dr_events.DemandResponseEvents.generate_event_dict">
-<span class="sig-name descname"><span class="pre">generate_event_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">program_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulation_parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.generate_event_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.generate_event_dict" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">generate_event_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">program_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulation_parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.generate_event_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.generate_event_dict" title="Link to this definition"></a></dt>
 <dd><p>This function generates the event dictionary</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -94,7 +192,7 @@ as the number of days between the start and end dates</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dr_simulator.dr_events.DemandResponseEvents.get_pdates">
-<span class="sig-name descname"><span class="pre">get_pdates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.get_pdates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.get_pdates" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_pdates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.get_pdates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.get_pdates" title="Link to this definition"></a></dt>
 <dd><p>This function sets the probability of each day being selected based on a
 uniform distribution</p>
 <dl class="field-list simple">
@@ -112,7 +210,7 @@ uniform distribution</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dr_simulator.dr_events.DemandResponseEvents.set_event_dates">
-<span class="sig-name descname"><span class="pre">set_event_dates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_dates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.set_event_dates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.set_event_dates" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_event_dates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_dates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.set_event_dates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.set_event_dates" title="Link to this definition"></a></dt>
 <dd><p>This function sets the event dates of the events based on a given distribution</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -123,7 +221,7 @@ uniform distribution</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dr_simulator.dr_events.DemandResponseEvents.set_event_duration">
-<span class="sig-name descname"><span class="pre">set_event_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distribution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distribution_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.set_event_duration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.set_event_duration" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_event_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distribution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distribution_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.set_event_duration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.set_event_duration" title="Link to this definition"></a></dt>
 <dd><p>This function sets the event duration of the events based on a
 given distribution</p>
 <dl class="field-list simple">
@@ -135,7 +233,7 @@ given distribution</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dr_simulator.dr_events.DemandResponseEvents.set_ndays">
-<span class="sig-name descname"><span class="pre">set_ndays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distribution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distribution_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.set_ndays"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.set_ndays" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_ndays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distribution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distribution_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.set_ndays"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.set_ndays" title="Link to this definition"></a></dt>
 <dd><p>This function sets the number of days of the events based on a
 given distribution</p>
 <dl class="field-list simple">
@@ -147,7 +245,7 @@ given distribution</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dr_simulator.dr_events.DemandResponseEvents.set_notification_time">
-<span class="sig-name descname"><span class="pre">set_notification_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">notification_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.set_notification_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.set_notification_time" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_notification_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">notification_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.set_notification_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.set_notification_time" title="Link to this definition"></a></dt>
 <dd><p>This function sets the notification time of the events</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -158,7 +256,7 @@ given distribution</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dr_simulator.dr_events.DemandResponseEvents.set_program_parameters">
-<span class="sig-name descname"><span class="pre">set_program_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_days</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_days</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">program_start_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">program_end_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_consecutive_events</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notification_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notification_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'day_before'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_similar_weekdays</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.set_program_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.set_program_parameters" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_program_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_days</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_days</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">program_start_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">program_end_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_consecutive_events</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notification_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notification_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'day_before'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_similar_weekdays</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.set_program_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.set_program_parameters" title="Link to this definition"></a></dt>
 <dd><p>This function sets the program parameters for the demand response program</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -179,7 +277,7 @@ Other options are “day_of” and “hour_before”</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dr_simulator.dr_events.DemandResponseEvents.set_start_times">
-<span class="sig-name descname"><span class="pre">set_start_times</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distribution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distribution_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.set_start_times"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.set_start_times" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_start_times</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distribution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distribution_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.set_start_times"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.set_start_times" title="Link to this definition"></a></dt>
 <dd><p>This function sets the start times of the events based on a given distribution</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -192,33 +290,33 @@ Other options are “day_of” and “hour_before”</p></li>
 
 </section>
 <section id="module-dr_simulator.utils">
-<span id="dr-simulator-utils-module"></span><h2>dr_simulator.utils module<a class="headerlink" href="#module-dr_simulator.utils" title="Link to this heading">¶</a></h2>
+<span id="dr-simulator-utils-module"></span><h2>dr_simulator.utils module<a class="headerlink" href="#module-dr_simulator.utils" title="Link to this heading"></a></h2>
 <p>This module contains utility functions for DR Simulator</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="dr_simulator.utils.DistributionTypes">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">DistributionTypes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#DistributionTypes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.DistributionTypes" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">DistributionTypes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#DistributionTypes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.DistributionTypes" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></a></p>
 <p>Enum class for supported distributions</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="dr_simulator.utils.DistributionTypes.NORMAL">
-<span class="sig-name descname"><span class="pre">NORMAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'normal'</span></em><a class="headerlink" href="#dr_simulator.utils.DistributionTypes.NORMAL" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">NORMAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'normal'</span></em><a class="headerlink" href="#dr_simulator.utils.DistributionTypes.NORMAL" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="dr_simulator.utils.DistributionTypes.POISSON">
-<span class="sig-name descname"><span class="pre">POISSON</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'poisson'</span></em><a class="headerlink" href="#dr_simulator.utils.DistributionTypes.POISSON" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">POISSON</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'poisson'</span></em><a class="headerlink" href="#dr_simulator.utils.DistributionTypes.POISSON" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="dr_simulator.utils.DistributionTypes.UNIFORM">
-<span class="sig-name descname"><span class="pre">UNIFORM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'uniform'</span></em><a class="headerlink" href="#dr_simulator.utils.DistributionTypes.UNIFORM" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">UNIFORM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'uniform'</span></em><a class="headerlink" href="#dr_simulator.utils.DistributionTypes.UNIFORM" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dr_simulator.utils.create_calender">
-<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">create_calender</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#create_calender"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.create_calender" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">create_calender</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#create_calender"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.create_calender" title="Link to this definition"></a></dt>
 <dd><p>This function creates a calendar for the given dates</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -237,7 +335,7 @@ Other options are “day_of” and “hour_before”</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dr_simulator.utils.days_in_year_month">
-<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">days_in_year_month</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">month</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#days_in_year_month"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.days_in_year_month" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">days_in_year_month</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">month</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#days_in_year_month"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.days_in_year_month" title="Link to this definition"></a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -256,7 +354,7 @@ Other options are “day_of” and “hour_before”</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dr_simulator.utils.get_n_similar_weekdays">
-<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">get_n_similar_weekdays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prev_event_days</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_weekdays</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#get_n_similar_weekdays"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.get_n_similar_weekdays" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">get_n_similar_weekdays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prev_event_days</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_weekdays</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#get_n_similar_weekdays"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.get_n_similar_weekdays" title="Link to this definition"></a></dt>
 <dd><p>This function gets the 10 similar weekdays excluding the event days</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -277,7 +375,7 @@ Other options are “day_of” and “hour_before”</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dr_simulator.utils.json_dump">
-<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">json_dump</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#json_dump"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.json_dump" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">json_dump</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#json_dump"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.json_dump" title="Link to this definition"></a></dt>
 <dd><p>Dumps a python object to a json string</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -291,7 +389,7 @@ Other options are “day_of” and “hour_before”</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dr_simulator.utils.json_load">
-<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">json_load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#json_load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.json_load" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">json_load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#json_load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.json_load" title="Link to this definition"></a></dt>
 <dd><p>Loads a json string to python</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -308,7 +406,7 @@ Other options are “day_of” and “hour_before”</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dr_simulator.utils.pickle_dump">
-<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">pickle_dump</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#pickle_dump"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.pickle_dump" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">pickle_dump</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#pickle_dump"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.pickle_dump" title="Link to this definition"></a></dt>
 <dd><p>Pickles an object (fitted model, dictionary with data, etc)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -322,7 +420,7 @@ Other options are “day_of” and “hour_before”</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dr_simulator.utils.pickle_load">
-<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">pickle_load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#pickle_load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.pickle_load" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">pickle_load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#pickle_load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.pickle_load" title="Link to this definition"></a></dt>
 <dd><p>Loads a pickled object (fitted model, dictionary with data, etc)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -339,7 +437,7 @@ Other options are “day_of” and “hour_before”</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dr_simulator.utils.text_to_param_dict">
-<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">text_to_param_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distr_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distr_params_text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#text_to_param_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.text_to_param_dict" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">text_to_param_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distr_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distr_params_text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#text_to_param_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.text_to_param_dict" title="Link to this definition"></a></dt>
 <dd><p>Converts distribution parameters entered as text to param_dict</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -359,7 +457,7 @@ Other options are “day_of” and “hour_before”</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dr_simulator.utils.validate_distribution_params">
-<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">validate_distribution_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distr_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distr_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#validate_distribution_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.validate_distribution_params" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">validate_distribution_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distr_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distr_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#validate_distribution_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.validate_distribution_params" title="Link to this definition"></a></dt>
 <dd><p>Validates the distribution parameters</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -379,11 +477,11 @@ Other options are “day_of” and “hour_before”</p></li>
 
 </section>
 <section id="module-dr_simulator.visulization_helper">
-<span id="dr-simulator-visulization-helper-module"></span><h2>dr_simulator.visulization_helper module<a class="headerlink" href="#module-dr_simulator.visulization_helper" title="Link to this heading">¶</a></h2>
+<span id="dr-simulator-visulization-helper-module"></span><h2>dr_simulator.visulization_helper module<a class="headerlink" href="#module-dr_simulator.visulization_helper" title="Link to this heading"></a></h2>
 <p>Helper functions for visualizing the DR event data</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="dr_simulator.visulization_helper.plot_dr_events">
-<span class="sig-prename descclassname"><span class="pre">dr_simulator.visulization_helper.</span></span><span class="sig-name descname"><span class="pre">plot_dr_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dr_events</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampled_event_hours</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/visulization_helper.html#plot_dr_events"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.visulization_helper.plot_dr_events" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.visulization_helper.</span></span><span class="sig-name descname"><span class="pre">plot_dr_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dr_events</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampled_event_hours</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/visulization_helper.html#plot_dr_events"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.visulization_helper.plot_dr_events" title="Link to this definition"></a></dt>
 <dd><p>Plots the DR events in a monthly calendar</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -407,87 +505,34 @@ Other options are “day_of” and “hour_before”</p></li>
 </section>
 
 
+           </div>
           </div>
-          
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="USER_GUIDE.html" class="btn btn-neutral float-left" title="How to use the DR simulator Tool" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="EXAMPLES.html" class="btn btn-neutral float-right" title="Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Adhithyan Sakthivelu.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">Demand Response Simulator</a></h1>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
 
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<p class="caption" role="heading"><span class="caption-text">Overview</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="index.html">README</a></li>
-<li class="toctree-l1"><a class="reference internal" href="INSTALLATION.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LICENSE.html">LICENSE</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="USER_GUIDE.html">How to use the DR simulator Tool</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="EXAMPLES.html">Example</a></li>
-</ul>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="USER_GUIDE.html" title="previous chapter">How to use the DR simulator Tool</a></li>
-      <li>Next: <a href="EXAMPLES.html" title="next chapter">Example</a></li>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-
-
-
-
-
-
-
-
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &#169;2024, Adhithyan Sakthivelu.
-      
-      |
-      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
-      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
-      
-      |
-      <a href="_sources/API.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
-
-    
-
-    
-  </body>
+</body>
 </html>
