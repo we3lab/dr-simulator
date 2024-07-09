@@ -10,3 +10,4 @@ Maximum consecutive event days,The maximum consecutive days the customer can be 
 Notification type,The event is generally notified the day before or the day of and is captures by this parameter
 Notification time,If the event is notified the day before or the day of the program generally specifies the time. Note: This can also be historic event related
 Number of similar weekdays,The number of previous weekdays used to calculate the baseline
+Price ,
