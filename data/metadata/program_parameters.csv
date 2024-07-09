@@ -8,6 +8,11 @@ Program end time,The program can be either 24 hours or last for a specified peri
 Events per day,The maximum event that a customer can provide on a single day.
 Maximum consecutive event days,The maximum consecutive days the customer can be called in a particular month
 Notification type,The event is generally notified the day before or the day of and is captures by this parameter
-Notification time,If the event is notified the day before or the day of the program generally specifies the time. Note: This can also be historic event related
-Number of similar weekdays,The number of previous weekdays used to calculate the baseline
-Price ,
+Notification time ,If the event is notified the day before or the day of the program generally specifies the time. Note: This can also be historic event related
+Notification time delta,The number of hours between the notifcation time and the beginning of an event 
+Baseline calculation method ,The method used by each program to calculate the baseline energy usage
+Presence of historic data,Programs may or may not have historic data present 
+Payment function ,Form of compensation for shifts in energy load (or being available to shift energy loads) when called upon 
+Region ,"The United States Department of Energy separates the states into the West Region, The Southeast and Midwest Region, and the Northeast Region"
+Season,"Some programs run during the summer, winter, or both"
+Eligibility ,"Eligibility to particpate in the program (minimum bids, minimum peak demand, etc.)"
