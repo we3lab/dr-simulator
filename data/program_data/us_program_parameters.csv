@@ -1,4 +1,4 @@
 ﻿Program ,comp,region,season,min_days,max_days,min_dur,max_dur,start_time,end_time,events_daily,max_consec,max_hours,notif_type,notif_time,notif_delt,base_method,hist_pres,pay_function,elig
-Interruptible Power at Secondary Voltage (Alaska),Chugach,west,year_round,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,,n/a,n/a,n/a,"n/a (power company interrupts operators service itself, the operator does not choose how much to reduce load by)",n/a,demand_charge_elimination,Must have peak loads of at least 100kW and no larger than 10 MW
+Interruptible Power at Secondary Voltage (Alaska),Chugach,west,year_round,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,"n/a (power company interrupts operators service itself, the operator does not choose how much to reduce load by)",n/a,demand_charge_elimination,Must have peak loads of at least 100kW and no larger than 10 MW
 Peak Solutions Program (Arizona),,,,,,,,,,,,,,,,,,,
-Interruptible Service Program (Arizona),Cpower,west,summer,n/a,n/a,1,6,16,21,2,n/a,120,day_of,n/a,1,,,,
+Interruptible Service Program (Arizona),Tuscon Electric Power,west,summer,n/a,n/a,1,6,16,21,2,n/a,120,day_of,n/a,1,n/a,n/a,billing_credits,Must have a load of at least 3000 kW and be willing to shed at least 1000 kW
