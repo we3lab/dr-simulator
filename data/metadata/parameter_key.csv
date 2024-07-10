@@ -1,0 +1,19 @@
+Symbol 	Parameter 
+min_days	Minimum number of event days
+max_days	Maximum number of event days
+min_dur	Minimum duration of event
+max_dur	Maximum duration of event
+start_time	Program start time
+end_time	Program end time
+events_daily	Events per day
+max_consec	Maximum consecutive event days
+notif_type	Notification type
+notif_time	Notification time 
+notif_time	Notification time delta
+base_method	Baseline calculation method 
+hist_pres	Presence of historic data
+pay_function	Payment function 
+region	Region 
+season	Season
+eligibility	Eligibility 
+company	Company 
