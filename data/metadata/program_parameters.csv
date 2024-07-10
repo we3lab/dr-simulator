@@ -5,6 +5,7 @@ Minimum duration of event,The event should last for more than the minimum durati
 Maximum duration of event,The event should not last longer than the maximum duration specified by the program
 Program start time,The program can be either 24 hours or last for a specified period of time and the start time is generally provided if it is not a 24-hour period
 Program end time,The program can be either 24 hours or last for a specified period of time and the end time is generally provided if it is not a 24-hour period
+Maximum event hours,Maximum total hours of all events called in a year 
 Events per day,The maximum event that a customer can provide on a single day.
 Maximum consecutive event days,The maximum consecutive days the customer can be called in a particular month
 Notification type,The event is generally notified the day before or the day of and is captures by this parameter
