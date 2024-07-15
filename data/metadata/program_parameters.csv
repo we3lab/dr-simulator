@@ -16,6 +16,7 @@ Baseline calculation method ,The method used by each program to calculate the ba
 Presence of historic data,Programs may or may not have historic data present 
 Payment function ,Form of compensation for shifts in energy load (or being available to shift energy loads) when called upon 
 Region ,"The United States Department of Energy separates the states into the West Region, The Southeast and Midwest Region, and the Northeast Region"
+Days of the Week,Which days of the week can events fall on? 
 Season,"Some programs run during the summer, winter, or both"
 Eligibility ,"Eligibility to particpate in the program (minimum bids, minimum peak demand, etc.)"
 Company ,Which company or companies offer this program

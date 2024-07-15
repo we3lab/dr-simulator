@@ -16,6 +16,7 @@ base_method,Baseline calculation method
 hist_pres,Presence of historic data
 pay_function,Payment function 
 region,Region 
+dow,Days of the Week
 season,Season
 elig,Eligibility 
 comp,Company 
