@@ -20,3 +20,5 @@ dow,Days of the Week
 season,Season
 elig,Eligibility 
 comp,Company 
+sm,Start month
+em,End month 

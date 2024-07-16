@@ -20,3 +20,5 @@ Days of the Week,Which days of the week can events fall on?
 Season,"Some programs run during the summer, winter, or both"
 Eligibility ,"Eligibility to particpate in the program (minimum bids, minimum peak demand, etc.)"
 Company ,Which company or companies offer this program
+Start month,Month during which the DR event season starts
+End month,Month during which the DR event season ends 
