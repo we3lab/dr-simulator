@@ -25,3 +25,5 @@ em,End month
 state,State
 util,Utility
 trigger,Trigger
+load,Eligible load type 
+program_rate,Program or rate
