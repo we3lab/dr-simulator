@@ -24,3 +24,4 @@ Start month,Month during which the DR event season starts
 End month,Month during which the DR event season ends 
 State,State in which the program is eligible
 Utility,Eligible utilities 
+Trigger,Event trigger type
