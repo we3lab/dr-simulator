@@ -34,14 +34,18 @@ region_season_counts = data.groupby(['region', 'season']).size().reset_index(nam
 print("Number of programs for each season in each region:")
 print(region_season_counts)
 
+#set font default to arial
+plt.rcParams['font.family'] = 'Arial'
+
 # Plotting the histogram of prgrams per season 
-plt.figure(figsize=(10, 6))
-season_counts.plot(kind='bar', color='skyblue')
-plt.title('Number of Programs per Season')
-plt.xlabel('Season')
-plt.ylabel('Number of Programs')
-plt.xticks(rotation=45)
+plt.figure(figsize=(5, 5))
+season_counts.plot(kind='bar', color='#8c1515')
+plt.title('Number of Programs per Season', fontweight='bold', fontsize=16)
+plt.xlabel('Season', fontsize=14)
+plt.ylabel('Number of Programs', fontsize=14)
+plt.xticks(rotation=45, fontsize=12)
 plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.tight_layout()
 #plt.show()
 
 
@@ -159,6 +163,48 @@ plt.bar(avg_max_duration_by_region['region'], avg_max_duration_by_region['max_du
 plt.title('Average Maximum Duration of Events by Region')
 plt.xlabel('Region')
 plt.ylabel('Average Maximum Duration (hours)')
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.tight_layout()
+plt.show()
+
+
+#Box and whisker plots for duration variables by region 
+import seaborn as sns
+
+# Combine min_dur and max_dur into a single DataFrame
+duration_data = filtered_data[['region', 'min_dur', 'max_dur']]
+
+# Melt the DataFrame to have a long format
+melted_duration_data = duration_data.melt(id_vars=['region'], value_vars=['min_dur', 'max_dur'], 
+                                          var_name='Duration Type', value_name='Duration')
+
+# Create the box and whisker plot
+plt.figure(figsize=(12, 8))
+sns.boxplot(x='region', y='Duration', hue='Duration Type', data=melted_duration_data)
+plt.title('Box and Whisker Plot of Durations by Region')
+plt.xlabel('Region')
+plt.ylabel('Duration (hours)')
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.tight_layout()
+plt.show()
+
+#Box and whisker plots for duration variables by season
+# Ensure 'season' column is in the filtered_data DataFrame
+# filtered_data['season'] should already exist or be created based on your data
+
+# Combine min_dur and max_dur into a single DataFrame
+duration_data = filtered_data[['season', 'min_dur', 'max_dur']]
+
+# Melt the DataFrame to have a long format
+melted_duration_data = duration_data.melt(id_vars=['season'], value_vars=['min_dur', 'max_dur'], 
+                                          var_name='Duration Type', value_name='Duration')
+
+# Create the box and whisker plot
+plt.figure(figsize=(12, 8))
+sns.boxplot(x='season', y='Duration', hue='Duration Type', data=melted_duration_data)
+plt.title('Box and Whisker Plot of Durations by Season')
+plt.xlabel('Season')
+plt.ylabel('Duration (hours)')
 plt.grid(axis='y', linestyle='--', alpha=0.7)
 plt.tight_layout()
 plt.show()
