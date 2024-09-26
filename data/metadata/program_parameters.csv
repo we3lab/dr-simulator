@@ -26,8 +26,8 @@ State,State in which the program is eligible
 Utility,Eligible utilities 
 Trigger,Event trigger type
 Eligible load type,what type of load is eligible for particpation in the program 
-Program or rate,Is this classified as a program or a rate by the Department of Energy 
+Program or rate,Classification as a program or a rate by the Department of Energy 
 Payment Function ,"Payment = f(delivered ratio, capacity price, nominated capacity)"
+Baseline,"Subset historical consumption to a certain set of dates, apply the average, mean, median, or whatever function is specified in the baseline calculation method for the program"
 Delivered Ratio,delivered ratio = amount reduced/nomination of delivery 
 Amount reduced,baseline - consumption
-Baseline,"subset historical consumption to a certain set of dates, apply the average, mean, median, or whatever function is specified in the baseline calculation method for the program"
