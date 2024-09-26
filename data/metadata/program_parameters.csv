@@ -25,7 +25,7 @@ End month,Month during which the DR event season ends
 State,State in which the program is eligible
 Utility,Eligible utilities 
 Trigger,Event trigger type
-Eligible load type,what type of load is eligible for particpation in the program 
+Eligible load type,What type of load is eligible for particpation in the program 
 Program or rate,Classification as a program or a rate by the Department of Energy 
 Payment Function ,"Payment = f(delivered ratio, capacity price, nominated capacity)"
 Baseline,"Subset historical consumption to a certain set of dates, apply the average, mean, median, or whatever function is specified in the baseline calculation method for the program"
