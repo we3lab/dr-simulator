@@ -82,3 +82,25 @@ Watch out for the upcoming release features:
    :target: https://we3lab.github.io/dr-simulator/
 .. |Coverage| image:: https://codecov.io/gh/we3lab/dr-simulator/graph/badge.svg?token=HXGOYK8JCD
    :target: https://codecov.io/gh/we3lab/dr-simulator
+
+Data Records
+------------
+Data in this repository consists of metadata (3 Excel spreadsheets) and program data (2 Excel spreadhseets):
+Metadata
+- parameter_key.csv
+- program_parameters.csv
+- simulation_parameters.csv
+Program Data
+- us_program_parameters.csv
+- us_simulation_parameters.csv
+
+Metadata
+--------
+Will add later 
+
+Payment Function Variables
+--------------------------
+Baseline: 
+Delivered Ratio: reduction/nominated capacity
+Reduction: baseline - consumption
+Nominated Capacity: Energy bid
