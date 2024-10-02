@@ -100,7 +100,7 @@ Will add later
 
 Payment Function Variables
 --------------------------
-**Baseline:** 
+**Baseline:** will add later 
 **Delivered Ratio:** reduction/nominated capacity
 **Reduction:** baseline - consumption
 **Nominated Capacity:** Energy bid
