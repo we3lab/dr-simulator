@@ -188,7 +188,7 @@ def create_calender(dates):
     return woy, dow, calendar
 
 
-def get_n_similar_weekdays(date, prev_event_days, n_weekdays=10):
+def get_baseline_days(date, prev_event_days, n_weekdays=10):
     """
     This function gets the 10 similar weekdays excluding the event days
 

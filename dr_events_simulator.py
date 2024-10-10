@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.3.2"
+__generated_with = "0.6.26"
 app = marimo.App(width="medium")
 
 
@@ -8,9 +8,9 @@ app = marimo.App(width="medium")
 def __(mo):
     mo.md(
         r"""
-    ---------------------------------------------
-    # Welcome to Demand Response Events Simulator
-    ---------------------------------------------
+        ---------------------------------------------
+        # Welcome to Demand Response Events Simulator
+        ---------------------------------------------
         """
     )
     return
@@ -118,11 +118,7 @@ def __(mo):
 
 @app.cell
 def __(mo):
-    mo.md(
-        r"""
-    ### Step 1: Select the month and year you want to simulate the DR events
-    """
-    )
+    mo.md(r"### Step 1: Select the month and year you want to simulate the DR events")
     return
 
 
@@ -139,11 +135,7 @@ def __(dt, mo):
 
 @app.cell
 def __(mo):
-    mo.md(
-        r""" 
-        ### Step 2: Enter the Program Parameters
-        """
-    )
+    mo.md(r"### Step 2: Enter the Program Parameters")
     return
 
 
@@ -246,11 +238,7 @@ def __(mo, program_parameter_form):
 
 @app.cell
 def __(mo):
-    mo.md(
-        r""" 
-        ### Step 3: Enter the Simulation Parameters
-        """
-    )
+    mo.md(r"### Step 3: Enter the Simulation Parameters")
     return
 
 
@@ -400,6 +388,12 @@ def __(
 
 
 @app.cell
+def __(event_dict):
+    event_dict
+    return
+
+
+@app.cell
 def __(simulation_parameters):
     print(simulation_parameters)
     return
@@ -430,7 +424,6 @@ def __():
     from dr_simulator.visulization_helper import plot_dr_events
     from dr_simulator import utils as ut
     from dr_simulator.utils import DistributionTypes
-
     return DistributionTypes, dr_eve, dt, mo, plot_dr_events, plt, ut
 
 

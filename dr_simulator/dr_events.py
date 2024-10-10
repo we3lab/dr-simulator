@@ -57,7 +57,8 @@ class DemandResponseEvents:  # pylint: disable=too-many-instance-attributes
         self.max_consecutive_events = None
         self.notification_time = None
         self.notification_type = None
-        self.n_similar_weekdays = None
+        self.notification_offset = None
+        self.baseline_days = None
         self.ndays = None
         self.start_times = None
         self.event_duration = None
@@ -77,7 +78,8 @@ class DemandResponseEvents:  # pylint: disable=too-many-instance-attributes
         max_consecutive_events=3,
         notification_time=None,
         notification_type="day_before",
-        n_similar_weekdays=10,
+        notification_offset=None,
+        baseline_days=10,
         **kwargs
     ):
         """
@@ -113,7 +115,7 @@ class DemandResponseEvents:  # pylint: disable=too-many-instance-attributes
         self.max_consecutive_events = max_consecutive_events
         self.notification_time = notification_time
         self.notification_type = notification_type
-        self.n_similar_weekdays = n_similar_weekdays
+        self.baseline_days = baseline_days
         for key, value in kwargs.items():
             setattr(self, key, value)
 
@@ -327,8 +329,8 @@ class DemandResponseEvents:  # pylint: disable=too-many-instance-attributes
                     "end_time": end_time,
                     "event_hours": list(range(self.start_times[i], end_time)),
                     "notification_time": self.notification_time[i],
-                    "similar_weekdays": utils.get_n_similar_weekdays(
-                        event_day, self.event_days[:i], self.n_similar_weekdays
+                    "baseline_days": utils.get_baseline_days(
+                        event_day, self.event_days[:i], self.baseline_days
                     ),
                 }
             )

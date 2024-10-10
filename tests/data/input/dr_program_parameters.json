@@ -8,5 +8,5 @@
     "notification_time" : 17,
     "max_consecutive_events" : 3,
     "notification_type" : "day_before",
-    "n_similar_weekdays" : 10
+    "baseline_days" : 10
 }
