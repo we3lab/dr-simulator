@@ -17,7 +17,7 @@
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="_static/documentation_options.js?v=4621528c"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -102,7 +102,7 @@ generate demand response events for a given time period based on user’s inputs
 <dl class="py class">
 <dt class="sig sig-object py" id="dr_simulator.dr_events.DemandResponseEvents">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dr_simulator.dr_events.</span></span><span class="sig-name descname"><span class="pre">DemandResponseEvents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DR</span> <span class="pre">Program'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">60</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>This class is intended to be used to generate demand response events
 for a given time period based on user’s inputs.</p>
 <p>Follow the steps below to generate demand response events:</p>
@@ -165,7 +165,7 @@ uniform distribution</p>
 <dd class="field-even"><p><strong>p_calendar</strong> – Probability of each day being selected</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.26)">numpy.ndarray</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.1)">numpy.ndarray</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -218,7 +218,7 @@ given distribution</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dr_simulator.dr_events.DemandResponseEvents.set_program_parameters">
-<span class="sig-name descname"><span class="pre">set_program_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_days</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_days</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">program_start_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">program_end_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_consecutive_events</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notification_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notification_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'day_before'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_similar_weekdays</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.set_program_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.set_program_parameters" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_program_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_days</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_days</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">program_start_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">program_end_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_consecutive_events</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notification_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notification_delta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notification_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'day_before'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_similar_weekdays</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/dr_events.html#DemandResponseEvents.set_program_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.dr_events.DemandResponseEvents.set_program_parameters" title="Link to this definition"></a></dt>
 <dd><p>This function sets the program parameters for the demand response program</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -257,7 +257,7 @@ Other options are “day_of” and “hour_before”</p></li>
 <dl class="py class">
 <dt class="sig sig-object py" id="dr_simulator.utils.DistributionTypes">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">DistributionTypes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#DistributionTypes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.DistributionTypes" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></a></p>
 <p>Enum class for supported distributions</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="dr_simulator.utils.DistributionTypes.NORMAL">
@@ -274,6 +274,45 @@ Other options are “day_of” and “hour_before”</p></li>
 <span class="sig-name descname"><span class="pre">UNIFORM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'uniform'</span></em><a class="headerlink" href="#dr_simulator.utils.DistributionTypes.UNIFORM" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dr_simulator.utils.combine_overlapping_dr_events">
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">combine_overlapping_dr_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dr_events_dts</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#combine_overlapping_dr_events"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.combine_overlapping_dr_events" title="Link to this definition"></a></dt>
+<dd><p>Sorts the events in choronological order
+and combines overlapping demand response (DR) events into a single event</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dr_events_dts</strong> (<em>dict</em>)</p></li>
+<li><p><strong>A dictionary where values are lists or arrays of start and end times of DR events.</strong></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>dr_events_dts</strong> (<em>dict</em>)</p></li>
+<li><p><em>A dictionary where values are lists or arrays of start and end times of combined if overlapping DR events.</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dr_simulator.utils.convert_dr_event_details">
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">convert_dr_event_details</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event_details</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#convert_dr_event_details"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.convert_dr_event_details" title="Link to this definition"></a></dt>
+<dd><p>Converts the demand response event details to the format required by the optimizer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>event_details</strong> (<em>dict</em>) – Dictionary with the details of the demand response event</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>event_details</strong> – Dictionary with the details of the demand response event in the format required by the optimizer</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -309,7 +348,170 @@ Other options are “day_of” and “hour_before”</p></li>
 <dd class="field-even"><p>number of days in a <cite>month</cite> of <cite>year</cite></p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)">int</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dr_simulator.utils.get_date_range_prev_month">
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">get_date_range_prev_month</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_days</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#get_date_range_prev_month"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.get_date_range_prev_month" title="Link to this definition"></a></dt>
+<dd><p>This function gets the date range for the previous month</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>date</strong> (<em>datetime.datetime</em>) – Date of the event</p></li>
+<li><p><strong>n_days</strong> (<em>int</em>) – Number of days in the previous month</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>date_range</strong> – List of length n_days with the dates of the previous month</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dr_simulator.utils.get_day_of_adj_ratio">
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">get_day_of_adj_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dr_period_details</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">electricity_purchase_varnames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datetime_varname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">day_of_adj_details</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#get_day_of_adj_ratio"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.get_day_of_adj_ratio" title="Link to this definition"></a></dt>
+<dd><p>Get the day-of-adjustment ratio for a given demand response event.
+The day-of-adjustment ratio is calculated as the average consumption
+of the window hours before the event divided by the average consumption
+of the same hours on similar weekdays.
+The day-of-adjustment ratio is capped at the day_of_adj_max value.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul>
+<li><p><strong>dr_period_details</strong> (<em>dict</em>) – Dictionary with the details of the demand response event period and baseline days</p></li>
+<li><p><strong>output_data</strong> (<em>pandas.DataFrame</em>) – the output data for baseline calculation</p></li>
+<li><p><strong>electricity_purchase_varnames</strong> (<em>list</em>) – List of electricity purchase variable names</p></li>
+<li><p><strong>datetime_varname</strong> (<em>str</em>) – Name of the datetime variable in the output data</p></li>
+<li><p><strong>day_of_adj_details</strong> (<em>dict</em>) – Dictionary with the details of the day-of-adjustment calculation
+(default is {</p>
+<blockquote>
+<div><p>“maximum”: 0.4,
+“hours before”: 4,
+“duration”: 3</p>
+</div></blockquote>
+<p>}) for PG&amp;E’s CBP DR</p>
+</li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>day_of_adj_ratio</strong> – Day-of-adjustment ratio</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dr_simulator.utils.get_dr_baseline_dates">
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">get_dr_baseline_dates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dr_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#get_dr_baseline_dates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.get_dr_baseline_dates" title="Link to this definition"></a></dt>
+<dd><p>Get the demand response baseline dates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dr_data</strong> (<em>dict</em>) – Dictionary with the demand response data</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>dr_baseline_dates</strong> – np.array of np.datetime64 with the demand response baseline dates</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>array of np.datetime64</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dr_simulator.utils.get_dr_dates">
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">get_dr_dates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event_details</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizon_start_dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizon_end_dt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#get_dr_dates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.get_dr_dates" title="Link to this definition"></a></dt>
+<dd><p>Get the demand response event dates for the optimization horizon</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>event_details</strong> (<em>list of dict</em>) – Dictionary with the details of the demand response event</p></li>
+<li><p><strong>horizon_start_dt</strong> (<em>np.datetime64</em>) – Start datetime of the optimization horizon</p></li>
+<li><p><strong>horizon_end_dt</strong> (<em>np.datetime64</em>) – End datetime of the optimization horizon</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>dr_events_dts</strong> – List of np.datetime64 with the demand response event dates for the optimization horizon</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a> of np.datetime64</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dr_simulator.utils.get_freq_binsize_minutes">
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">get_freq_binsize_minutes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">freq</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#get_freq_binsize_minutes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.get_freq_binsize_minutes" title="Link to this definition"></a></dt>
+<dd><p>Gets size of a given time frequency expressed in units of minutes
+:Parameters: <strong>freq</strong> (<em>str</em>) – a string of the form [type][freq_binsize], where type corresponds to a numpy.timedelta64 encoding</p>
+<blockquote>
+<div><p>and freq binsize is an integer giving the number of increments of <cite>type</cite> of one binned increment of our time variable
+(for example ‘6h’ means the data are grouped into increments of 6 hours)</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.13)"><strong>ValueError</strong></a> – when resolution is not minute, hourly, or daily</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>integer giving the number of minutes in the given time frequency unit</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dr_simulator.utils.get_hourly_average_consumption">
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">get_hourly_average_consumption</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">similar_days</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event_hour</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">electricity_purchase_varnames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datetime_varname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#get_hourly_average_consumption"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.get_hourly_average_consumption" title="Link to this definition"></a></dt>
+<dd><p>Get the baseline consumption for a given demand response event</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>similar_days</strong> (<em>np.array of np.datetime64</em>) – List of similar weekdays</p></li>
+<li><p><strong>event_hour</strong> (<em>int</em>) – Hour of the day of the demand response event</p></li>
+<li><p><strong>output_data</strong> (<em>pandas.DataFrame</em>) – the output data for baseline calculation</p></li>
+<li><p><strong>electricity_purchase_varnames</strong> (<em>list</em>) – List of electricity purchase variable names</p></li>
+<li><p><strong>datetime_varname</strong> (<em>str</em>) – Name of the datetime variable in the output data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>baseline_consumption</strong> – Baseline consumption in kWh</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dr_simulator.utils.get_hourly_dr_event_arrays">
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">get_hourly_dr_event_arrays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event_start_dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizon_start_dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizon_end_dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'15m'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#get_hourly_dr_event_arrays"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.get_hourly_dr_event_arrays" title="Link to this definition"></a></dt>
+<dd><p>Get the hourly demand response event arrays for the optimization data
+with 1 for the hours of the demand response event and 0 otherwise
+for each demand response event hours</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>event_start_dt</strong> (<em>np.datetime64</em>) – Start datetime of the demand response event</p></li>
+<li><p><strong>event_end_dt</strong> (<em>np.datetime64</em>) – End datetime of the demand response event</p></li>
+<li><p><strong>horizon_start_dt</strong> (<em>np.datetime64</em>) – Start datetime of the optimization horizon</p></li>
+<li><p><strong>horizon_end_dt</strong> (<em>np.datetime64</em>) – End datetime of the optimization horizon</p></li>
+<li><p><strong>resolution</strong> (<em>str</em>) – Resolution of the optimization data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>hourly_dr_event_arrays</strong> – List of np.array with 1 for the hours of the demand response event and 0 otherwise</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a> of np.array</p>
 </dd>
 </dl>
 </dd></dl>
@@ -330,7 +532,30 @@ Other options are “day_of” and “hour_before”</p></li>
 <dd class="field-even"><p><strong>similar_weekdays</strong> – List of length of previous n_weekdays excluding the event days</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)">list</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dr_simulator.utils.get_start_end_dt">
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">get_start_end_dt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dr_start_dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dr_end_dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizon_start_dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizon_end_dt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#get_start_end_dt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.get_start_end_dt" title="Link to this definition"></a></dt>
+<dd><p>Get the start and end datetime of the demand response event within the optimization horizon</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dr_start_dt</strong> (<em>np.datetime64</em>) – Start datetime of the demand response event</p></li>
+<li><p><strong>dr_end_dt</strong> (<em>np.datetime64</em>) – End datetime of the demand response event</p></li>
+<li><p><strong>horizon_start_dt</strong> (<em>np.datetime64</em>) – Start datetime of the optimization horizon</p></li>
+<li><p><strong>horizon_end_dt</strong> (<em>np.datetime64</em>) – End datetime of the optimization horizon</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>start_dt</strong> (<em>np.datetime64</em>) – Start datetime of the demand response event within the optimization horizon</p></li>
+<li><p><strong>end_dt</strong> (<em>np.datetime64</em>) – End datetime of the demand response event within the optimization horizon</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -361,7 +586,26 @@ Other options are “day_of” and “hour_before”</p></li>
 <dd class="field-even"><p><strong>object_</strong> – python object converted from str</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)">object</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)">object</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dr_simulator.utils.parse_freq">
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">parse_freq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">freq</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#parse_freq"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.parse_freq" title="Link to this definition"></a></dt>
+<dd><p>Parses a time frequency code string, returning its type and its freq_binsize</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>freq</strong> (<em>str</em>) – string of the form [type][freq_binsize], where type corresponds to a numpy.timedelta64 encoding
+and freq binsize is an integer giving the number of increments of <cite>type</cite> of one binned increment of our time variable
+(for example ‘6h’ means the data are grouped into increments of 6 hours)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple of the form (<cite>int</cite>,`str`) giving the binsize and type of the time frequency given</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -392,7 +636,24 @@ Other options are “day_of” and “hour_before”</p></li>
 <dd class="field-even"><p>unpickled object found at the <cite>path</cite></p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)">object</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)">object</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dr_simulator.utils.sanitize_dr_data">
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.utils.</span></span><span class="sig-name descname"><span class="pre">sanitize_dr_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dr_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/utils.html#sanitize_dr_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.utils.sanitize_dr_data" title="Link to this definition"></a></dt>
+<dd><p>Sanitize the demand response data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dr_data</strong> (<em>dict</em>) – Dictionary with the demand response data</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>dr_data</strong> – Dictionary with the sanitized demand response data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -412,7 +673,7 @@ Other options are “day_of” and “hour_before”</p></li>
 <dd class="field-even"><p>Distribution parameters as dictionary</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)">dict</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -432,7 +693,7 @@ Other options are “day_of” and “hour_before”</p></li>
 <dd class="field-even"><p>True if the parameters are valid, False otherwise</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>

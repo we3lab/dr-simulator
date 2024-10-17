@@ -16,7 +16,7 @@
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="_static/documentation_options.js?v=4621528c"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="#" />
@@ -108,10 +108,14 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="API.html#dr_simulator.utils.create_calender">create_calender() (in module dr_simulator.utils)</a>, <a href="dr_simulator.html#dr_simulator.utils.create_calender">[1]</a>
+      <li><a href="API.html#dr_simulator.utils.combine_overlapping_dr_events">combine_overlapping_dr_events() (in module dr_simulator.utils)</a>, <a href="dr_simulator.html#dr_simulator.utils.combine_overlapping_dr_events">[1]</a>
+</li>
+      <li><a href="API.html#dr_simulator.utils.convert_dr_event_details">convert_dr_event_details() (in module dr_simulator.utils)</a>, <a href="dr_simulator.html#dr_simulator.utils.convert_dr_event_details">[1]</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="API.html#dr_simulator.utils.create_calender">create_calender() (in module dr_simulator.utils)</a>, <a href="dr_simulator.html#dr_simulator.utils.create_calender">[1]</a>
+</li>
       <li><a href="API.html#dr_simulator.dr_events.DemandResponseEvents.create_dr_events_mtcs">create_dr_events_mtcs() (dr_simulator.dr_events.DemandResponseEvents method)</a>, <a href="dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.create_dr_events_mtcs">[1]</a>
 </li>
   </ul></td>
@@ -164,13 +168,29 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="API.html#dr_simulator.dr_events.DemandResponseEvents.generate_event_dict">generate_event_dict() (dr_simulator.dr_events.DemandResponseEvents method)</a>, <a href="dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.generate_event_dict">[1]</a>
 </li>
-      <li><a href="dr_simulator.html#dr_simulator.get_module_version">get_module_version() (in module dr_simulator)</a>
+      <li><a href="API.html#dr_simulator.utils.get_date_range_prev_month">get_date_range_prev_month() (in module dr_simulator.utils)</a>, <a href="dr_simulator.html#dr_simulator.utils.get_date_range_prev_month">[1]</a>
+</li>
+      <li><a href="API.html#dr_simulator.utils.get_day_of_adj_ratio">get_day_of_adj_ratio() (in module dr_simulator.utils)</a>, <a href="dr_simulator.html#dr_simulator.utils.get_day_of_adj_ratio">[1]</a>
+</li>
+      <li><a href="API.html#dr_simulator.utils.get_dr_baseline_dates">get_dr_baseline_dates() (in module dr_simulator.utils)</a>, <a href="dr_simulator.html#dr_simulator.utils.get_dr_baseline_dates">[1]</a>
+</li>
+      <li><a href="API.html#dr_simulator.utils.get_dr_dates">get_dr_dates() (in module dr_simulator.utils)</a>, <a href="dr_simulator.html#dr_simulator.utils.get_dr_dates">[1]</a>
+</li>
+      <li><a href="API.html#dr_simulator.utils.get_freq_binsize_minutes">get_freq_binsize_minutes() (in module dr_simulator.utils)</a>, <a href="dr_simulator.html#dr_simulator.utils.get_freq_binsize_minutes">[1]</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="API.html#dr_simulator.utils.get_hourly_average_consumption">get_hourly_average_consumption() (in module dr_simulator.utils)</a>, <a href="dr_simulator.html#dr_simulator.utils.get_hourly_average_consumption">[1]</a>
+</li>
+      <li><a href="API.html#dr_simulator.utils.get_hourly_dr_event_arrays">get_hourly_dr_event_arrays() (in module dr_simulator.utils)</a>, <a href="dr_simulator.html#dr_simulator.utils.get_hourly_dr_event_arrays">[1]</a>
+</li>
+      <li><a href="dr_simulator.html#dr_simulator.get_module_version">get_module_version() (in module dr_simulator)</a>
+</li>
       <li><a href="API.html#dr_simulator.utils.get_n_similar_weekdays">get_n_similar_weekdays() (in module dr_simulator.utils)</a>, <a href="dr_simulator.html#dr_simulator.utils.get_n_similar_weekdays">[1]</a>
 </li>
       <li><a href="API.html#dr_simulator.dr_events.DemandResponseEvents.get_pdates">get_pdates() (dr_simulator.dr_events.DemandResponseEvents method)</a>, <a href="dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.get_pdates">[1]</a>
+</li>
+      <li><a href="API.html#dr_simulator.utils.get_start_end_dt">get_start_end_dt() (in module dr_simulator.utils)</a>, <a href="dr_simulator.html#dr_simulator.utils.get_start_end_dt">[1]</a>
 </li>
   </ul></td>
 </tr></table>
@@ -217,12 +237,14 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="API.html#dr_simulator.utils.pickle_dump">pickle_dump() (in module dr_simulator.utils)</a>, <a href="dr_simulator.html#dr_simulator.utils.pickle_dump">[1]</a>
+      <li><a href="API.html#dr_simulator.utils.parse_freq">parse_freq() (in module dr_simulator.utils)</a>, <a href="dr_simulator.html#dr_simulator.utils.parse_freq">[1]</a>
 </li>
-      <li><a href="API.html#dr_simulator.utils.pickle_load">pickle_load() (in module dr_simulator.utils)</a>, <a href="dr_simulator.html#dr_simulator.utils.pickle_load">[1]</a>
+      <li><a href="API.html#dr_simulator.utils.pickle_dump">pickle_dump() (in module dr_simulator.utils)</a>, <a href="dr_simulator.html#dr_simulator.utils.pickle_dump">[1]</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="API.html#dr_simulator.utils.pickle_load">pickle_load() (in module dr_simulator.utils)</a>, <a href="dr_simulator.html#dr_simulator.utils.pickle_load">[1]</a>
+</li>
       <li><a href="API.html#dr_simulator.visulization_helper.plot_dr_events">plot_dr_events() (in module dr_simulator.visulization_helper)</a>, <a href="dr_simulator.html#dr_simulator.visulization_helper.plot_dr_events">[1]</a>
 </li>
       <li><a href="API.html#dr_simulator.utils.DistributionTypes.POISSON">POISSON (dr_simulator.utils.DistributionTypes attribute)</a>, <a href="dr_simulator.html#dr_simulator.utils.DistributionTypes.POISSON">[1]</a>
@@ -233,14 +255,16 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="API.html#dr_simulator.utils.sanitize_dr_data">sanitize_dr_data() (in module dr_simulator.utils)</a>, <a href="dr_simulator.html#dr_simulator.utils.sanitize_dr_data">[1]</a>
+</li>
       <li><a href="API.html#dr_simulator.dr_events.DemandResponseEvents.set_event_dates">set_event_dates() (dr_simulator.dr_events.DemandResponseEvents method)</a>, <a href="dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.set_event_dates">[1]</a>
 </li>
       <li><a href="API.html#dr_simulator.dr_events.DemandResponseEvents.set_event_duration">set_event_duration() (dr_simulator.dr_events.DemandResponseEvents method)</a>, <a href="dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.set_event_duration">[1]</a>
 </li>
-      <li><a href="API.html#dr_simulator.dr_events.DemandResponseEvents.set_ndays">set_ndays() (dr_simulator.dr_events.DemandResponseEvents method)</a>, <a href="dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.set_ndays">[1]</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="API.html#dr_simulator.dr_events.DemandResponseEvents.set_ndays">set_ndays() (dr_simulator.dr_events.DemandResponseEvents method)</a>, <a href="dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.set_ndays">[1]</a>
+</li>
       <li><a href="API.html#dr_simulator.dr_events.DemandResponseEvents.set_notification_time">set_notification_time() (dr_simulator.dr_events.DemandResponseEvents method)</a>, <a href="dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.set_notification_time">[1]</a>
 </li>
       <li><a href="API.html#dr_simulator.dr_events.DemandResponseEvents.set_program_parameters">set_program_parameters() (dr_simulator.dr_events.DemandResponseEvents method)</a>, <a href="dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.set_program_parameters">[1]</a>
