@@ -4,6 +4,14 @@ dr\_simulator package
 Submodules
 ----------
 
+dr\_simulator.costs module
+--------------------------
+
+.. automodule:: dr_simulator.costs
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 dr\_simulator.data module
 -------------------------
 

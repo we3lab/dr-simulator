@@ -95,6 +95,69 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
+<section id="module-dr_simulator.costs">
+<span id="dr-simulator-costs-module"></span><h2>dr_simulator.costs module<a class="headerlink" href="#module-dr_simulator.costs" title="Link to this heading"></a></h2>
+<p>This module contains the cost functions used in the demand response simulator.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="dr_simulator.costs.calculate_dr_payment">
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.costs.</span></span><span class="sig-name descname"><span class="pre">calculate_dr_payment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dr_period_details</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capacity_bid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capacity_price</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payment_functions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">electricity_purchase_varnames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datetime_varname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">day_of_adj_details</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/costs.html#calculate_dr_payment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.costs.calculate_dr_payment" title="Link to this definition"></a></dt>
+<dd><p>Calculate the payment expression from a demand response event</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul>
+<li><p><strong>dr_period_details</strong> (<em>dict</em>) – Dictionary with the details of the demand response event period and baseline days</p></li>
+<li><p><strong>capacity_bid</strong> (<em>float</em>) – The capacity bid for the demand response event</p></li>
+<li><p><strong>capacity_price</strong> (<em>float</em>) – The price for the capacity bid</p></li>
+<li><p><strong>payment_functions</strong> (<em>list</em>) – List of dictionaries with the keys “domain”, “slope”, and “intercept” that define
+the payment function</p></li>
+<li><p><strong>output_data</strong> (<em>pandas.DataFrame</em>) – The output data for baseline calculation</p></li>
+<li><p><strong>electricity_purchase_varnames</strong> (<em>list</em>) – List of electricity purchase variable names</p></li>
+<li><p><strong>datetime_varname</strong> (<em>str</em>) – Name of the datetime variable in the output data</p></li>
+<li><p><strong>day_of_adj_details</strong> (<em>dict</em>) – Dictionary with the details of the day-of-adjustment calculation
+(default is {</p>
+<blockquote>
+<div><p>“maximum”: 0.4,
+“hours before”: 4,
+“duration”: 3</p>
+</div></blockquote>
+<p>}) for PG&amp;E’s CBP DR</p>
+</li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary with keys “payment”, “ratio”, “reduction”, and “baseline”</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dr_simulator.costs.calculate_dr_payment_region">
+<span class="sig-prename descclassname"><span class="pre">dr_simulator.costs.</span></span><span class="sig-name descname"><span class="pre">calculate_dr_payment_region</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ratio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domains</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dr_simulator/costs.html#calculate_dr_payment_region"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dr_simulator.costs.calculate_dr_payment_region" title="Link to this definition"></a></dt>
+<dd><p>Calculate the payment multiplier for a single demand response event for CBP.</p>
+<section id="paremeters">
+<h3>Paremeters<a class="headerlink" href="#paremeters" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>ratio<span class="classifier">float</span></dt><dd><p>The ratio of baseline consumption to actual consumption</p>
+</dd>
+<dt>domains<span class="classifier">list</span></dt><dd><p>list of tuples of the form (lower, upper) that define the regions of the
+payment function</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The domain index the ratio corresponds to</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
 <section id="module-dr_simulator.data">
 <span id="dr-simulator-data-module"></span><h2>dr_simulator.data module<a class="headerlink" href="#module-dr_simulator.data" title="Link to this heading"></a></h2>
 <p>This module contains the data structures used in the demand response simulator.</p>
