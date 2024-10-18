@@ -1,4 +1,9 @@
-""" Test functions for utils.py """
+""" 
+Tests for functions for `utils.py` module of the `dr_simulator` package.
+
+Docs: https://docs.pytest.org/en/latest/
+      https://docs.pytest.org/en/latest/goodpractices.html#conventions-for-python-test-discovery
+"""
 
 import os
 from datetime import datetime as dt
