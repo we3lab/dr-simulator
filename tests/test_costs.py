@@ -76,7 +76,7 @@ def test_calculate_dr_payment(
     day_of_adj_max,
     expected,
 ):
-    """ 
+    """
     Test for the `calculate_dr_payment` function in the `costs.py` module.
 
     Parameters
@@ -212,47 +212,47 @@ def test_calculate_dr_payment(
             0.4,
             [
                 {
-                    'payment_list': [2352.0, 2352.0],
-                    'payment': 4704.0,
-                    'ratio_list': [5.52, 3.98],
-                    'ratio': 4.75,
-                    'reduction_list': [551.94, 397.74],
-                    'reduction': 474.84,
-                    'baseline_list': [801.94, 647.74],
-                    'baseline': 724.84
+                    "payment_list": [2352.0, 2352.0],
+                    "payment": 4704.0,
+                    "ratio_list": [5.52, 3.98],
+                    "ratio": 4.75,
+                    "reduction_list": [551.94, 397.74],
+                    "reduction": 474.84,
+                    "baseline_list": [801.94, 647.74],
+                    "baseline": 724.84,
                 },
                 {
-                    'payment_list': [2352.0, -1344.0, -949.78, 2352.0],
-                    'payment': 2410.22,
-                    'ratio_list': [5.05, -0.01, 0.18, 1.05],
-                    'ratio': 1.57,
-                    'reduction_list': [505.0, -0.73, 17.6, 105.0],
-                    'reduction': 156.72,
-                    'baseline_list': [755.0, 609.48, 627.81, 647.74],
-                    'baseline': 660.01
+                    "payment_list": [2352.0, -1344.0, -949.78, 2352.0],
+                    "payment": 2410.22,
+                    "ratio_list": [5.05, -0.01, 0.18, 1.05],
+                    "ratio": 1.57,
+                    "reduction_list": [505.0, -0.73, 17.6, 105.0],
+                    "reduction": 156.72,
+                    "baseline_list": [755.0, 609.48, 627.81, 647.74],
+                    "baseline": 660.01,
                 },
                 {
-                    'payment_list': [2352.0, -1344.0, 1120.0],
-                    'payment': 2128.0,
-                    'ratio_list': [3.93, -0.44, 0.65],
-                    'ratio': 1.38,
-                    'reduction_list': [393.02, -44.25, 65.34],
-                    'reduction': 138.04,
-                    'baseline_list': [802.18, 588.57, 604.45],
-                    'baseline': 665.07
+                    "payment_list": [2352.0, -1344.0, 1120.0],
+                    "payment": 2128.0,
+                    "ratio_list": [3.93, -0.44, 0.65],
+                    "ratio": 1.38,
+                    "reduction_list": [393.02, -44.25, 65.34],
+                    "reduction": 138.04,
+                    "baseline_list": [802.18, 588.57, 604.45],
+                    "baseline": 665.07,
                 },
                 {
-                    'payment_list': [2352.0, -1344.0, -1213.22, 2352.0],
-                    'payment': 2146.78,
-                    'ratio_list': [4.68, -0.16, 0.06, 1.05],
-                    'ratio': 1.41,
-                    'reduction_list': [468.1, -15.74, 5.84, 105.0],
-                    'reduction': 140.8,
-                    'baseline_list': [763.02, 597.0, 618.58, 614.53],
-                    'baseline': 648.28
-                }
-            ]
-        )
+                    "payment_list": [2352.0, -1344.0, -1213.22, 2352.0],
+                    "payment": 2146.78,
+                    "ratio_list": [4.68, -0.16, 0.06, 1.05],
+                    "ratio": 1.41,
+                    "reduction_list": [468.1, -15.74, 5.84, 105.0],
+                    "reduction": 140.8,
+                    "baseline_list": [763.02, 597.0, 618.58, 614.53],
+                    "baseline": 648.28,
+                },
+            ],
+        ),
     ],
 )
 def test_calculate_dr_payments(
