@@ -76,6 +76,33 @@ def test_calculate_dr_payment(
     day_of_adj_max,
     expected,
 ):
+    """ 
+    Test for the `calculate_dr_payment` function in the `costs.py` module.
+
+    Parameters
+    ----------
+    event_data : dict
+        Dictionary with the details of the demand response event
+
+    output_data : str
+        Path to the output data file
+
+    electricity_purchase_varnames : list
+        List of electricity purchase variable names
+
+    datetime_varname : str
+        Name of the datetime variable in the output data
+
+    day_of_adj_bool : bool
+        Boolean indicating whether to use day-of-adjustment
+
+    day_of_adj_max : float
+        Maximum day-of-adjustment value
+
+    expected : dict
+        Dictionary
+
+    """
 
     output_data = pd.read_csv(output_data)
     output_data[datetime_varname] = pd.to_datetime(output_data[datetime_varname])
@@ -237,6 +264,33 @@ def test_calculate_dr_payments(
     day_of_adj_max,
     expected,
 ):
+    """
+    Test for the `calculate_dr_payments` function in the `costs.py` module.
+
+    Parameters
+    ----------
+    event_data : dict
+        Dictionary with the details of the demand response event
+
+    output_data : str
+        Path to the output data file
+
+    electricity_purchase_varnames : list
+        List of electricity purchase variable names
+
+    datetime_varname : str
+        Name of the datetime variable in the output data
+
+    day_of_adj_bool : bool
+        Boolean indicating whether to use day-of-adjustment
+
+    day_of_adj_max : float
+        Maximum day-of-adjustment value
+
+    expected : dict
+        Dictionary
+
+    """
     output_data = pd.read_csv(output_data)
     output_data[datetime_varname] = pd.to_datetime(output_data[datetime_varname])
 
