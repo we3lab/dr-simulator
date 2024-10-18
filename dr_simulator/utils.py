@@ -49,6 +49,7 @@ def validate_distribution_params(distr_type, distr_params):
         return False
     return True
 
+
 def parse_freq(freq):
     """Parses a time frequency code string, returning its type and its freq_binsize
 
@@ -67,6 +68,7 @@ def parse_freq(freq):
     freq_type = re.sub("[0-9]", "", freq)
     freq_binsize = int(re.sub("[^0-9]", "", freq))
     return freq_binsize, freq_type
+
 
 def get_freq_binsize_minutes(freq):
     """Gets size of a given time frequency expressed in units of minutes
@@ -99,6 +101,7 @@ def get_freq_binsize_minutes(freq):
             "Cannot deal with data that are not in minute, hourly, or daily resolution"
         )
     return multiplier * freq_binsize
+
 
 def text_to_param_dict(distr_type, distr_params_text):
     """Converts distribution parameters entered as text to param_dict
@@ -267,6 +270,7 @@ def get_n_similar_weekdays(date, prev_event_days, n_weekdays=10):
             similar_weekdays.append(date)
     return similar_weekdays
 
+
 def get_date_range_prev_month(date, n_days):
     """
     This function gets the date range for the previous month
@@ -290,7 +294,14 @@ def get_date_range_prev_month(date, n_days):
         date_range.append(date)
     return date_range
 
-def get_hourly_average_consumption(similar_days, event_hour, output_data, electricity_purchase_varnames, datetime_varname):
+
+def get_hourly_average_consumption(
+    similar_days,
+    event_hour,
+    output_data,
+    electricity_purchase_varnames,
+    datetime_varname,
+):
     """Get the baseline consumption for a given demand response event
 
     Parameters
@@ -306,7 +317,7 @@ def get_hourly_average_consumption(similar_days, event_hour, output_data, electr
 
     electricity_purchase_varnames : list
         List of electricity purchase variable names
-    
+
     datetime_varname : str
         Name of the datetime variable in the output data
 
@@ -334,15 +345,24 @@ def get_hourly_average_consumption(similar_days, event_hour, output_data, electr
     if filter_mask.sum() == 0:
         raise ValueError("No similar days found in the output data")
 
-    baseline_consumption = output_data.loc[filter_mask, electricity_purchase_varnames].sum(axis=1).mean()
+    baseline_consumption = (
+        output_data.loc[filter_mask, electricity_purchase_varnames].sum(axis=1).mean()
+    )
 
     return baseline_consumption
 
-def get_day_of_adj_ratio(dr_period_details, output_data, electricity_purchase_varnames, datetime_varname, day_of_adj_details=None):
+
+def get_day_of_adj_ratio(
+    dr_period_details,
+    output_data,
+    electricity_purchase_varnames,
+    datetime_varname,
+    day_of_adj_details=None,
+):
     """
     Get the day-of-adjustment ratio for a given demand response event.
-    The day-of-adjustment ratio is calculated as the average consumption 
-    of the window hours before the event divided by the average consumption 
+    The day-of-adjustment ratio is calculated as the average consumption
+    of the window hours before the event divided by the average consumption
     of the same hours on similar weekdays.
     The day-of-adjustment ratio is capped at the day_of_adj_max value.
 
@@ -373,13 +393,9 @@ def get_day_of_adj_ratio(dr_period_details, output_data, electricity_purchase_va
     day_of_adj_ratio : float
         Day-of-adjustment ratio
     """
-    if day_of_adj_details is None: # Default values for PG&E's CBP DR
-        day_of_adj_details = {
-            "maximum": 0.4,
-            "hours before": 4,
-            "duration": 3
-        }
-    
+    if day_of_adj_details is None:  # Default values for PG&E's CBP DR
+        day_of_adj_details = {"maximum": 0.4, "hours before": 4, "duration": 3}
+
     day_of_adj_baseline_consumption = 0
     day_of_adj_consumption = 0
     doa_max = day_of_adj_details["maximum"]
@@ -389,9 +405,8 @@ def get_day_of_adj_ratio(dr_period_details, output_data, electricity_purchase_va
     baseline_days = dr_period_details["baseline days"]
     event_start_dt, _ = dr_period_details["event_dts"]
 
-    doa_hours_before = np.timedelta64(doa_hours_before-1, "h")
-    doa_duration = np.timedelta64(doa_duration-1, "h")
-
+    doa_hours_before = np.timedelta64(doa_hours_before - 1, "h")
+    doa_duration = np.timedelta64(doa_duration - 1, "h")
 
     for day_of_adj_hour in pd.date_range(
         event_start_dt - doa_hours_before,
@@ -403,7 +418,7 @@ def get_day_of_adj_ratio(dr_period_details, output_data, electricity_purchase_va
             day_of_adj_hour.hour,
             output_data,
             electricity_purchase_varnames,
-            datetime_varname
+            datetime_varname,
         )
         day_of_adj_baseline_consumption += baseline_consumption
 
@@ -412,7 +427,7 @@ def get_day_of_adj_ratio(dr_period_details, output_data, electricity_purchase_va
             day_of_adj_hour.hour,
             output_data,
             electricity_purchase_varnames,
-            datetime_varname
+            datetime_varname,
         )
 
         day_of_adj_consumption += day_of_adj_consumption
@@ -428,10 +443,13 @@ def get_day_of_adj_ratio(dr_period_details, output_data, electricity_purchase_va
     day_of_adj_ratio = min(day_of_adj_ratio, doa_max)
     return day_of_adj_ratio
 
-def get_hourly_dr_event_arrays(event_start_dt, horizon_start_dt, horizon_end_dt, resolution="15m"):
+
+def get_hourly_dr_event_arrays(
+    event_start_dt, horizon_start_dt, horizon_end_dt, resolution="15m"
+):
     """
     Get the hourly demand response event arrays for the optimization data
-    with 1 for the hours of the demand response event and 0 otherwise 
+    with 1 for the hours of the demand response event and 0 otherwise
     for each demand response event hours
 
     Parameters
@@ -458,7 +476,9 @@ def get_hourly_dr_event_arrays(event_start_dt, horizon_start_dt, horizon_end_dt,
     """
     res_binsize_minutes = get_freq_binsize_minutes(resolution)
     n_per_hour = int(60 / res_binsize_minutes)
-    ntsteps = int((horizon_end_dt - horizon_start_dt) / np.timedelta64(res_binsize_minutes, "m"))
+    ntsteps = int(
+        (horizon_end_dt - horizon_start_dt) / np.timedelta64(res_binsize_minutes, "m")
+    )
     datetime = pd.DataFrame(
         np.array(
             [
@@ -475,6 +495,7 @@ def get_hourly_dr_event_arrays(event_start_dt, horizon_start_dt, horizon_end_dt,
     event_idx = event_idx[0][0]
     hourly_dr_event_arrays[event_idx : event_idx + n_per_hour] = 1
     return hourly_dr_event_arrays
+
 
 def get_dr_dates(event_details, horizon_start_dt, horizon_end_dt):
     """
@@ -496,34 +517,36 @@ def get_dr_dates(event_details, horizon_start_dt, horizon_end_dt):
     dr_events_dts : dict of np.datetime64
         List of np.datetime64 with the demand response event dates for the optimization horizon
     """
-    if event_details[0]["day"] is None: # If there are no demand response events
+    if event_details[0]["day"] is None:  # If there are no demand response events
         return {}
     dr_events_dts = {}
     for i, event in enumerate(event_details):
         event_start_dt = np.datetime64(
             dt.datetime(
-                event["year"],
-                event["month"],
-                event["day"],
-                event["start_time"],
-                0,
-                0
+                event["year"], event["month"], event["day"], event["start_time"], 0, 0
             ),
-            "s"
+            "s",
         )
         event_end_dt = event_start_dt + np.timedelta64(event["duration"], "h")
-        start_dt, end_dt = get_start_end_dt(event_start_dt, event_end_dt, horizon_start_dt, horizon_end_dt)
+        start_dt, end_dt = get_start_end_dt(
+            event_start_dt, event_end_dt, horizon_start_dt, horizon_end_dt
+        )
         if start_dt is not None:
             dr_events_dts[f"event_{i}"] = {}
             dr_events_dts[f"event_{i}"]["event_dts"] = np.array([start_dt, end_dt])
             dr_events_dts[f"event_{i}"]["baseline days"] = event["baseline days"]
-        
-    dr_events_dts = combine_overlapping_dr_events(dr_events_dts) if len(dr_events_dts) > 1 else dr_events_dts
+
+    dr_events_dts = (
+        combine_overlapping_dr_events(dr_events_dts)
+        if len(dr_events_dts) > 1
+        else dr_events_dts
+    )
     return dr_events_dts
+
 
 def combine_overlapping_dr_events(dr_events_dts):
     """
-    Sorts the events in choronological order 
+    Sorts the events in choronological order
     and combines overlapping demand response (DR) events into a single event
 
     Parameters
@@ -537,7 +560,9 @@ def combine_overlapping_dr_events(dr_events_dts):
     A dictionary where values are lists or arrays of start and end times of combined if overlapping DR events.
     """
     # Convert dictionary values to a numpy array and sort by start times
-    dr_dates_array = np.array([val["event_dts"] for val in dr_events_dts.values()], dtype='datetime64')
+    dr_dates_array = np.array(
+        [val["event_dts"] for val in dr_events_dts.values()], dtype="datetime64"
+    )
     baseline_days = [val["baseline days"] for val in dr_events_dts.values()]
     dr_dates_array = dr_dates_array[np.argsort(dr_dates_array[:, 0])]
     baseline_days = [baseline_days[i] for i in np.argsort(dr_dates_array[:, 0])]
@@ -549,6 +574,7 @@ def combine_overlapping_dr_events(dr_events_dts):
             raise ValueError("Overlapping DR events are not allowed")
 
     return dr_events_dts
+
 
 def get_start_end_dt(dr_start_dt, dr_end_dt, horizon_start_dt, horizon_end_dt):
     """
@@ -610,6 +636,7 @@ def get_start_end_dt(dr_start_dt, dr_end_dt, horizon_start_dt, horizon_end_dt):
         end_dt = None
     return start_dt, end_dt
 
+
 def convert_dr_event_details(event_details):
     """
     Converts the demand response event details to the format required by the optimizer
@@ -624,7 +651,13 @@ def convert_dr_event_details(event_details):
     event_details : dict
         Dictionary with the details of the demand response event in the format required by the optimizer
     """
-    event_details["baseline days"] = np.array([np.datetime64(similar_weekday) for similar_weekday in event_details["baseline days"]], dtype="datetime64")
+    event_details["baseline days"] = np.array(
+        [
+            np.datetime64(similar_weekday)
+            for similar_weekday in event_details["baseline days"]
+        ],
+        dtype="datetime64",
+    )
     event_details["day"] = int(event_details["day"])
     event_details["month"] = int(event_details["month"])
     event_details["year"] = int(event_details["year"])
@@ -632,6 +665,7 @@ def convert_dr_event_details(event_details):
     event_details["duration"] = int(event_details["duration"])
 
     return event_details
+
 
 def sanitize_dr_data(dr_data):
     """
@@ -653,6 +687,7 @@ def sanitize_dr_data(dr_data):
         dr_data["events detail"][i] = convert_dr_event_details(event_details)
     return dr_data
 
+
 def get_dr_baseline_dates(dr_data):
     """
     Get the demand response baseline dates
@@ -662,7 +697,7 @@ def get_dr_baseline_dates(dr_data):
     dr_data : dict
         Dictionary with the demand response data
 
-    
+
     Returns
     -------
     dr_baseline_dates : array of np.datetime64

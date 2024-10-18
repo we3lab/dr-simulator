@@ -52,9 +52,7 @@ class DemandResponseEvents:  # pylint: disable=too-many-instance-attributes
         self.end_dt = end_dt
         self.name = name
         self.time_step = time_step
-        self.holidays = holidays().holidays(
-            start_dt, end_dt
-        )
+        self.holidays = holidays().holidays(start_dt, end_dt)
         self.min_days = None
         self.max_days = None
         self.min_duration = None
@@ -70,10 +68,10 @@ class DemandResponseEvents:  # pylint: disable=too-many-instance-attributes
         self.start_times = None
         self.event_duration = None
         self.event_days = None
-        self.notification_time = None # datetime.datetime
+        self.notification_time = None  # datetime.datetime
         self.event_dict = None
         self.dr_events_mtcs = None
-        self.holidays_boolean = False # boolean
+        self.holidays_boolean = False  # boolean
         # ADD new attributes here
 
     def set_program_parameters(  # pylint: disable=too-many-arguments
@@ -212,13 +210,13 @@ class DemandResponseEvents:  # pylint: disable=too-many-instance-attributes
             for i in range((self.end_dt - self.start_dt).days + 1)
         ]
         woy, dow, p_calendar = utils.create_calender(dates)
-        holiday_weekdays = self.holidays.day[self.holidays.day_of_week<5].values
+        holiday_weekdays = self.holidays.day[self.holidays.day_of_week < 5].values
         n_holidays_weekday = holiday_weekdays.shape[0]
         weekdays_idx = (woy[dow < 5], dow[dow < 5])
         n_weekdays = dow[dow < 5].shape[0] - n_holidays_weekday
         p_calendar[weekdays_idx] = 1 / n_weekdays
         p_calendar = p_calendar[woy, dow]
-        p_calendar[holiday_weekdays-1] = 0
+        p_calendar[holiday_weekdays - 1] = 0
         return p_calendar
 
     def set_event_dates(self, seed=None, p_dates=None):
@@ -272,11 +270,13 @@ class DemandResponseEvents:  # pylint: disable=too-many-instance-attributes
             self.notification_time = notification_time
 
         if (
-            (self.notification_time is None and self.notification_type == "day_before")
-            or (self.notification_type == "day_of" and not (self.notification_time is None or self.notification_delta is None))
-            ):
+            self.notification_time is None and self.notification_type == "day_before"
+        ) or (
+            self.notification_type == "day_of"
+            and not (self.notification_time is None or self.notification_delta is None)
+        ):
             raise ValueError(NOTIFICATION_TIME_ERROR)
-        
+
         notification_time = []
 
         for i, event_day in enumerate(self.event_days):
@@ -301,7 +301,10 @@ class DemandResponseEvents:  # pylint: disable=too-many-instance-attributes
                 )
                 notification_time.append(event_detail - dt.timedelta(hours=1))
             elif self.notification_type == "day_of":
-                if self.notification_time is not None and self.notification_delta is not None:
+                if (
+                    self.notification_time is not None
+                    and self.notification_delta is not None
+                ):
                     raise ValueError(NOTIFICATION_TIME_ERROR_DAY_OF)
                 if self.notification_delta is not None:
                     event_detail = dt.datetime(
@@ -312,7 +315,9 @@ class DemandResponseEvents:  # pylint: disable=too-many-instance-attributes
                         0,
                         0,
                     )
-                    notification_time.append(event_detail - dt.timedelta(hours=self.notification_delta))
+                    notification_time.append(
+                        event_detail - dt.timedelta(hours=self.notification_delta)
+                    )
                 if self.notification_time is not None:
                     event_detail = dt.datetime(
                         event_day.year,
