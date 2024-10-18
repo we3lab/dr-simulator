@@ -148,6 +148,7 @@
     <span class="k">return</span> <span class="kc">True</span></div>
 
 
+
 <div class="viewcode-block" id="parse_freq">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.parse_freq">[docs]</a>
 <span class="k">def</span> <span class="nf">parse_freq</span><span class="p">(</span><span class="n">freq</span><span class="p">):</span>
@@ -168,6 +169,7 @@
     <span class="n">freq_type</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;[0-9]&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="p">)</span>
     <span class="n">freq_binsize</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;[^0-9]&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">freq_binsize</span><span class="p">,</span> <span class="n">freq_type</span></div>
+
 
 
 <div class="viewcode-block" id="get_freq_binsize_minutes">
@@ -203,6 +205,7 @@
             <span class="s2">&quot;Cannot deal with data that are not in minute, hourly, or daily resolution&quot;</span>
         <span class="p">)</span>
     <span class="k">return</span> <span class="n">multiplier</span> <span class="o">*</span> <span class="n">freq_binsize</span></div>
+
 
 
 <div class="viewcode-block" id="text_to_param_dict">
@@ -396,6 +399,7 @@
     <span class="k">return</span> <span class="n">similar_weekdays</span></div>
 
 
+
 <div class="viewcode-block" id="get_date_range_prev_month">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.get_date_range_prev_month">[docs]</a>
 <span class="k">def</span> <span class="nf">get_date_range_prev_month</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">n_days</span><span class="p">):</span>
@@ -422,9 +426,16 @@
     <span class="k">return</span> <span class="n">date_range</span></div>
 
 
+
 <div class="viewcode-block" id="get_hourly_average_consumption">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.get_hourly_average_consumption">[docs]</a>
-<span class="k">def</span> <span class="nf">get_hourly_average_consumption</span><span class="p">(</span><span class="n">similar_days</span><span class="p">,</span> <span class="n">event_hour</span><span class="p">,</span> <span class="n">output_data</span><span class="p">,</span> <span class="n">electricity_purchase_varnames</span><span class="p">,</span> <span class="n">datetime_varname</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">get_hourly_average_consumption</span><span class="p">(</span>
+    <span class="n">similar_days</span><span class="p">,</span>
+    <span class="n">event_hour</span><span class="p">,</span>
+    <span class="n">output_data</span><span class="p">,</span>
+    <span class="n">electricity_purchase_varnames</span><span class="p">,</span>
+    <span class="n">datetime_varname</span><span class="p">,</span>
+<span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the baseline consumption for a given demand response event</span>
 
 <span class="sd">    Parameters</span>
@@ -440,7 +451,7 @@
 
 <span class="sd">    electricity_purchase_varnames : list</span>
 <span class="sd">        List of electricity purchase variable names</span>
-<span class="sd">    </span>
+
 <span class="sd">    datetime_varname : str</span>
 <span class="sd">        Name of the datetime variable in the output data</span>
 
@@ -468,18 +479,27 @@
     <span class="k">if</span> <span class="n">filter_mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No similar days found in the output data&quot;</span><span class="p">)</span>
 
-    <span class="n">baseline_consumption</span> <span class="o">=</span> <span class="n">output_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">filter_mask</span><span class="p">,</span> <span class="n">electricity_purchase_varnames</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">baseline_consumption</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">output_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">filter_mask</span><span class="p">,</span> <span class="n">electricity_purchase_varnames</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">baseline_consumption</span></div>
 
 
+
 <div class="viewcode-block" id="get_day_of_adj_ratio">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.get_day_of_adj_ratio">[docs]</a>
-<span class="k">def</span> <span class="nf">get_day_of_adj_ratio</span><span class="p">(</span><span class="n">dr_period_details</span><span class="p">,</span> <span class="n">output_data</span><span class="p">,</span> <span class="n">electricity_purchase_varnames</span><span class="p">,</span> <span class="n">datetime_varname</span><span class="p">,</span> <span class="n">day_of_adj_details</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">get_day_of_adj_ratio</span><span class="p">(</span>
+    <span class="n">dr_period_details</span><span class="p">,</span>
+    <span class="n">output_data</span><span class="p">,</span>
+    <span class="n">electricity_purchase_varnames</span><span class="p">,</span>
+    <span class="n">datetime_varname</span><span class="p">,</span>
+    <span class="n">day_of_adj_details</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the day-of-adjustment ratio for a given demand response event.</span>
-<span class="sd">    The day-of-adjustment ratio is calculated as the average consumption </span>
-<span class="sd">    of the window hours before the event divided by the average consumption </span>
+<span class="sd">    The day-of-adjustment ratio is calculated as the average consumption</span>
+<span class="sd">    of the window hours before the event divided by the average consumption</span>
 <span class="sd">    of the same hours on similar weekdays.</span>
 <span class="sd">    The day-of-adjustment ratio is capped at the day_of_adj_max value.</span>
 
@@ -510,13 +530,9 @@
 <span class="sd">    day_of_adj_ratio : float</span>
 <span class="sd">        Day-of-adjustment ratio</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">day_of_adj_details</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="c1"># Default values for PG&amp;E&#39;s CBP DR</span>
-        <span class="n">day_of_adj_details</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span>
-            <span class="s2">&quot;hours before&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-            <span class="s2">&quot;duration&quot;</span><span class="p">:</span> <span class="mi">3</span>
-        <span class="p">}</span>
-    
+    <span class="k">if</span> <span class="n">day_of_adj_details</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># Default values for PG&amp;E&#39;s CBP DR</span>
+        <span class="n">day_of_adj_details</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;maximum&quot;</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span> <span class="s2">&quot;hours before&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;duration&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+
     <span class="n">day_of_adj_baseline_consumption</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">day_of_adj_consumption</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">doa_max</span> <span class="o">=</span> <span class="n">day_of_adj_details</span><span class="p">[</span><span class="s2">&quot;maximum&quot;</span><span class="p">]</span>
@@ -526,9 +542,8 @@
     <span class="n">baseline_days</span> <span class="o">=</span> <span class="n">dr_period_details</span><span class="p">[</span><span class="s2">&quot;baseline days&quot;</span><span class="p">]</span>
     <span class="n">event_start_dt</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">dr_period_details</span><span class="p">[</span><span class="s2">&quot;event_dts&quot;</span><span class="p">]</span>
 
-    <span class="n">doa_hours_before</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">(</span><span class="n">doa_hours_before</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;h&quot;</span><span class="p">)</span>
-    <span class="n">doa_duration</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">(</span><span class="n">doa_duration</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;h&quot;</span><span class="p">)</span>
-
+    <span class="n">doa_hours_before</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">(</span><span class="n">doa_hours_before</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;h&quot;</span><span class="p">)</span>
+    <span class="n">doa_duration</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">(</span><span class="n">doa_duration</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;h&quot;</span><span class="p">)</span>
 
     <span class="k">for</span> <span class="n">day_of_adj_hour</span> <span class="ow">in</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span>
         <span class="n">event_start_dt</span> <span class="o">-</span> <span class="n">doa_hours_before</span><span class="p">,</span>
@@ -540,7 +555,7 @@
             <span class="n">day_of_adj_hour</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span>
             <span class="n">output_data</span><span class="p">,</span>
             <span class="n">electricity_purchase_varnames</span><span class="p">,</span>
-            <span class="n">datetime_varname</span>
+            <span class="n">datetime_varname</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">day_of_adj_baseline_consumption</span> <span class="o">+=</span> <span class="n">baseline_consumption</span>
 
@@ -549,7 +564,7 @@
             <span class="n">day_of_adj_hour</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span>
             <span class="n">output_data</span><span class="p">,</span>
             <span class="n">electricity_purchase_varnames</span><span class="p">,</span>
-            <span class="n">datetime_varname</span>
+            <span class="n">datetime_varname</span><span class="p">,</span>
         <span class="p">)</span>
 
         <span class="n">day_of_adj_consumption</span> <span class="o">+=</span> <span class="n">day_of_adj_consumption</span>
@@ -566,12 +581,15 @@
     <span class="k">return</span> <span class="n">day_of_adj_ratio</span></div>
 
 
+
 <div class="viewcode-block" id="get_hourly_dr_event_arrays">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.get_hourly_dr_event_arrays">[docs]</a>
-<span class="k">def</span> <span class="nf">get_hourly_dr_event_arrays</span><span class="p">(</span><span class="n">event_start_dt</span><span class="p">,</span> <span class="n">horizon_start_dt</span><span class="p">,</span> <span class="n">horizon_end_dt</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="s2">&quot;15m&quot;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">get_hourly_dr_event_arrays</span><span class="p">(</span>
+    <span class="n">event_start_dt</span><span class="p">,</span> <span class="n">horizon_start_dt</span><span class="p">,</span> <span class="n">horizon_end_dt</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="s2">&quot;15m&quot;</span>
+<span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the hourly demand response event arrays for the optimization data</span>
-<span class="sd">    with 1 for the hours of the demand response event and 0 otherwise </span>
+<span class="sd">    with 1 for the hours of the demand response event and 0 otherwise</span>
 <span class="sd">    for each demand response event hours</span>
 
 <span class="sd">    Parameters</span>
@@ -598,7 +616,9 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">res_binsize_minutes</span> <span class="o">=</span> <span class="n">get_freq_binsize_minutes</span><span class="p">(</span><span class="n">resolution</span><span class="p">)</span>
     <span class="n">n_per_hour</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">60</span> <span class="o">/</span> <span class="n">res_binsize_minutes</span><span class="p">)</span>
-    <span class="n">ntsteps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">horizon_end_dt</span> <span class="o">-</span> <span class="n">horizon_start_dt</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">(</span><span class="n">res_binsize_minutes</span><span class="p">,</span> <span class="s2">&quot;m&quot;</span><span class="p">))</span>
+    <span class="n">ntsteps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">horizon_end_dt</span> <span class="o">-</span> <span class="n">horizon_start_dt</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">(</span><span class="n">res_binsize_minutes</span><span class="p">,</span> <span class="s2">&quot;m&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
     <span class="n">datetime</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
         <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
             <span class="p">[</span>
@@ -615,6 +635,7 @@
     <span class="n">event_idx</span> <span class="o">=</span> <span class="n">event_idx</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">hourly_dr_event_arrays</span><span class="p">[</span><span class="n">event_idx</span> <span class="p">:</span> <span class="n">event_idx</span> <span class="o">+</span> <span class="n">n_per_hour</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">hourly_dr_event_arrays</span></div>
+
 
 
 <div class="viewcode-block" id="get_dr_dates">
@@ -639,37 +660,39 @@
 <span class="sd">    dr_events_dts : dict of np.datetime64</span>
 <span class="sd">        List of np.datetime64 with the demand response event dates for the optimization horizon</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">event_details</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;day&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="c1"># If there are no demand response events</span>
+    <span class="k">if</span> <span class="n">event_details</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;day&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># If there are no demand response events</span>
         <span class="k">return</span> <span class="p">{}</span>
     <span class="n">dr_events_dts</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">event</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">event_details</span><span class="p">):</span>
         <span class="n">event_start_dt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span>
             <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span>
-                <span class="n">event</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">],</span>
-                <span class="n">event</span><span class="p">[</span><span class="s2">&quot;month&quot;</span><span class="p">],</span>
-                <span class="n">event</span><span class="p">[</span><span class="s2">&quot;day&quot;</span><span class="p">],</span>
-                <span class="n">event</span><span class="p">[</span><span class="s2">&quot;start_time&quot;</span><span class="p">],</span>
-                <span class="mi">0</span><span class="p">,</span>
-                <span class="mi">0</span>
+                <span class="n">event</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">],</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;month&quot;</span><span class="p">],</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;day&quot;</span><span class="p">],</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;start_time&quot;</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
             <span class="p">),</span>
-            <span class="s2">&quot;s&quot;</span>
+            <span class="s2">&quot;s&quot;</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">event_end_dt</span> <span class="o">=</span> <span class="n">event_start_dt</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">(</span><span class="n">event</span><span class="p">[</span><span class="s2">&quot;duration&quot;</span><span class="p">],</span> <span class="s2">&quot;h&quot;</span><span class="p">)</span>
-        <span class="n">start_dt</span><span class="p">,</span> <span class="n">end_dt</span> <span class="o">=</span> <span class="n">get_start_end_dt</span><span class="p">(</span><span class="n">event_start_dt</span><span class="p">,</span> <span class="n">event_end_dt</span><span class="p">,</span> <span class="n">horizon_start_dt</span><span class="p">,</span> <span class="n">horizon_end_dt</span><span class="p">)</span>
+        <span class="n">start_dt</span><span class="p">,</span> <span class="n">end_dt</span> <span class="o">=</span> <span class="n">get_start_end_dt</span><span class="p">(</span>
+            <span class="n">event_start_dt</span><span class="p">,</span> <span class="n">event_end_dt</span><span class="p">,</span> <span class="n">horizon_start_dt</span><span class="p">,</span> <span class="n">horizon_end_dt</span>
+        <span class="p">)</span>
         <span class="k">if</span> <span class="n">start_dt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">dr_events_dts</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;event_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
             <span class="n">dr_events_dts</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;event_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">][</span><span class="s2">&quot;event_dts&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">start_dt</span><span class="p">,</span> <span class="n">end_dt</span><span class="p">])</span>
             <span class="n">dr_events_dts</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;event_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">][</span><span class="s2">&quot;baseline days&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;baseline days&quot;</span><span class="p">]</span>
-        
-    <span class="n">dr_events_dts</span> <span class="o">=</span> <span class="n">combine_overlapping_dr_events</span><span class="p">(</span><span class="n">dr_events_dts</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dr_events_dts</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">dr_events_dts</span>
+
+    <span class="n">dr_events_dts</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">combine_overlapping_dr_events</span><span class="p">(</span><span class="n">dr_events_dts</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dr_events_dts</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span>
+        <span class="k">else</span> <span class="n">dr_events_dts</span>
+    <span class="p">)</span>
     <span class="k">return</span> <span class="n">dr_events_dts</span></div>
+
 
 
 <div class="viewcode-block" id="combine_overlapping_dr_events">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.combine_overlapping_dr_events">[docs]</a>
 <span class="k">def</span> <span class="nf">combine_overlapping_dr_events</span><span class="p">(</span><span class="n">dr_events_dts</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Sorts the events in choronological order </span>
+<span class="sd">    Sorts the events in choronological order</span>
 <span class="sd">    and combines overlapping demand response (DR) events into a single event</span>
 
 <span class="sd">    Parameters</span>
@@ -683,7 +706,9 @@
 <span class="sd">    A dictionary where values are lists or arrays of start and end times of combined if overlapping DR events.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Convert dictionary values to a numpy array and sort by start times</span>
-    <span class="n">dr_dates_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">val</span><span class="p">[</span><span class="s2">&quot;event_dts&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">dr_events_dts</span><span class="o">.</span><span class="n">values</span><span class="p">()],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;datetime64&#39;</span><span class="p">)</span>
+    <span class="n">dr_dates_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">val</span><span class="p">[</span><span class="s2">&quot;event_dts&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">dr_events_dts</span><span class="o">.</span><span class="n">values</span><span class="p">()],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;datetime64&quot;</span>
+    <span class="p">)</span>
     <span class="n">baseline_days</span> <span class="o">=</span> <span class="p">[</span><span class="n">val</span><span class="p">[</span><span class="s2">&quot;baseline days&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">dr_events_dts</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
     <span class="n">dr_dates_array</span> <span class="o">=</span> <span class="n">dr_dates_array</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">dr_dates_array</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])]</span>
     <span class="n">baseline_days</span> <span class="o">=</span> <span class="p">[</span><span class="n">baseline_days</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">dr_dates_array</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])]</span>
@@ -695,6 +720,7 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Overlapping DR events are not allowed&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">dr_events_dts</span></div>
+
 
 
 <div class="viewcode-block" id="get_start_end_dt">
@@ -760,6 +786,7 @@
     <span class="k">return</span> <span class="n">start_dt</span><span class="p">,</span> <span class="n">end_dt</span></div>
 
 
+
 <div class="viewcode-block" id="convert_dr_event_details">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.convert_dr_event_details">[docs]</a>
 <span class="k">def</span> <span class="nf">convert_dr_event_details</span><span class="p">(</span><span class="n">event_details</span><span class="p">):</span>
@@ -776,7 +803,13 @@
 <span class="sd">    event_details : dict</span>
 <span class="sd">        Dictionary with the details of the demand response event in the format required by the optimizer</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">event_details</span><span class="p">[</span><span class="s2">&quot;baseline days&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="n">similar_weekday</span><span class="p">)</span> <span class="k">for</span> <span class="n">similar_weekday</span> <span class="ow">in</span> <span class="n">event_details</span><span class="p">[</span><span class="s2">&quot;baseline days&quot;</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;datetime64&quot;</span><span class="p">)</span>
+    <span class="n">event_details</span><span class="p">[</span><span class="s2">&quot;baseline days&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="n">similar_weekday</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">similar_weekday</span> <span class="ow">in</span> <span class="n">event_details</span><span class="p">[</span><span class="s2">&quot;baseline days&quot;</span><span class="p">]</span>
+        <span class="p">],</span>
+        <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;datetime64&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
     <span class="n">event_details</span><span class="p">[</span><span class="s2">&quot;day&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">event_details</span><span class="p">[</span><span class="s2">&quot;day&quot;</span><span class="p">])</span>
     <span class="n">event_details</span><span class="p">[</span><span class="s2">&quot;month&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">event_details</span><span class="p">[</span><span class="s2">&quot;month&quot;</span><span class="p">])</span>
     <span class="n">event_details</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">event_details</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">])</span>
@@ -784,6 +817,7 @@
     <span class="n">event_details</span><span class="p">[</span><span class="s2">&quot;duration&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">event_details</span><span class="p">[</span><span class="s2">&quot;duration&quot;</span><span class="p">])</span>
 
     <span class="k">return</span> <span class="n">event_details</span></div>
+
 
 
 <div class="viewcode-block" id="sanitize_dr_data">
@@ -809,6 +843,7 @@
     <span class="k">return</span> <span class="n">dr_data</span></div>
 
 
+
 <div class="viewcode-block" id="get_dr_baseline_dates">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.get_dr_baseline_dates">[docs]</a>
 <span class="k">def</span> <span class="nf">get_dr_baseline_dates</span><span class="p">(</span><span class="n">dr_data</span><span class="p">):</span>
@@ -820,7 +855,7 @@
 <span class="sd">    dr_data : dict</span>
 <span class="sd">        Dictionary with the demand response data</span>
 
-<span class="sd">    </span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    dr_baseline_dates : array of np.datetime64</span>

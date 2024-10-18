@@ -147,9 +147,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">end_dt</span> <span class="o">=</span> <span class="n">end_dt</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">time_step</span> <span class="o">=</span> <span class="n">time_step</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">holidays</span> <span class="o">=</span> <span class="n">holidays</span><span class="p">()</span><span class="o">.</span><span class="n">holidays</span><span class="p">(</span>
-            <span class="n">start_dt</span><span class="p">,</span> <span class="n">end_dt</span>
-        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">holidays</span> <span class="o">=</span> <span class="n">holidays</span><span class="p">()</span><span class="o">.</span><span class="n">holidays</span><span class="p">(</span><span class="n">start_dt</span><span class="p">,</span> <span class="n">end_dt</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">min_days</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">max_days</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">min_duration</span> <span class="o">=</span> <span class="kc">None</span>
@@ -165,10 +163,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">start_times</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">event_duration</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">event_days</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">notification_time</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># datetime.datetime</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">notification_time</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># datetime.datetime</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">event_dict</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dr_events_mtcs</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">holidays_boolean</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># boolean</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">holidays_boolean</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># boolean</span>
         <span class="c1"># ADD new attributes here</span>
 
 <div class="viewcode-block" id="DemandResponseEvents.set_program_parameters">
@@ -321,13 +319,13 @@
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">end_dt</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_dt</span><span class="p">)</span><span class="o">.</span><span class="n">days</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
         <span class="p">]</span>
         <span class="n">woy</span><span class="p">,</span> <span class="n">dow</span><span class="p">,</span> <span class="n">p_calendar</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">create_calender</span><span class="p">(</span><span class="n">dates</span><span class="p">)</span>
-        <span class="n">holiday_weekdays</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">holidays</span><span class="o">.</span><span class="n">day</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">holidays</span><span class="o">.</span><span class="n">day_of_week</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+        <span class="n">holiday_weekdays</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">holidays</span><span class="o">.</span><span class="n">day</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">holidays</span><span class="o">.</span><span class="n">day_of_week</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
         <span class="n">n_holidays_weekday</span> <span class="o">=</span> <span class="n">holiday_weekdays</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">weekdays_idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">woy</span><span class="p">[</span><span class="n">dow</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">],</span> <span class="n">dow</span><span class="p">[</span><span class="n">dow</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">])</span>
         <span class="n">n_weekdays</span> <span class="o">=</span> <span class="n">dow</span><span class="p">[</span><span class="n">dow</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">n_holidays_weekday</span>
         <span class="n">p_calendar</span><span class="p">[</span><span class="n">weekdays_idx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">n_weekdays</span>
         <span class="n">p_calendar</span> <span class="o">=</span> <span class="n">p_calendar</span><span class="p">[</span><span class="n">woy</span><span class="p">,</span> <span class="n">dow</span><span class="p">]</span>
-        <span class="n">p_calendar</span><span class="p">[</span><span class="n">holiday_weekdays</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">p_calendar</span><span class="p">[</span><span class="n">holiday_weekdays</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">return</span> <span class="n">p_calendar</span></div>
 
 
@@ -387,11 +385,13 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">notification_time</span> <span class="o">=</span> <span class="n">notification_time</span>
 
         <span class="k">if</span> <span class="p">(</span>
-            <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">notification_time</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">notification_type</span> <span class="o">==</span> <span class="s2">&quot;day_before&quot;</span><span class="p">)</span>
-            <span class="ow">or</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">notification_type</span> <span class="o">==</span> <span class="s2">&quot;day_of&quot;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">notification_time</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">notification_delta</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">))</span>
-            <span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">notification_time</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">notification_type</span> <span class="o">==</span> <span class="s2">&quot;day_before&quot;</span>
+        <span class="p">)</span> <span class="ow">or</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">notification_type</span> <span class="o">==</span> <span class="s2">&quot;day_of&quot;</span>
+            <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">notification_time</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">notification_delta</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">NOTIFICATION_TIME_ERROR</span><span class="p">)</span>
-        
+
         <span class="n">notification_time</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">event_day</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">event_days</span><span class="p">):</span>
@@ -416,7 +416,10 @@
                 <span class="p">)</span>
                 <span class="n">notification_time</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">event_detail</span> <span class="o">-</span> <span class="n">dt</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
             <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">notification_type</span> <span class="o">==</span> <span class="s2">&quot;day_of&quot;</span><span class="p">:</span>
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">notification_time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">notification_delta</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">notification_time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                    <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">notification_delta</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                <span class="p">):</span>
                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">NOTIFICATION_TIME_ERROR_DAY_OF</span><span class="p">)</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">notification_delta</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                     <span class="n">event_detail</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span>
@@ -427,7 +430,9 @@
                         <span class="mi">0</span><span class="p">,</span>
                         <span class="mi">0</span><span class="p">,</span>
                     <span class="p">)</span>
-                    <span class="n">notification_time</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">event_detail</span> <span class="o">-</span> <span class="n">dt</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">notification_delta</span><span class="p">))</span>
+                    <span class="n">notification_time</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="n">event_detail</span> <span class="o">-</span> <span class="n">dt</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">notification_delta</span><span class="p">)</span>
+                    <span class="p">)</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">notification_time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                     <span class="n">event_detail</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span>
                         <span class="n">event_day</span><span class="o">.</span><span class="n">year</span><span class="p">,</span>
