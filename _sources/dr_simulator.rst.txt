@@ -4,6 +4,14 @@ dr\_simulator package
 Submodules
 ----------
 
+dr\_simulator.data module
+-------------------------
+
+.. automodule:: dr_simulator.data
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 dr\_simulator.dr\_events module
 -------------------------------
 
