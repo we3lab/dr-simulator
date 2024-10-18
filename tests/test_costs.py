@@ -270,7 +270,7 @@ def test_calculate_dr_payments(
         results.append(result)
     for i, result in enumerate(results):
         for key, value in expected[i].items():
-            if type(value) == list:
+            if isinstance(value, list):
                 for j, val in enumerate(value):
                     assert val == pytest.approx(result[key][j], 0.4)
             else:
