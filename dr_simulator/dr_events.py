@@ -74,7 +74,7 @@ class DemandResponseEvents:  # pylint: disable=too-many-instance-attributes
         self.holidays_boolean = False  # boolean
         # ADD new attributes here
 
-    def set_program_parameters(  # pylint: disable=too-many-arguments
+    def set_program_parameters(  # pylint: disable=R0917, R0913
         self,
         min_days,
         max_days,

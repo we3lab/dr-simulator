@@ -1,13 +1,13 @@
 """ This module contains utility functions for DR Simulator """
-
+# pylint: disable=line-too-long, too-many-arguments, too-many-locals
 import re
 import json
 import pickle
 import datetime as dt
 from enum import Enum
+from warnings import warn
 import numpy as np
 import pandas as pd
-from warnings import warn
 
 
 class DistributionTypes(Enum):
@@ -289,7 +289,7 @@ def get_date_range_prev_month(date, n_days):
 
     """
     date_range = []
-    for i in range(n_days):
+    for _ in range(n_days):
         date = date - dt.timedelta(days=1)
         date_range.append(date)
     return date_range
