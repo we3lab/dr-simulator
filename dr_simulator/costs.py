@@ -1,6 +1,7 @@
 """ 
 This module contains the cost functions used in the demand response simulator.
 """
+
 # pylint: disable=line-too-long, too-many-arguments, too-many-locals
 import numpy as np
 import pandas as pd
