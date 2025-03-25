@@ -370,7 +370,7 @@ def get_day_of_adj_ratio(
     Parameters
     ----------
     dr_period_details : dict
-        Dictionary with the details of the demand response event period and baseline days
+        Dictionary with the details of the demand response event period and baseline_days
 
     output_data : pandas.DataFrame
         the output data for baseline calculation
@@ -403,7 +403,7 @@ def get_day_of_adj_ratio(
     doa_hours_before = day_of_adj_details["hours before"]
     doa_duration = day_of_adj_details["duration"]
 
-    baseline_days = dr_period_details["baseline days"]
+    baseline_days = dr_period_details["baseline_days"]
     event_start_dt, _ = dr_period_details["event_dts"]
 
     doa_hours_before = np.timedelta64(doa_hours_before - 1, "h")
@@ -535,7 +535,7 @@ def get_dr_dates(event_details, horizon_start_dt, horizon_end_dt):
         if start_dt is not None:
             dr_events_dts[f"event_{i}"] = {}
             dr_events_dts[f"event_{i}"]["event_dts"] = np.array([start_dt, end_dt])
-            dr_events_dts[f"event_{i}"]["baseline days"] = event["baseline days"]
+            dr_events_dts[f"event_{i}"]["baseline_days"] = event["baseline_days"]
 
     dr_events_dts = (
         combine_overlapping_dr_events(dr_events_dts)
@@ -564,7 +564,7 @@ def combine_overlapping_dr_events(dr_events_dts):
     dr_dates_array = np.array(
         [val["event_dts"] for val in dr_events_dts.values()], dtype="datetime64"
     )
-    baseline_days = [val["baseline days"] for val in dr_events_dts.values()]
+    baseline_days = [val["baseline_days"] for val in dr_events_dts.values()]
     dr_dates_array = dr_dates_array[np.argsort(dr_dates_array[:, 0])]
     baseline_days = [baseline_days[i] for i in np.argsort(dr_dates_array[:, 0])]
 
@@ -652,10 +652,10 @@ def convert_dr_event_details(event_details):
     event_details : dict
         Dictionary with the details of the demand response event in the format required by the optimizer
     """
-    event_details["baseline days"] = np.array(
+    event_details["baseline_days"] = np.array(
         [
             np.datetime64(similar_weekday)
-            for similar_weekday in event_details["baseline days"]
+            for similar_weekday in event_details["baseline_days"]
         ],
         dtype="datetime64",
     )
@@ -706,5 +706,5 @@ def get_dr_baseline_dates(dr_data):
     """
     dr_baseline_dates = []
     for event_details in dr_data["events detail"]:
-        dr_baseline_dates.extend(event_details["baseline days"])
+        dr_baseline_dates.extend(event_details["baseline_days"])
     return np.array(dr_baseline_dates, dtype="datetime64")
