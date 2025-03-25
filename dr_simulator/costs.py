@@ -59,7 +59,7 @@ def calculate_dr_payment(
     Parameters
     ----------
     dr_period_details : dict
-        Dictionary with the details of the demand response event period and baseline days
+        Dictionary with the details of the demand response event period and baseline_days
 
     capacity_bid : float
         The capacity bid for the demand response event
@@ -102,7 +102,7 @@ def calculate_dr_payment(
     avg_consumption = []
 
     dr_event_start_time, dr_event_end_time = dr_period_details["event_dts"]
-    baseline_days = dr_period_details["baseline days"]
+    baseline_days = dr_period_details["baseline_days"]
     domains = [function["domain"] for function in payment_functions]
     slopes = [function["slope"] for function in payment_functions]
     intercepts = [function["intercept"] for function in payment_functions]

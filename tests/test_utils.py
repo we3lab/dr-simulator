@@ -274,7 +274,7 @@ def test_get_day_of_adj_ratio(
                         "day": 17,
                         "duration": 2,
                         "start_time": 19,
-                        "baseline days": BASELINE_DAYS_17,
+                        "baseline_days": BASELINE_DAYS_17,
                     },
                     {
                         "year": 2020,
@@ -282,7 +282,7 @@ def test_get_day_of_adj_ratio(
                         "day": 18,
                         "duration": 4,
                         "start_time": 17,
-                        "baseline days": BASELINE_DAYS_18,
+                        "baseline_days": BASELINE_DAYS_18,
                     },
                     {
                         "year": 2020,
@@ -290,7 +290,7 @@ def test_get_day_of_adj_ratio(
                         "day": 25,
                         "duration": 3,
                         "start_time": 17,
-                        "baseline days": BASELINE_DAYS_25,
+                        "baseline_days": BASELINE_DAYS_25,
                     },
                     {
                         "year": 2020,
@@ -298,7 +298,7 @@ def test_get_day_of_adj_ratio(
                         "day": 31,
                         "duration": 4,
                         "start_time": 17,
-                        "baseline days": BASELINE_DAYS_31,
+                        "baseline_days": BASELINE_DAYS_31,
                     },
                 ],
             },
@@ -328,7 +328,7 @@ def test_sanitize_dr_data(dr_event_path, expected):
             assert key in event_detail
 
         assert np.array_equal(
-            event_detail["baseline days"], expected_event_detail["baseline days"]
+            event_detail["baseline_days"], expected_event_detail["baseline_days"]
         )
         assert event_detail["year"] == expected_event_detail["year"]
         assert event_detail["month"] == expected_event_detail["month"]
@@ -351,7 +351,7 @@ def test_sanitize_dr_data(dr_event_path, expected):
                 "day": 17,
                 "duration": "2",
                 "start_time": "19",
-                "baseline days": [
+                "baseline_days": [
                     "2020-08-14 00:00:00",
                     "2020-08-13 00:00:00",
                     "2020-08-12 00:00:00",
@@ -370,7 +370,7 @@ def test_sanitize_dr_data(dr_event_path, expected):
                 "day": 17,
                 "duration": 2,
                 "start_time": 19,
-                "baseline days": BASELINE_DAYS_17,
+                "baseline_days": BASELINE_DAYS_17,
             },
         )
     ],
@@ -463,7 +463,7 @@ def test_get_hourly_dr_event_arrays(
                             np.datetime64("2020-08-17T21:00:00.000000"),
                         ]
                     ),
-                    "baseline days": BASELINE_DAYS_17,
+                    "baseline_days": BASELINE_DAYS_17,
                 },
                 "event_1": {
                     "event_dts": np.array(
@@ -472,7 +472,7 @@ def test_get_hourly_dr_event_arrays(
                             np.datetime64("2020-08-18T21:00:00.000000"),
                         ]
                     ),
-                    "baseline days": BASELINE_DAYS_18,
+                    "baseline_days": BASELINE_DAYS_18,
                 },
                 "event_2": {
                     "event_dts": np.array(
@@ -481,7 +481,7 @@ def test_get_hourly_dr_event_arrays(
                             np.datetime64("2020-08-25T20:00:00.000000"),
                         ]
                     ),
-                    "baseline days": BASELINE_DAYS_25,
+                    "baseline_days": BASELINE_DAYS_25,
                 },
             },
             id="test_3_events_in_horizon",
@@ -498,7 +498,7 @@ def test_get_hourly_dr_event_arrays(
                             np.datetime64("2020-08-17T21:00:00.000000"),
                         ]
                     ),
-                    "baseline days": BASELINE_DAYS_17,
+                    "baseline_days": BASELINE_DAYS_17,
                 },
                 "event_1": {
                     "event_dts": np.array(
@@ -507,7 +507,7 @@ def test_get_hourly_dr_event_arrays(
                             np.datetime64("2020-08-18T21:00:00.000000"),
                         ]
                     ),
-                    "baseline days": BASELINE_DAYS_18,
+                    "baseline_days": BASELINE_DAYS_18,
                 },
                 "event_2": {
                     "event_dts": np.array(
@@ -516,7 +516,7 @@ def test_get_hourly_dr_event_arrays(
                             np.datetime64("2020-08-25T20:00:00.000000"),
                         ]
                     ),
-                    "baseline days": BASELINE_DAYS_25,
+                    "baseline_days": BASELINE_DAYS_25,
                 },
                 "event_3": {
                     "event_dts": np.array(
@@ -525,7 +525,7 @@ def test_get_hourly_dr_event_arrays(
                             np.datetime64("2020-08-31T21:00:00.000000"),
                         ]
                     ),
-                    "baseline days": BASELINE_DAYS_31,
+                    "baseline_days": BASELINE_DAYS_31,
                 },
             },
             id="test_all_events_in_horizon",
@@ -539,7 +539,7 @@ def test_get_hourly_dr_event_arrays(
                         "year": 2020,
                         "duration": 1,
                         "start_time": 15,
-                        "baseline days": np.array(
+                        "baseline_days": np.array(
                             ["2020-01-02 00:00:00"], dtype="datetime64[s]"
                         ),
                     },
@@ -549,7 +549,7 @@ def test_get_hourly_dr_event_arrays(
                         "year": 2020,
                         "duration": 2,
                         "start_time": 19,
-                        "baseline days": np.array(
+                        "baseline_days": np.array(
                             ["2020-01-02 00:00:00"], dtype="datetime64[s]"
                         ),
                     },
@@ -565,7 +565,7 @@ def test_get_hourly_dr_event_arrays(
                             np.datetime64("2020-01-01T16:00:00.000000"),
                         ]
                     ),
-                    "baseline days": np.array(
+                    "baseline_days": np.array(
                         ["2020-01-02T00:00:00"], dtype="datetime64[s]"
                     ),
                 },
@@ -576,7 +576,7 @@ def test_get_hourly_dr_event_arrays(
                             np.datetime64("2020-01-01T21:00:00.000000"),
                         ]
                     ),
-                    "baseline days": np.array(
+                    "baseline_days": np.array(
                         ["2020-01-02T00:00:00"], dtype="datetime64[s]"
                     ),
                 },
@@ -592,7 +592,7 @@ def test_get_dr_dates(dr_data, horizon_start_dt, horizon_end_dt, expected):
     for key, value in result.items():
         assert key in expected
         assert np.array_equal(value["event_dts"], expected[key]["event_dts"])
-        assert np.array_equal(value["baseline days"], expected[key]["baseline days"])
+        assert np.array_equal(value["baseline_days"], expected[key]["baseline_days"])
 
 
 @pytest.mark.skipif(SKIP_ALL_TESTS, reason="Exclude all tests")
@@ -612,7 +612,7 @@ def test_get_dr_dates(dr_data, horizon_start_dt, horizon_end_dt, expected):
                         "year": 2020,
                         "duration": 3,
                         "start_time": 15,
-                        "baseline days": np.array(
+                        "baseline_days": np.array(
                             ["2020-01-02 00:00:00"], dtype="datetime64[s]"
                         ),
                     },
@@ -622,7 +622,7 @@ def test_get_dr_dates(dr_data, horizon_start_dt, horizon_end_dt, expected):
                         "year": 2020,
                         "duration": 2,
                         "start_time": 17,
-                        "baseline days": np.array(
+                        "baseline_days": np.array(
                             ["2020-01-02 00:00:00"], dtype="datetime64[s]"
                         ),
                     },
