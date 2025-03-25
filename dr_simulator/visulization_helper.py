@@ -1,4 +1,4 @@
-""" Helper functions for visualizing the DR event data """
+"""Helper functions for visualizing the DR event data"""
 
 import datetime as dt
 import numpy as np

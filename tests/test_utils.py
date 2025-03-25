@@ -1,4 +1,4 @@
-""" 
+"""
 Tests for functions for `utils.py` module of the `dr_simulator` package.
 
 Docs: https://docs.pytest.org/en/latest/

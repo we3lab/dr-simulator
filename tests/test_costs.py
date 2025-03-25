@@ -1,4 +1,4 @@
-""" 
+"""
 Tests for functions for `costs.py` module of the `dr_simulator` package.
 """
 

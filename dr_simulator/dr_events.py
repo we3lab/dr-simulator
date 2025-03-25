@@ -1,6 +1,6 @@
-""" 
-    This module contains the DemandResponseEvents class which is used to 
-    generate demand response events for a given time period based on user's inputs. 
+"""
+This module contains the DemandResponseEvents class which is used to
+generate demand response events for a given time period based on user's inputs.
 """
 
 import datetime as dt

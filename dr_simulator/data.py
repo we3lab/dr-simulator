@@ -1,4 +1,4 @@
-""" This module contains the data structures used in the demand response simulator. """
+"""This module contains the data structures used in the demand response simulator."""
 
 # Demand response parameters
 DR_NAME_KEY = "name"

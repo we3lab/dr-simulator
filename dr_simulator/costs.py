@@ -1,4 +1,4 @@
-""" 
+"""
 This module contains the cost functions used in the demand response simulator.
 """
 
@@ -43,7 +43,7 @@ def calculate_dr_payment_region(ratio, domains):
     raise ValueError("Ratio not in any domain")
 
 
-def calculate_dr_payment(
+def calculate_dr_payment(  # pylint: disable=too-many-positional-arguments
     dr_period_details,
     capacity_bid,
     capacity_price,

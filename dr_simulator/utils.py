@@ -1,4 +1,4 @@
-""" This module contains utility functions for DR Simulator """
+"""This module contains utility functions for DR Simulator"""
 
 # pylint: disable=line-too-long, too-many-arguments, too-many-locals
 import re
