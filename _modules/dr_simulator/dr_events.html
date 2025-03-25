@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>dr_simulator.dr_events &mdash; Demand Response Simulator 0.3.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=547657ed" />
 
@@ -96,10 +96,10 @@
 <span class="sd">    generate demand response events for a given time period based on user&#39;s inputs. </span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">pandas.tseries.holiday</span> <span class="kn">import</span> <span class="n">USFederalHolidayCalendar</span> <span class="k">as</span> <span class="n">holidays</span>
-<span class="kn">from</span> <span class="nn">dr_simulator</span> <span class="kn">import</span> <span class="n">utils</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pandas.tseries.holiday</span><span class="w"> </span><span class="kn">import</span> <span class="n">USFederalHolidayCalendar</span> <span class="k">as</span> <span class="n">holidays</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dr_simulator</span><span class="w"> </span><span class="kn">import</span> <span class="n">utils</span>
 
 <span class="n">NOTIFICATION_TIME_ERROR</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">For day before notification please set self.notification time class attribute.</span>
@@ -112,7 +112,7 @@
 
 <div class="viewcode-block" id="DemandResponseEvents">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents">[docs]</a>
-<span class="k">class</span> <span class="nc">DemandResponseEvents</span><span class="p">:</span>  <span class="c1"># pylint: disable=too-many-instance-attributes</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">DemandResponseEvents</span><span class="p">:</span>  <span class="c1"># pylint: disable=too-many-instance-attributes</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This class is intended to be used to generate demand response events</span>
 <span class="sd">    for a given time period based on user&#39;s inputs.</span>
@@ -142,7 +142,7 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_dt</span><span class="p">,</span> <span class="n">end_dt</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;DR Program&quot;</span><span class="p">,</span> <span class="n">time_step</span><span class="o">=</span><span class="mi">60</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_dt</span><span class="p">,</span> <span class="n">end_dt</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;DR Program&quot;</span><span class="p">,</span> <span class="n">time_step</span><span class="o">=</span><span class="mi">60</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">start_dt</span> <span class="o">=</span> <span class="n">start_dt</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">end_dt</span> <span class="o">=</span> <span class="n">end_dt</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
@@ -171,7 +171,7 @@
 
 <div class="viewcode-block" id="DemandResponseEvents.set_program_parameters">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.set_program_parameters">[docs]</a>
-    <span class="k">def</span> <span class="nf">set_program_parameters</span><span class="p">(</span>  <span class="c1"># pylint: disable=R0917, R0913</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_program_parameters</span><span class="p">(</span>  <span class="c1"># pylint: disable=R0917, R0913</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">min_days</span><span class="p">,</span>
         <span class="n">max_days</span><span class="p">,</span>
@@ -227,7 +227,7 @@
 
 <div class="viewcode-block" id="DemandResponseEvents.set_ndays">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.set_ndays">[docs]</a>
-    <span class="k">def</span> <span class="nf">set_ndays</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">distribution</span><span class="p">,</span> <span class="n">distribution_parameters</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_ndays</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">distribution</span><span class="p">,</span> <span class="n">distribution_parameters</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This function sets the number of days of the events based on a</span>
 <span class="sd">        given distribution</span>
@@ -249,7 +249,7 @@
 
 <div class="viewcode-block" id="DemandResponseEvents.set_start_times">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.set_start_times">[docs]</a>
-    <span class="k">def</span> <span class="nf">set_start_times</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">distribution</span><span class="p">,</span> <span class="n">distribution_parameters</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_start_times</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">distribution</span><span class="p">,</span> <span class="n">distribution_parameters</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This function sets the start times of the events based on a given distribution</span>
 
@@ -273,7 +273,7 @@
 
 <div class="viewcode-block" id="DemandResponseEvents.set_event_duration">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.set_event_duration">[docs]</a>
-    <span class="k">def</span> <span class="nf">set_event_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">distribution</span><span class="p">,</span> <span class="n">distribution_parameters</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_event_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">distribution</span><span class="p">,</span> <span class="n">distribution_parameters</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This function sets the event duration of the events based on a</span>
 <span class="sd">        given distribution</span>
@@ -299,7 +299,7 @@
 
 <div class="viewcode-block" id="DemandResponseEvents.get_pdates">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.get_pdates">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_pdates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_pdates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This function sets the probability of each day being selected based on a</span>
 <span class="sd">        uniform distribution</span>
@@ -331,7 +331,7 @@
 
 <div class="viewcode-block" id="DemandResponseEvents.set_event_dates">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.set_event_dates">[docs]</a>
-    <span class="k">def</span> <span class="nf">set_event_dates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">p_dates</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_event_dates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">p_dates</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This function sets the event dates of the events based on a given distribution</span>
 
@@ -371,7 +371,7 @@
 
 <div class="viewcode-block" id="DemandResponseEvents.set_notification_time">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.set_notification_time">[docs]</a>
-    <span class="k">def</span> <span class="nf">set_notification_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">notification_time</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_notification_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">notification_time</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This function sets the notification time of the events</span>
 
@@ -448,7 +448,7 @@
 
 <div class="viewcode-block" id="DemandResponseEvents.generate_event_dict">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.generate_event_dict">[docs]</a>
-    <span class="k">def</span> <span class="nf">generate_event_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program_parameters</span><span class="p">,</span> <span class="n">simulation_parameters</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">generate_event_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program_parameters</span><span class="p">,</span> <span class="n">simulation_parameters</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This function generates the event dictionary</span>
 
@@ -489,7 +489,7 @@
 
 <div class="viewcode-block" id="DemandResponseEvents.create_dr_events_mtcs">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.dr_events.DemandResponseEvents.create_dr_events_mtcs">[docs]</a>
-    <span class="k">def</span> <span class="nf">create_dr_events_mtcs</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_dr_events_mtcs</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">program_parameters</span><span class="p">,</span> <span class="n">simulation_parameters</span><span class="p">,</span> <span class="n">n_simulations</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>

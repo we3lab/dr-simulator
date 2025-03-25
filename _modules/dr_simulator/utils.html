@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>dr_simulator.utils &mdash; Demand Response Simulator 0.3.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=547657ed" />
 
@@ -94,19 +94,19 @@
 <span></span><span class="sd">&quot;&quot;&quot; This module contains utility functions for DR Simulator &quot;&quot;&quot;</span>
 
 <span class="c1"># pylint: disable=line-too-long, too-many-arguments, too-many-locals</span>
-<span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">pickle</span>
-<span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
-<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
-<span class="kn">from</span> <span class="nn">warnings</span> <span class="kn">import</span> <span class="n">warn</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">warnings</span><span class="w"> </span><span class="kn">import</span> <span class="n">warn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 
 <div class="viewcode-block" id="DistributionTypes">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.DistributionTypes">[docs]</a>
-<span class="k">class</span> <span class="nc">DistributionTypes</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">DistributionTypes</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Enum class for supported distributions&quot;&quot;&quot;</span>
 
     <span class="n">NORMAL</span> <span class="o">=</span> <span class="s2">&quot;normal&quot;</span>
@@ -124,7 +124,7 @@
 
 <div class="viewcode-block" id="validate_distribution_params">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.validate_distribution_params">[docs]</a>
-<span class="k">def</span> <span class="nf">validate_distribution_params</span><span class="p">(</span><span class="n">distr_type</span><span class="p">,</span> <span class="n">distr_params</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">validate_distribution_params</span><span class="p">(</span><span class="n">distr_type</span><span class="p">,</span> <span class="n">distr_params</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Validates the distribution parameters</span>
 
 <span class="sd">    Parameters</span>
@@ -152,7 +152,7 @@
 
 <div class="viewcode-block" id="parse_freq">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.parse_freq">[docs]</a>
-<span class="k">def</span> <span class="nf">parse_freq</span><span class="p">(</span><span class="n">freq</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">parse_freq</span><span class="p">(</span><span class="n">freq</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Parses a time frequency code string, returning its type and its freq_binsize</span>
 
 <span class="sd">    Parameters</span>
@@ -175,7 +175,7 @@
 
 <div class="viewcode-block" id="get_freq_binsize_minutes">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.get_freq_binsize_minutes">[docs]</a>
-<span class="k">def</span> <span class="nf">get_freq_binsize_minutes</span><span class="p">(</span><span class="n">freq</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_freq_binsize_minutes</span><span class="p">(</span><span class="n">freq</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Gets size of a given time frequency expressed in units of minutes</span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -211,7 +211,7 @@
 
 <div class="viewcode-block" id="text_to_param_dict">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.text_to_param_dict">[docs]</a>
-<span class="k">def</span> <span class="nf">text_to_param_dict</span><span class="p">(</span><span class="n">distr_type</span><span class="p">,</span> <span class="n">distr_params_text</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">text_to_param_dict</span><span class="p">(</span><span class="n">distr_type</span><span class="p">,</span> <span class="n">distr_params_text</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Converts distribution parameters entered as text to param_dict</span>
 
 <span class="sd">    Parameters</span>
@@ -240,7 +240,7 @@
 
 <div class="viewcode-block" id="days_in_year_month">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.days_in_year_month">[docs]</a>
-<span class="k">def</span> <span class="nf">days_in_year_month</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">days_in_year_month</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -265,7 +265,7 @@
 
 <div class="viewcode-block" id="pickle_load">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.pickle_load">[docs]</a>
-<span class="k">def</span> <span class="nf">pickle_load</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pickle_load</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Loads a pickled object (fitted model, dictionary with data, etc)</span>
 
 <span class="sd">    Parameters</span>
@@ -286,7 +286,7 @@
 
 <div class="viewcode-block" id="pickle_dump">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.pickle_dump">[docs]</a>
-<span class="k">def</span> <span class="nf">pickle_dump</span><span class="p">(</span><span class="n">object_</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pickle_dump</span><span class="p">(</span><span class="n">object_</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Pickles an object (fitted model, dictionary with data, etc)</span>
 
 <span class="sd">    Parameters</span>
@@ -304,7 +304,7 @@
 
 <div class="viewcode-block" id="json_load">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.json_load">[docs]</a>
-<span class="k">def</span> <span class="nf">json_load</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">json_load</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Loads a json string to python</span>
 
 <span class="sd">    Parameters</span>
@@ -325,7 +325,7 @@
 
 <div class="viewcode-block" id="json_dump">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.json_dump">[docs]</a>
-<span class="k">def</span> <span class="nf">json_dump</span><span class="p">(</span><span class="n">object_</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">json_dump</span><span class="p">(</span><span class="n">object_</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Dumps a python object to a json string</span>
 
 <span class="sd">    Parameters</span>
@@ -343,7 +343,7 @@
 
 <div class="viewcode-block" id="create_calender">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.create_calender">[docs]</a>
-<span class="k">def</span> <span class="nf">create_calender</span><span class="p">(</span><span class="n">dates</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_calender</span><span class="p">(</span><span class="n">dates</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This function creates a calendar for the given dates</span>
 
@@ -373,7 +373,7 @@
 
 <div class="viewcode-block" id="get_n_similar_weekdays">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.get_n_similar_weekdays">[docs]</a>
-<span class="k">def</span> <span class="nf">get_n_similar_weekdays</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">prev_event_days</span><span class="p">,</span> <span class="n">n_weekdays</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_n_similar_weekdays</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">prev_event_days</span><span class="p">,</span> <span class="n">n_weekdays</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This function gets the 10 similar weekdays excluding the event days</span>
 
@@ -403,7 +403,7 @@
 
 <div class="viewcode-block" id="get_date_range_prev_month">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.get_date_range_prev_month">[docs]</a>
-<span class="k">def</span> <span class="nf">get_date_range_prev_month</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">n_days</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_date_range_prev_month</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">n_days</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This function gets the date range for the previous month</span>
 
@@ -430,7 +430,7 @@
 
 <div class="viewcode-block" id="get_hourly_average_consumption">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.get_hourly_average_consumption">[docs]</a>
-<span class="k">def</span> <span class="nf">get_hourly_average_consumption</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_hourly_average_consumption</span><span class="p">(</span>
     <span class="n">similar_days</span><span class="p">,</span>
     <span class="n">event_hour</span><span class="p">,</span>
     <span class="n">output_data</span><span class="p">,</span>
@@ -490,7 +490,7 @@
 
 <div class="viewcode-block" id="get_day_of_adj_ratio">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.get_day_of_adj_ratio">[docs]</a>
-<span class="k">def</span> <span class="nf">get_day_of_adj_ratio</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_day_of_adj_ratio</span><span class="p">(</span>
     <span class="n">dr_period_details</span><span class="p">,</span>
     <span class="n">output_data</span><span class="p">,</span>
     <span class="n">electricity_purchase_varnames</span><span class="p">,</span>
@@ -507,7 +507,7 @@
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    dr_period_details : dict</span>
-<span class="sd">        Dictionary with the details of the demand response event period and baseline days</span>
+<span class="sd">        Dictionary with the details of the demand response event period and baseline_days</span>
 
 <span class="sd">    output_data : pandas.DataFrame</span>
 <span class="sd">        the output data for baseline calculation</span>
@@ -540,7 +540,7 @@
     <span class="n">doa_hours_before</span> <span class="o">=</span> <span class="n">day_of_adj_details</span><span class="p">[</span><span class="s2">&quot;hours before&quot;</span><span class="p">]</span>
     <span class="n">doa_duration</span> <span class="o">=</span> <span class="n">day_of_adj_details</span><span class="p">[</span><span class="s2">&quot;duration&quot;</span><span class="p">]</span>
 
-    <span class="n">baseline_days</span> <span class="o">=</span> <span class="n">dr_period_details</span><span class="p">[</span><span class="s2">&quot;baseline days&quot;</span><span class="p">]</span>
+    <span class="n">baseline_days</span> <span class="o">=</span> <span class="n">dr_period_details</span><span class="p">[</span><span class="s2">&quot;baseline_days&quot;</span><span class="p">]</span>
     <span class="n">event_start_dt</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">dr_period_details</span><span class="p">[</span><span class="s2">&quot;event_dts&quot;</span><span class="p">]</span>
 
     <span class="n">doa_hours_before</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">(</span><span class="n">doa_hours_before</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;h&quot;</span><span class="p">)</span>
@@ -585,7 +585,7 @@
 
 <div class="viewcode-block" id="get_hourly_dr_event_arrays">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.get_hourly_dr_event_arrays">[docs]</a>
-<span class="k">def</span> <span class="nf">get_hourly_dr_event_arrays</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_hourly_dr_event_arrays</span><span class="p">(</span>
     <span class="n">event_start_dt</span><span class="p">,</span> <span class="n">horizon_start_dt</span><span class="p">,</span> <span class="n">horizon_end_dt</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="s2">&quot;15m&quot;</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -641,7 +641,7 @@
 
 <div class="viewcode-block" id="get_dr_dates">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.get_dr_dates">[docs]</a>
-<span class="k">def</span> <span class="nf">get_dr_dates</span><span class="p">(</span><span class="n">event_details</span><span class="p">,</span> <span class="n">horizon_start_dt</span><span class="p">,</span> <span class="n">horizon_end_dt</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_dr_dates</span><span class="p">(</span><span class="n">event_details</span><span class="p">,</span> <span class="n">horizon_start_dt</span><span class="p">,</span> <span class="n">horizon_end_dt</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the demand response event dates for the optimization horizon</span>
 
@@ -678,7 +678,7 @@
         <span class="k">if</span> <span class="n">start_dt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">dr_events_dts</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;event_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
             <span class="n">dr_events_dts</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;event_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">][</span><span class="s2">&quot;event_dts&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">start_dt</span><span class="p">,</span> <span class="n">end_dt</span><span class="p">])</span>
-            <span class="n">dr_events_dts</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;event_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">][</span><span class="s2">&quot;baseline days&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;baseline days&quot;</span><span class="p">]</span>
+            <span class="n">dr_events_dts</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;event_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">][</span><span class="s2">&quot;baseline_days&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;baseline_days&quot;</span><span class="p">]</span>
 
     <span class="n">dr_events_dts</span> <span class="o">=</span> <span class="p">(</span>
         <span class="n">combine_overlapping_dr_events</span><span class="p">(</span><span class="n">dr_events_dts</span><span class="p">)</span>
@@ -691,7 +691,7 @@
 
 <div class="viewcode-block" id="combine_overlapping_dr_events">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.combine_overlapping_dr_events">[docs]</a>
-<span class="k">def</span> <span class="nf">combine_overlapping_dr_events</span><span class="p">(</span><span class="n">dr_events_dts</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">combine_overlapping_dr_events</span><span class="p">(</span><span class="n">dr_events_dts</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Sorts the events in choronological order</span>
 <span class="sd">    and combines overlapping demand response (DR) events into a single event</span>
@@ -710,7 +710,7 @@
     <span class="n">dr_dates_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
         <span class="p">[</span><span class="n">val</span><span class="p">[</span><span class="s2">&quot;event_dts&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">dr_events_dts</span><span class="o">.</span><span class="n">values</span><span class="p">()],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;datetime64&quot;</span>
     <span class="p">)</span>
-    <span class="n">baseline_days</span> <span class="o">=</span> <span class="p">[</span><span class="n">val</span><span class="p">[</span><span class="s2">&quot;baseline days&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">dr_events_dts</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+    <span class="n">baseline_days</span> <span class="o">=</span> <span class="p">[</span><span class="n">val</span><span class="p">[</span><span class="s2">&quot;baseline_days&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">dr_events_dts</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
     <span class="n">dr_dates_array</span> <span class="o">=</span> <span class="n">dr_dates_array</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">dr_dates_array</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])]</span>
     <span class="n">baseline_days</span> <span class="o">=</span> <span class="p">[</span><span class="n">baseline_days</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">dr_dates_array</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])]</span>
 
@@ -726,7 +726,7 @@
 
 <div class="viewcode-block" id="get_start_end_dt">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.get_start_end_dt">[docs]</a>
-<span class="k">def</span> <span class="nf">get_start_end_dt</span><span class="p">(</span><span class="n">dr_start_dt</span><span class="p">,</span> <span class="n">dr_end_dt</span><span class="p">,</span> <span class="n">horizon_start_dt</span><span class="p">,</span> <span class="n">horizon_end_dt</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_start_end_dt</span><span class="p">(</span><span class="n">dr_start_dt</span><span class="p">,</span> <span class="n">dr_end_dt</span><span class="p">,</span> <span class="n">horizon_start_dt</span><span class="p">,</span> <span class="n">horizon_end_dt</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the start and end datetime of the demand response event within the optimization horizon</span>
 
@@ -790,7 +790,7 @@
 
 <div class="viewcode-block" id="convert_dr_event_details">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.convert_dr_event_details">[docs]</a>
-<span class="k">def</span> <span class="nf">convert_dr_event_details</span><span class="p">(</span><span class="n">event_details</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">convert_dr_event_details</span><span class="p">(</span><span class="n">event_details</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Converts the demand response event details to the format required by the optimizer</span>
 
@@ -804,10 +804,10 @@
 <span class="sd">    event_details : dict</span>
 <span class="sd">        Dictionary with the details of the demand response event in the format required by the optimizer</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">event_details</span><span class="p">[</span><span class="s2">&quot;baseline days&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="n">event_details</span><span class="p">[</span><span class="s2">&quot;baseline_days&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
         <span class="p">[</span>
             <span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="n">similar_weekday</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">similar_weekday</span> <span class="ow">in</span> <span class="n">event_details</span><span class="p">[</span><span class="s2">&quot;baseline days&quot;</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">similar_weekday</span> <span class="ow">in</span> <span class="n">event_details</span><span class="p">[</span><span class="s2">&quot;baseline_days&quot;</span><span class="p">]</span>
         <span class="p">],</span>
         <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;datetime64&quot;</span><span class="p">,</span>
     <span class="p">)</span>
@@ -823,7 +823,7 @@
 
 <div class="viewcode-block" id="sanitize_dr_data">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.sanitize_dr_data">[docs]</a>
-<span class="k">def</span> <span class="nf">sanitize_dr_data</span><span class="p">(</span><span class="n">dr_data</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sanitize_dr_data</span><span class="p">(</span><span class="n">dr_data</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Sanitize the demand response data</span>
 
@@ -847,7 +847,7 @@
 
 <div class="viewcode-block" id="get_dr_baseline_dates">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.utils.get_dr_baseline_dates">[docs]</a>
-<span class="k">def</span> <span class="nf">get_dr_baseline_dates</span><span class="p">(</span><span class="n">dr_data</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_dr_baseline_dates</span><span class="p">(</span><span class="n">dr_data</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the demand response baseline dates</span>
 
@@ -864,7 +864,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">dr_baseline_dates</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">event_details</span> <span class="ow">in</span> <span class="n">dr_data</span><span class="p">[</span><span class="s2">&quot;events detail&quot;</span><span class="p">]:</span>
-        <span class="n">dr_baseline_dates</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">event_details</span><span class="p">[</span><span class="s2">&quot;baseline days&quot;</span><span class="p">])</span>
+        <span class="n">dr_baseline_dates</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">event_details</span><span class="p">[</span><span class="s2">&quot;baseline_days&quot;</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dr_baseline_dates</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;datetime64&quot;</span><span class="p">)</span></div>
 
 </pre></div>

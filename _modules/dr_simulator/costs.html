@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>dr_simulator.costs &mdash; Demand Response Simulator 0.3.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=547657ed" />
 
@@ -96,15 +96,15 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="c1"># pylint: disable=line-too-long, too-many-arguments, too-many-locals</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-<span class="kn">from</span> <span class="nn">dr_simulator</span> <span class="kn">import</span> <span class="n">utils</span> <span class="k">as</span> <span class="n">ut</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dr_simulator</span><span class="w"> </span><span class="kn">import</span> <span class="n">utils</span> <span class="k">as</span> <span class="n">ut</span>
 
 
 <div class="viewcode-block" id="calculate_dr_payment_region">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.costs.calculate_dr_payment_region">[docs]</a>
-<span class="k">def</span> <span class="nf">calculate_dr_payment_region</span><span class="p">(</span><span class="n">ratio</span><span class="p">,</span> <span class="n">domains</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_dr_payment_region</span><span class="p">(</span><span class="n">ratio</span><span class="p">,</span> <span class="n">domains</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the payment multiplier for a single demand response event for CBP.</span>
 
 <span class="sd">    Paremeters</span>
@@ -141,7 +141,7 @@
 
 <div class="viewcode-block" id="calculate_dr_payment">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.costs.calculate_dr_payment">[docs]</a>
-<span class="k">def</span> <span class="nf">calculate_dr_payment</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_dr_payment</span><span class="p">(</span>
     <span class="n">dr_period_details</span><span class="p">,</span>
     <span class="n">capacity_bid</span><span class="p">,</span>
     <span class="n">capacity_price</span><span class="p">,</span>
@@ -157,7 +157,7 @@
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    dr_period_details : dict</span>
-<span class="sd">        Dictionary with the details of the demand response event period and baseline days</span>
+<span class="sd">        Dictionary with the details of the demand response event period and baseline_days</span>
 
 <span class="sd">    capacity_bid : float</span>
 <span class="sd">        The capacity bid for the demand response event</span>
@@ -200,7 +200,7 @@
     <span class="n">avg_consumption</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="n">dr_event_start_time</span><span class="p">,</span> <span class="n">dr_event_end_time</span> <span class="o">=</span> <span class="n">dr_period_details</span><span class="p">[</span><span class="s2">&quot;event_dts&quot;</span><span class="p">]</span>
-    <span class="n">baseline_days</span> <span class="o">=</span> <span class="n">dr_period_details</span><span class="p">[</span><span class="s2">&quot;baseline days&quot;</span><span class="p">]</span>
+    <span class="n">baseline_days</span> <span class="o">=</span> <span class="n">dr_period_details</span><span class="p">[</span><span class="s2">&quot;baseline_days&quot;</span><span class="p">]</span>
     <span class="n">domains</span> <span class="o">=</span> <span class="p">[</span><span class="n">function</span><span class="p">[</span><span class="s2">&quot;domain&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">function</span> <span class="ow">in</span> <span class="n">payment_functions</span><span class="p">]</span>
     <span class="n">slopes</span> <span class="o">=</span> <span class="p">[</span><span class="n">function</span><span class="p">[</span><span class="s2">&quot;slope&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">function</span> <span class="ow">in</span> <span class="n">payment_functions</span><span class="p">]</span>
     <span class="n">intercepts</span> <span class="o">=</span> <span class="p">[</span><span class="n">function</span><span class="p">[</span><span class="s2">&quot;intercept&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">function</span> <span class="ow">in</span> <span class="n">payment_functions</span><span class="p">]</span>

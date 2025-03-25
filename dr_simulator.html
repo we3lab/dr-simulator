@@ -5,7 +5,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>dr_simulator package &mdash; Demand Response Simulator 0.3.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=547657ed" />
 
@@ -105,7 +105,7 @@
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul>
-<li><p><strong>dr_period_details</strong> (<em>dict</em>) – Dictionary with the details of the demand response event period and baseline days</p></li>
+<li><p><strong>dr_period_details</strong> (<em>dict</em>) – Dictionary with the details of the demand response event period and baseline_days</p></li>
 <li><p><strong>capacity_bid</strong> (<em>float</em>) – The capacity bid for the demand response event</p></li>
 <li><p><strong>capacity_price</strong> (<em>float</em>) – The price for the capacity bid</p></li>
 <li><p><strong>payment_functions</strong> (<em>list</em>) – List of dictionaries with the keys “domain”, “slope”, and “intercept” that define
@@ -232,7 +232,7 @@ uniform distribution</p>
 <dd class="field-even"><p><strong>p_calendar</strong> – Probability of each day being selected</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.1)">numpy.ndarray</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.2)">numpy.ndarray</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -451,7 +451,7 @@ The day-of-adjustment ratio is capped at the day_of_adj_max value.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul>
-<li><p><strong>dr_period_details</strong> (<em>dict</em>) – Dictionary with the details of the demand response event period and baseline days</p></li>
+<li><p><strong>dr_period_details</strong> (<em>dict</em>) – Dictionary with the details of the demand response event period and baseline_days</p></li>
 <li><p><strong>output_data</strong> (<em>pandas.DataFrame</em>) – the output data for baseline calculation</p></li>
 <li><p><strong>electricity_purchase_varnames</strong> (<em>list</em>) – List of electricity purchase variable names</p></li>
 <li><p><strong>datetime_varname</strong> (<em>str</em>) – Name of the datetime variable in the output data</p></li>

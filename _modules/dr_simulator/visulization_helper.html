@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>dr_simulator.visulization_helper &mdash; Demand Response Simulator 0.3.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=547657ed" />
 
@@ -93,16 +93,16 @@
   <h1>Source code for dr_simulator.visulization_helper</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot; Helper functions for visualizing the DR event data &quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">colors</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">colors</span>
 
 
 <span class="c1"># helper function to visualize event data in a monthly calender</span>
 <div class="viewcode-block" id="plot_dr_events">
 <a class="viewcode-back" href="../../dr_simulator.html#dr_simulator.visulization_helper.plot_dr_events">[docs]</a>
-<span class="k">def</span> <span class="nf">plot_dr_events</span><span class="p">(</span><span class="n">start_dt</span><span class="p">,</span> <span class="n">end_dt</span><span class="p">,</span> <span class="n">dr_events</span><span class="p">,</span> <span class="n">sampled_event_hours</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_dr_events</span><span class="p">(</span><span class="n">start_dt</span><span class="p">,</span> <span class="n">end_dt</span><span class="p">,</span> <span class="n">dr_events</span><span class="p">,</span> <span class="n">sampled_event_hours</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">    Plots the DR events in a monthly calendar</span>
@@ -134,7 +134,7 @@
 
 
 
-<span class="k">def</span> <span class="nf">_generate_data</span><span class="p">(</span><span class="n">start_dt</span><span class="p">,</span> <span class="n">end_dt</span><span class="p">,</span> <span class="n">dr_events</span><span class="p">,</span> <span class="n">sampled_event_hours</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_generate_data</span><span class="p">(</span><span class="n">start_dt</span><span class="p">,</span> <span class="n">end_dt</span><span class="p">,</span> <span class="n">dr_events</span><span class="p">,</span> <span class="n">sampled_event_hours</span><span class="p">):</span>
     <span class="n">ndays</span> <span class="o">=</span> <span class="p">(</span><span class="n">end_dt</span> <span class="o">-</span> <span class="n">start_dt</span><span class="p">)</span><span class="o">.</span><span class="n">days</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">ndays</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">dr_event</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dr_events</span><span class="p">):</span>
@@ -144,7 +144,7 @@
     <span class="k">return</span> <span class="n">dates</span><span class="p">,</span> <span class="n">data</span>
 
 
-<span class="k">def</span> <span class="nf">_calendar_array</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_calendar_array</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
     <span class="n">woy</span><span class="p">,</span> <span class="n">dow</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">isocalendar</span><span class="p">()[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dates</span><span class="p">])</span>
     <span class="n">woy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">woy</span><span class="p">)</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">woy</span><span class="p">)</span>  <span class="c1"># make lowest week 0</span>
     <span class="n">dow</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dow</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># make Monday 0</span>
@@ -154,7 +154,7 @@
     <span class="k">return</span> <span class="n">woy</span><span class="p">,</span> <span class="n">dow</span><span class="p">,</span> <span class="n">calendar</span>
 
 
-<span class="k">def</span> <span class="nf">_calendar_heatmap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">dates</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_calendar_heatmap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">dates</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
     <span class="n">woy</span><span class="p">,</span> <span class="n">dow</span><span class="p">,</span> <span class="n">calendar</span> <span class="o">=</span> <span class="n">_calendar_array</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
     <span class="n">cmap</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">ListedColormap</span><span class="p">(</span>
         <span class="p">[</span><span class="s2">&quot;#FDD9D9&quot;</span><span class="p">,</span> <span class="s2">&quot;#FCC0C0&quot;</span><span class="p">,</span> <span class="s2">&quot;#FBA7A7&quot;</span><span class="p">,</span> <span class="s2">&quot;#FA8E8E&quot;</span><span class="p">,</span> <span class="s2">&quot;#F97575&quot;</span><span class="p">,</span> <span class="s2">&quot;#F85C5C&quot;</span><span class="p">,</span> <span class="s2">&quot;#F74343&quot;</span><span class="p">]</span>
@@ -168,7 +168,7 @@
     <span class="k">return</span> <span class="n">cbar</span>
 
 
-<span class="k">def</span> <span class="nf">_label_days</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">dates</span><span class="p">,</span> <span class="n">woy</span><span class="p">,</span> <span class="n">dow</span><span class="p">,</span> <span class="n">calendar</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_label_days</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">dates</span><span class="p">,</span> <span class="n">woy</span><span class="p">,</span> <span class="n">dow</span><span class="p">,</span> <span class="n">calendar</span><span class="p">):</span>
     <span class="n">ni</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">calendar</span><span class="o">.</span><span class="n">shape</span>
     <span class="n">day_of_month</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ni</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
     <span class="n">day_of_month</span><span class="p">[</span><span class="n">woy</span><span class="p">,</span> <span class="n">dow</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">day</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dates</span><span class="p">]</span>
@@ -179,7 +179,7 @@
     <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">tick_top</span><span class="p">()</span>
 
 
-<span class="k">def</span> <span class="nf">_label_months</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">dates</span><span class="p">,</span> <span class="n">woy</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_label_months</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">dates</span><span class="p">,</span> <span class="n">woy</span><span class="p">):</span>
     <span class="n">month_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
         <span class="p">[</span>
             <span class="s2">&quot;Jan&quot;</span><span class="p">,</span>
