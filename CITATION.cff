@@ -17,5 +17,5 @@ title: "Demand Response Events Simulator"
 version: 0.4.0
 date-released: August 27, 2025
 type: software
-doi: XX
+doi: 10.5281/zenodo.17089047
 url: "https://github.com/we3lab/dr-simulator"
