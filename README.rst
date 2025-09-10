@@ -1,7 +1,7 @@
 Welcome to Demand Response Events Simulator
 ===========================================
 
-|Build Status| |Documentation| |Coverage|
+|Build Status| |Documentation| |Coverage| |DOI|
 
 Incentive Based DR Program: Overview
 -------------------------------------
@@ -82,3 +82,5 @@ Watch out for the upcoming release features:
    :target: https://we3lab.github.io/dr-simulator/
 .. |Coverage| image:: https://codecov.io/gh/we3lab/dr-simulator/graph/badge.svg?token=HXGOYK8JCD
    :target: https://codecov.io/gh/we3lab/dr-simulator
+.. |DOI| image:: https://zenodo.org/badge/754373870.svg
+   :target: https://doi.org/10.5281/zenodo.17089048
